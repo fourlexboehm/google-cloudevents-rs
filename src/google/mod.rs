@@ -1,4 +1,4 @@
-pub mod api;
+mod api;
 pub mod events;
-pub mod r#type;
-pub mod rpc;
+mod r#type;
+mod rpc;
