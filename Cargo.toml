@@ -2,7 +2,7 @@
 name = "google-cloudevents"
 description = "Prost codegen structs for Google CloudEvent types"
 license = "MIT"
-version = "0.1.4"
+version = "0.1.5"
 edition = "2021"
 
 [dependencies]
