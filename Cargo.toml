@@ -2,12 +2,8 @@
 name = "google-cloudevents"
 description = "Prost codegen structs for Google CloudEvent types"
 license = "MIT"
-version = "0.1.0"
+version = "0.1.2"
 edition = "2021"
-
-[lib]
-name = "google_cloudevents"
-path = "src/lib.rs"
 
 [dependencies]
 prost = "0.13.4"
