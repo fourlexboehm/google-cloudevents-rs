@@ -1,5 +1,5 @@
 pub mod google;
-static ALL_EVENT_PATHS: &[&str] = &[
+pub static ALL_EVENT_PATHS: &[&str] = &[
     // alloydb/v1
     "google_cloudevents::google::events::cloud::alloydb::v1::ClusterCreatedEvent",
     "google_cloudevents::google::events::cloud::alloydb::v1::ClusterUpdatedEvent",
