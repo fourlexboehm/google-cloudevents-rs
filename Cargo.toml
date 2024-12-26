@@ -1,18 +1,15 @@
 [package]
 name = "google-cloudevents"
+description = "Prost codegen structs for Google CloudEvent types"
+license = "MIT"
 version = "0.1.0"
 edition = "2021"
 
-# This tells Cargo we're making a library, not a binary.
 [lib]
-name = "protofile"
+name = "google-cloudevents"
 path = "src/lib.rs"
 
 [dependencies]
-# If your generated code references Tonic types, or you want to re-export them
-tonic = "0.12.3"
 prost = "0.13.4"
 prost-types = "0.13.4"
-prost-derive = "0.13.4"
-tonic-build = "0.12.3"
 
