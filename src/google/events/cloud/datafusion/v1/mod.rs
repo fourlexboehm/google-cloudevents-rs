@@ -5,6 +5,8 @@
 /// these configurations allows several benefits, such as reduced network latency
 /// while accessing the customer resources from managed Data Fusion instance
 /// nodes, as well as access to the customer on-prem resources.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct NetworkConfig {
     /// Name of the network in the customer project with which the Tenant Project
@@ -21,6 +23,8 @@ pub struct NetworkConfig {
 }
 /// The Data Fusion version. This proto message stores information about certain
 /// Data Fusion version, which is used for Data Fusion version upgrade.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Version {
     /// The version number of the Data Fusion instance, such as '6.0.1.0'.
@@ -39,6 +43,8 @@ pub struct Version {
 /// Nested message and enum types in `Version`.
 pub mod version {
     /// Each type represents the release availability of a CDF version
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -83,6 +89,8 @@ pub mod version {
     }
 }
 /// Identifies Data Fusion accelerators for an instance.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct Accelerator {
     /// The type of an accelator for a CDF instance.
@@ -96,6 +104,8 @@ pub struct Accelerator {
 pub mod accelerator {
     /// Each type represents an Accelerator (Add-On) supported by Cloud Data Fusion
     /// service.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -146,6 +156,8 @@ pub mod accelerator {
         }
     }
     /// Different values possible for the state of an accelerator.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -196,6 +208,8 @@ pub mod accelerator {
 }
 /// The crypto key configuration. This field is used by the Customer-managed
 /// encryption keys (CMEK) feature.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CryptoKeyConfig {
     /// The name of the key which is used to encrypt/decrypt customer data. For key
@@ -205,6 +219,8 @@ pub struct CryptoKeyConfig {
     pub key_reference: ::prost::alloc::string::String,
 }
 /// Represents a Data Fusion instance.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Instance {
     /// Output only. The name of this instance is in the form of
@@ -249,10 +265,10 @@ pub struct Instance {
     >,
     /// Output only. The time the instance was created.
     #[prost(message, optional, tag = "10")]
-    pub create_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub create_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Output only. The time the instance was last updated.
     #[prost(message, optional, tag = "11")]
-    pub update_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub update_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Output only. The current state of this Data Fusion instance.
     #[prost(enumeration = "instance::State", tag = "12")]
     pub state: i32,
@@ -326,6 +342,8 @@ pub struct Instance {
 pub mod instance {
     /// Represents the type of Data Fusion instance. Each type is configured with
     /// the default settings for processing and memory.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -381,6 +399,8 @@ pub mod instance {
         }
     }
     /// Represents the state of a Data Fusion instance
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -457,6 +477,8 @@ pub mod instance {
         }
     }
     /// The reason for disabling the instance if the state is DISABLED.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -497,6 +519,8 @@ pub mod instance {
     }
 }
 /// Confirguration of PubSubEventWriter.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EventPublishConfig {
     /// Required. Option to enable Event Publishing.
@@ -509,6 +533,8 @@ pub struct EventPublishConfig {
 }
 /// DNS peering configuration. These configurations are used to create
 /// DNS peering with the customer Cloud DNS.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DnsPeering {
     /// Required. The resource name of the dns peering zone.
@@ -530,6 +556,8 @@ pub struct DnsPeering {
     pub target_network: ::prost::alloc::string::String,
 }
 /// The data within all Instance events.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InstanceEventData {
     /// Optional. The Instance event payload. Unset for deletion events.
@@ -537,6 +565,8 @@ pub struct InstanceEventData {
     pub payload: ::core::option::Option<Instance>,
 }
 /// The data within all DnsPeering events.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DnsPeeringEventData {
     /// Optional. The DnsPeering event payload. Unset for deletion events.
@@ -544,6 +574,8 @@ pub struct DnsPeeringEventData {
     pub payload: ::core::option::Option<DnsPeering>,
 }
 /// The CloudEvent raised when an Instance is created.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InstanceCreatedEvent {
     /// The data associated with the event.
@@ -551,6 +583,8 @@ pub struct InstanceCreatedEvent {
     pub data: ::core::option::Option<InstanceEventData>,
 }
 /// The CloudEvent raised when an Instance is deleted.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InstanceDeletedEvent {
     /// The data associated with the event.
@@ -558,6 +592,8 @@ pub struct InstanceDeletedEvent {
     pub data: ::core::option::Option<InstanceEventData>,
 }
 /// The CloudEvent raised when an Instance is updated.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InstanceUpdatedEvent {
     /// The data associated with the event.
@@ -565,6 +601,8 @@ pub struct InstanceUpdatedEvent {
     pub data: ::core::option::Option<InstanceEventData>,
 }
 /// The CloudEvent raised when a DnsPeering is created.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DnsPeeringCreatedEvent {
     /// The data associated with the event.
@@ -572,6 +610,8 @@ pub struct DnsPeeringCreatedEvent {
     pub data: ::core::option::Option<DnsPeeringEventData>,
 }
 /// The CloudEvent raised when a DnsPeering is deleted.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DnsPeeringDeletedEvent {
     /// The data associated with the event.

@@ -3,6 +3,8 @@
 /// to a remote application. It creates all the necessary GCP components needed
 /// for creating a BeyondCorp protected AppGateway. Multiple connectors can be
 /// authorised for a single AppGateway.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AppGateway {
     /// Required. Unique resource name of the AppGateway.
@@ -11,10 +13,10 @@ pub struct AppGateway {
     pub name: ::prost::alloc::string::String,
     /// Output only. Timestamp when the resource was created.
     #[prost(message, optional, tag = "2")]
-    pub create_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub create_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Output only. Timestamp when the resource was last modified.
     #[prost(message, optional, tag = "3")]
-    pub update_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub update_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Optional. Resource labels to represent user provided metadata.
     #[prost(map = "string, string", tag = "4")]
     pub labels: ::std::collections::HashMap<
@@ -50,6 +52,8 @@ pub struct AppGateway {
 /// Nested message and enum types in `AppGateway`.
 pub mod app_gateway {
     /// Allocated connection of the AppGateway.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct AllocatedConnection {
         /// Required. The PSC uri of an allocated connection
@@ -61,6 +65,8 @@ pub mod app_gateway {
     }
     /// Enum containing list of all possible network connectivity options
     /// supported by BeyondCorp AppGateway.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -100,6 +106,8 @@ pub mod app_gateway {
         }
     }
     /// Represents the different states of an AppGateway.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -157,6 +165,8 @@ pub mod app_gateway {
     }
     /// Enum containing list of all possible host types supported by BeyondCorp
     /// Connection.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -197,6 +207,8 @@ pub mod app_gateway {
     }
 }
 /// The data within all AppGateway events.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AppGatewayEventData {
     /// Optional. The AppGateway event payload. Unset for deletion events.
@@ -204,6 +216,8 @@ pub struct AppGatewayEventData {
     pub payload: ::core::option::Option<AppGateway>,
 }
 /// The CloudEvent raised when an AppGateway is created.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AppGatewayCreatedEvent {
     /// The data associated with the event.
@@ -211,6 +225,8 @@ pub struct AppGatewayCreatedEvent {
     pub data: ::core::option::Option<AppGatewayEventData>,
 }
 /// The CloudEvent raised when an AppGateway is deleted.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AppGatewayDeletedEvent {
     /// The data associated with the event.

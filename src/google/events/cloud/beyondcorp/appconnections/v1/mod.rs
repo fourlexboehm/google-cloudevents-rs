@@ -3,6 +3,8 @@
 /// AppConnection to a remote application. It creates all the necessary GCP
 /// components needed for creating a BeyondCorp protected AppConnection. Multiple
 /// connectors can be authorised for a single AppConnection.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AppConnection {
     /// Required. Unique resource name of the AppConnection.
@@ -11,10 +13,10 @@ pub struct AppConnection {
     pub name: ::prost::alloc::string::String,
     /// Output only. Timestamp when the resource was created.
     #[prost(message, optional, tag = "2")]
-    pub create_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub create_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Output only. Timestamp when the resource was last modified.
     #[prost(message, optional, tag = "3")]
-    pub update_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub update_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Optional. Resource labels to represent user provided metadata.
     #[prost(map = "string, string", tag = "4")]
     pub labels: ::std::collections::HashMap<
@@ -52,6 +54,8 @@ pub struct AppConnection {
 /// Nested message and enum types in `AppConnection`.
 pub mod app_connection {
     /// ApplicationEndpoint represents a remote application endpoint.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct ApplicationEndpoint {
         /// Required. Hostname or IP address of the remote application endpoint.
@@ -63,6 +67,8 @@ pub mod app_connection {
     }
     /// Gateway represents a user facing component that serves as an entrance to
     /// enable connectivity.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Gateway {
         /// Required. The type of hosting used by the gateway.
@@ -86,6 +92,8 @@ pub mod app_connection {
     /// Nested message and enum types in `Gateway`.
     pub mod gateway {
         /// Enum listing possible gateway hosting options.
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(rename_all = "snake_case")]
         #[derive(
             Clone,
             Copy,
@@ -127,6 +135,8 @@ pub mod app_connection {
     }
     /// Enum containing list of all possible network connectivity options
     /// supported by BeyondCorp AppConnection.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -167,6 +177,8 @@ pub mod app_connection {
         }
     }
     /// Represents the different states of a AppConnection.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -224,6 +236,8 @@ pub mod app_connection {
     }
 }
 /// The data within all AppConnection events.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AppConnectionEventData {
     /// Optional. The AppConnection event payload. Unset for deletion events.
@@ -231,6 +245,8 @@ pub struct AppConnectionEventData {
     pub payload: ::core::option::Option<AppConnection>,
 }
 /// The CloudEvent raised when an AppConnection is created.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AppConnectionCreatedEvent {
     /// The data associated with the event.
@@ -238,6 +254,8 @@ pub struct AppConnectionCreatedEvent {
     pub data: ::core::option::Option<AppConnectionEventData>,
 }
 /// The CloudEvent raised when an AppConnection is updated.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AppConnectionUpdatedEvent {
     /// The data associated with the event.
@@ -245,6 +263,8 @@ pub struct AppConnectionUpdatedEvent {
     pub data: ::core::option::Option<AppConnectionEventData>,
 }
 /// The CloudEvent raised when an AppConnection is deleted.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AppConnectionDeletedEvent {
     /// The data associated with the event.

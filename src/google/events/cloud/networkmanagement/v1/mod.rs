@@ -10,6 +10,8 @@
 ///    |---------------------Trace----------------------|
 ///    Step1(State) Step2(State) ---  StepN(State(final))
 /// ```
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Trace {
     /// Derived from the source and destination endpoints definition specified by
@@ -29,6 +31,8 @@ pub struct Trace {
 }
 /// A simulated forwarding path is composed of multiple steps.
 /// Each step has a well-defined state and an associated configuration.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Step {
     /// A description of the step. Usually this is a summary of the state.
@@ -58,6 +62,8 @@ pub struct Step {
 pub mod step {
     /// Type of states that are defined in the network state machine.
     /// Each step in the packet trace is in a specific state.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -226,6 +232,8 @@ pub mod step {
     /// has no permission to view the configuration in this step, for non-final
     /// states a special state is populated (VIEWER_PERMISSION_MISSING), and for
     /// final state the configuration is cleared.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum StepInfo {
         /// Display information of a Compute Engine instance.
@@ -294,6 +302,8 @@ pub mod step {
     }
 }
 /// For display only. Metadata associated with a Compute Engine instance.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InstanceInfo {
     /// Name of a Compute Engine instance.
@@ -322,6 +332,8 @@ pub struct InstanceInfo {
     pub service_account: ::prost::alloc::string::String,
 }
 /// For display only. Metadata associated with a Compute Engine network.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct NetworkInfo {
     /// Name of a Compute Engine network.
@@ -336,6 +348,8 @@ pub struct NetworkInfo {
 }
 /// For display only. Metadata associated with a VPC firewall rule, an implied
 /// VPC firewall rule, or a hierarchical firewall policy rule.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct FirewallInfo {
     /// The display name of the VPC firewall rule. This field is not applicable
@@ -379,6 +393,8 @@ pub struct FirewallInfo {
 /// Nested message and enum types in `FirewallInfo`.
 pub mod firewall_info {
     /// The firewall rule's type.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -454,6 +470,8 @@ pub mod firewall_info {
     }
 }
 /// For display only. Metadata associated with a Compute Engine route.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RouteInfo {
     /// Type of route.
@@ -502,6 +520,8 @@ pub struct RouteInfo {
 /// Nested message and enum types in `RouteInfo`.
 pub mod route_info {
     /// Type of route:
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -566,6 +586,8 @@ pub mod route_info {
         }
     }
     /// Type of next hop:
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -656,6 +678,8 @@ pub mod route_info {
 /// some Google Services use special routes within Google production
 /// infrastructure to reach Compute Engine Instances.
 /// <https://cloud.google.com/vpc/docs/routes#special_return_paths>
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GoogleServiceInfo {
     /// Source IP address.
@@ -668,6 +692,8 @@ pub struct GoogleServiceInfo {
 /// Nested message and enum types in `GoogleServiceInfo`.
 pub mod google_service_info {
     /// Recognized type of a Google Service.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -725,6 +751,8 @@ pub mod google_service_info {
     }
 }
 /// For display only. Metadata associated with a Compute Engine forwarding rule.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ForwardingRuleInfo {
     /// Name of a Compute Engine forwarding rule.
@@ -750,6 +778,8 @@ pub struct ForwardingRuleInfo {
     pub network_uri: ::prost::alloc::string::String,
 }
 /// For display only. Metadata associated with a load balancer.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct LoadBalancerInfo {
     /// Type of the load balancer.
@@ -771,6 +801,8 @@ pub struct LoadBalancerInfo {
 /// Nested message and enum types in `LoadBalancerInfo`.
 pub mod load_balancer_info {
     /// The type definition for a load balancer:
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -826,6 +858,8 @@ pub mod load_balancer_info {
         }
     }
     /// The type definition for a load balancer backend configuration:
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -874,6 +908,8 @@ pub mod load_balancer_info {
     }
 }
 /// For display only. Metadata associated with a specific load balancer backend.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct LoadBalancerBackend {
     /// Name of a Compute Engine instance or network endpoint.
@@ -899,6 +935,8 @@ pub struct LoadBalancerBackend {
 /// Nested message and enum types in `LoadBalancerBackend`.
 pub mod load_balancer_backend {
     /// State of a health check firewall configuration:
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -948,6 +986,8 @@ pub mod load_balancer_backend {
     }
 }
 /// For display only. Metadata associated with a Compute Engine VPN gateway.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct VpnGatewayInfo {
     /// Name of a VPN gateway.
@@ -972,6 +1012,8 @@ pub struct VpnGatewayInfo {
     pub region: ::prost::alloc::string::String,
 }
 /// For display only. Metadata associated with a Compute Engine VPN tunnel.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct VpnTunnelInfo {
     /// Name of a VPN tunnel.
@@ -1006,6 +1048,8 @@ pub struct VpnTunnelInfo {
 pub mod vpn_tunnel_info {
     /// Types of VPN routing policy. For details, refer to [Networks and Tunnel
     /// routing](<https://cloud.google.com/network-connectivity/docs/vpn/concepts/choosing-networks-routing/>).
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -1056,6 +1100,8 @@ pub mod vpn_tunnel_info {
 /// For display only. The specification of the endpoints for the test.
 /// EndpointInfo is derived from source and destination Endpoint and validated
 /// by the backend data plane model.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EndpointInfo {
     /// Source IP address.
@@ -1081,6 +1127,8 @@ pub struct EndpointInfo {
     pub destination_network_uri: ::prost::alloc::string::String,
 }
 /// Details of the final state "deliver" and associated resource.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DeliverInfo {
     /// Target type where the packet is delivered to.
@@ -1093,6 +1141,8 @@ pub struct DeliverInfo {
 /// Nested message and enum types in `DeliverInfo`.
 pub mod deliver_info {
     /// Deliver target types:
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -1164,6 +1214,8 @@ pub mod deliver_info {
     }
 }
 /// Details of the final state "forward" and associated resource.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ForwardInfo {
     /// Target type where this packet is forwarded to.
@@ -1176,6 +1228,8 @@ pub struct ForwardInfo {
 /// Nested message and enum types in `ForwardInfo`.
 pub mod forward_info {
     /// Forward target types.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -1242,6 +1296,8 @@ pub mod forward_info {
     }
 }
 /// Details of the final state "abort" and associated resource.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AbortInfo {
     /// Causes that the analysis is aborted.
@@ -1261,6 +1317,8 @@ pub struct AbortInfo {
 /// Nested message and enum types in `AbortInfo`.
 pub mod abort_info {
     /// Abort cause types:
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -1395,6 +1453,8 @@ pub mod abort_info {
     }
 }
 /// Details of the final state "drop" and associated resource.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DropInfo {
     /// Cause that the packet is dropped.
@@ -1407,6 +1467,8 @@ pub struct DropInfo {
 /// Nested message and enum types in `DropInfo`.
 pub mod drop_info {
     /// Drop cause types:
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -1691,6 +1753,8 @@ pub mod drop_info {
 }
 /// For display only. Metadata associated with a Google Kubernetes Engine (GKE)
 /// cluster master.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GkeMasterInfo {
     /// URI of a GKE cluster.
@@ -1707,6 +1771,8 @@ pub struct GkeMasterInfo {
     pub external_ip: ::prost::alloc::string::String,
 }
 /// For display only. Metadata associated with a Cloud SQL instance.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CloudSqlInstanceInfo {
     /// Name of a Cloud SQL instance.
@@ -1730,6 +1796,8 @@ pub struct CloudSqlInstanceInfo {
     pub region: ::prost::alloc::string::String,
 }
 /// For display only. Metadata associated with a Cloud Function.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CloudFunctionInfo {
     /// Name of a Cloud Function.
@@ -1746,6 +1814,8 @@ pub struct CloudFunctionInfo {
     pub version_id: i64,
 }
 /// For display only. Metadata associated with a Cloud Run revision.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CloudRunRevisionInfo {
     /// Name of a Cloud Run revision.
@@ -1762,6 +1832,8 @@ pub struct CloudRunRevisionInfo {
     pub service_uri: ::prost::alloc::string::String,
 }
 /// For display only. Metadata associated with an App Engine version.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AppEngineVersionInfo {
     /// Name of an App Engine version.
@@ -1778,6 +1850,8 @@ pub struct AppEngineVersionInfo {
     pub environment: ::prost::alloc::string::String,
 }
 /// For display only. Metadata associated with a VPC connector.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct VpcConnectorInfo {
     /// Name of a VPC connector.
@@ -1791,6 +1865,8 @@ pub struct VpcConnectorInfo {
     pub location: ::prost::alloc::string::String,
 }
 /// A Connectivity Test for a network reachability analysis.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ConnectivityTest {
     /// Required. Unique name of the resource using the form:
@@ -1863,10 +1939,10 @@ pub struct ConnectivityTest {
     >,
     /// Output only. The time the test was created.
     #[prost(message, optional, tag = "10")]
-    pub create_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub create_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Output only. The time the test's configuration was updated.
     #[prost(message, optional, tag = "11")]
-    pub update_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub update_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Output only. The reachability details of this test from the latest run.
     /// The details are updated when creating a new test, updating an
     /// existing test, or triggering a one-time rerun of an existing test.
@@ -1874,6 +1950,8 @@ pub struct ConnectivityTest {
     pub reachability_details: ::core::option::Option<ReachabilityDetails>,
 }
 /// Source or destination of the Connectivity Test.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Endpoint {
     /// The IP address of the endpoint, which can be an external or internal IP.
@@ -1929,6 +2007,8 @@ pub struct Endpoint {
 /// Nested message and enum types in `Endpoint`.
 pub mod endpoint {
     /// Wrapper for Cloud Function attributes.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct CloudFunctionEndpoint {
         /// A [Cloud Function](<https://cloud.google.com/functions>) name.
@@ -1936,6 +2016,8 @@ pub mod endpoint {
         pub uri: ::prost::alloc::string::String,
     }
     /// Wrapper for the App Engine service version attributes.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct AppEngineVersionEndpoint {
         /// An [App Engine](<https://cloud.google.com/appengine>) [service
@@ -1945,6 +2027,8 @@ pub mod endpoint {
         pub uri: ::prost::alloc::string::String,
     }
     /// Wrapper for Cloud Run revision attributes.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct CloudRunRevisionEndpoint {
         /// A [Cloud Run](<https://cloud.google.com/run>)
@@ -1956,6 +2040,8 @@ pub mod endpoint {
     }
     /// The type definition of an endpoint's network. Use one of the
     /// following choices:
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -2004,6 +2090,8 @@ pub mod endpoint {
     }
 }
 /// Results of the configuration analysis from the last run of the test.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ReachabilityDetails {
     /// The overall result of the test's configuration analysis.
@@ -2011,7 +2099,7 @@ pub struct ReachabilityDetails {
     pub result: i32,
     /// The time of the configuration analysis.
     #[prost(message, optional, tag = "2")]
-    pub verify_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub verify_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// The details of a failure or a cancellation of reachability analysis.
     #[prost(message, optional, tag = "3")]
     pub error: ::core::option::Option<super::super::super::super::rpc::Status>,
@@ -2024,6 +2112,8 @@ pub struct ReachabilityDetails {
 /// Nested message and enum types in `ReachabilityDetails`.
 pub mod reachability_details {
     /// The overall result of the test's configuration analysis.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -2092,6 +2182,8 @@ pub mod reachability_details {
     }
 }
 /// The data within all ConnectivityTest events.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ConnectivityTestEventData {
     /// Optional. The ConnectivityTest event payload. Unset for deletion events.
@@ -2099,6 +2191,8 @@ pub struct ConnectivityTestEventData {
     pub payload: ::core::option::Option<ConnectivityTest>,
 }
 /// The CloudEvent raised when a ConnectivityTest is created.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ConnectivityTestCreatedEvent {
     /// The data associated with the event.
@@ -2106,6 +2200,8 @@ pub struct ConnectivityTestCreatedEvent {
     pub data: ::core::option::Option<ConnectivityTestEventData>,
 }
 /// The CloudEvent raised when a ConnectivityTest is updated.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ConnectivityTestUpdatedEvent {
     /// The data associated with the event.
@@ -2113,6 +2209,8 @@ pub struct ConnectivityTestUpdatedEvent {
     pub data: ::core::option::Option<ConnectivityTestEventData>,
 }
 /// The CloudEvent raised when a ConnectivityTest is deleted.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ConnectivityTestDeletedEvent {
     /// The data associated with the event.

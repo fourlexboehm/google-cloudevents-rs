@@ -7,6 +7,8 @@
 /// admins with tools to organize, secure and manage their data at scale, and
 /// provides data scientists and data engineers an integrated experience to
 /// easily search, discover, analyze and transform data and associated metadata.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Lake {
     /// Output only. The relative resource name of the lake, of the form:
@@ -22,10 +24,10 @@ pub struct Lake {
     pub uid: ::prost::alloc::string::String,
     /// Output only. The time when the lake was created.
     #[prost(message, optional, tag = "4")]
-    pub create_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub create_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Output only. The time when the lake was last updated.
     #[prost(message, optional, tag = "5")]
-    pub update_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub update_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Optional. User-defined labels for the lake.
     #[prost(map = "string, string", tag = "6")]
     pub labels: ::std::collections::HashMap<
@@ -57,6 +59,8 @@ pub struct Lake {
 /// Nested message and enum types in `Lake`.
 pub mod lake {
     /// Settings to manage association of Dataproc Metastore with a lake.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Metastore {
         /// Optional. A relative reference to the Dataproc Metastore
@@ -67,6 +71,8 @@ pub mod lake {
         pub service: ::prost::alloc::string::String,
     }
     /// Status of Lake and Dataproc Metastore service instance association.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct MetastoreStatus {
         /// Current state of association.
@@ -77,7 +83,7 @@ pub mod lake {
         pub message: ::prost::alloc::string::String,
         /// Last update time of the metastore status of the lake.
         #[prost(message, optional, tag = "3")]
-        pub update_time: ::core::option::Option<::prost_types::Timestamp>,
+        pub update_time: ::core::option::Option<::pbjson_types::Timestamp>,
         /// The URI of the endpoint used to access the Metastore service.
         #[prost(string, tag = "4")]
         pub endpoint: ::prost::alloc::string::String,
@@ -85,6 +91,8 @@ pub mod lake {
     /// Nested message and enum types in `MetastoreStatus`.
     pub mod metastore_status {
         /// Current state of association.
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(rename_all = "snake_case")]
         #[derive(
             Clone,
             Copy,
@@ -138,11 +146,13 @@ pub mod lake {
     }
 }
 /// Aggregated status of the underlying assets of a lake or zone.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct AssetStatus {
     /// Last update time of the status.
     #[prost(message, optional, tag = "1")]
-    pub update_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub update_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Number of active assets.
     #[prost(int32, tag = "2")]
     pub active_assets: i32,
@@ -155,6 +165,8 @@ pub struct AssetStatus {
 /// be used to map to organizational structure or represent stages of data
 /// readiness from raw to curated. It provides managing behavior that is shared
 /// or inherited by all contained assets.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Zone {
     /// Output only. The relative resource name of the zone, of the form:
@@ -170,10 +182,10 @@ pub struct Zone {
     pub uid: ::prost::alloc::string::String,
     /// Output only. The time when the zone was created.
     #[prost(message, optional, tag = "4")]
-    pub create_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub create_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Output only. The time when the zone was last updated.
     #[prost(message, optional, tag = "5")]
-    pub update_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub update_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Optional. User defined labels for the zone.
     #[prost(map = "string, string", tag = "6")]
     pub labels: ::std::collections::HashMap<
@@ -204,6 +216,8 @@ pub struct Zone {
 /// Nested message and enum types in `Zone`.
 pub mod zone {
     /// Settings for resources attached as assets within a zone.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct ResourceSpec {
         /// Required. Immutable. The location type of the resources that are allowed
@@ -214,6 +228,8 @@ pub mod zone {
     /// Nested message and enum types in `ResourceSpec`.
     pub mod resource_spec {
         /// Location type of the resources attached to a zone.
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(rename_all = "snake_case")]
         #[derive(
             Clone,
             Copy,
@@ -258,6 +274,8 @@ pub mod zone {
         }
     }
     /// Settings to manage the metadata discovery and publishing in a zone.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct DiscoverySpec {
         /// Required. Whether discovery is enabled.
@@ -289,6 +307,8 @@ pub mod zone {
     /// Nested message and enum types in `DiscoverySpec`.
     pub mod discovery_spec {
         /// Describe CSV and similar semi-structured data formats.
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(rename_all = "snake_case")]
         #[derive(Clone, PartialEq, ::prost::Message)]
         pub struct CsvOptions {
             /// Optional. The number of rows to interpret as header rows that should be
@@ -308,6 +328,8 @@ pub mod zone {
             pub disable_type_inference: bool,
         }
         /// Describe JSON data format.
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(rename_all = "snake_case")]
         #[derive(Clone, PartialEq, ::prost::Message)]
         pub struct JsonOptions {
             /// Optional. The character encoding of the data. The default is UTF-8.
@@ -320,6 +342,8 @@ pub mod zone {
             pub disable_type_inference: bool,
         }
         /// Determines when discovery is triggered.
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(rename_all = "snake_case")]
         #[derive(Clone, PartialEq, ::prost::Oneof)]
         pub enum Trigger {
             /// Optional. Cron schedule (<https://en.wikipedia.org/wiki/Cron>) for
@@ -335,6 +359,8 @@ pub mod zone {
         }
     }
     /// Type of zone.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -384,6 +410,8 @@ pub mod zone {
 }
 /// An asset represents a cloud resource that is being managed within a lake as a
 /// member of a zone.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Asset {
     /// Output only. The relative resource name of the asset, of the form:
@@ -400,10 +428,10 @@ pub struct Asset {
     pub uid: ::prost::alloc::string::String,
     /// Output only. The time when the asset was created.
     #[prost(message, optional, tag = "4")]
-    pub create_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub create_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Output only. The time when the asset was last updated.
     #[prost(message, optional, tag = "5")]
-    pub update_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub update_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Optional. User defined labels for the asset.
     #[prost(map = "string, string", tag = "6")]
     pub labels: ::std::collections::HashMap<
@@ -440,6 +468,8 @@ pub struct Asset {
 pub mod asset {
     /// Security policy status of the asset. Data security policy, i.e., readers,
     /// writers & owners, should be specified in the lake/zone/asset IAM policy.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct SecurityStatus {
         /// The current state of the security policy applied to the attached
@@ -451,11 +481,13 @@ pub mod asset {
         pub message: ::prost::alloc::string::String,
         /// Last update time of the status.
         #[prost(message, optional, tag = "3")]
-        pub update_time: ::core::option::Option<::prost_types::Timestamp>,
+        pub update_time: ::core::option::Option<::pbjson_types::Timestamp>,
     }
     /// Nested message and enum types in `SecurityStatus`.
     pub mod security_status {
         /// The state of the security policy.
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(rename_all = "snake_case")]
         #[derive(
             Clone,
             Copy,
@@ -506,6 +538,8 @@ pub mod asset {
         }
     }
     /// Settings to manage the metadata discovery and publishing for an asset.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct DiscoverySpec {
         /// Optional. Whether discovery is enabled.
@@ -537,6 +571,8 @@ pub mod asset {
     /// Nested message and enum types in `DiscoverySpec`.
     pub mod discovery_spec {
         /// Describe CSV and similar semi-structured data formats.
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(rename_all = "snake_case")]
         #[derive(Clone, PartialEq, ::prost::Message)]
         pub struct CsvOptions {
             /// Optional. The number of rows to interpret as header rows that should be
@@ -556,6 +592,8 @@ pub mod asset {
             pub disable_type_inference: bool,
         }
         /// Describe JSON data format.
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(rename_all = "snake_case")]
         #[derive(Clone, PartialEq, ::prost::Message)]
         pub struct JsonOptions {
             /// Optional. The character encoding of the data. The default is UTF-8.
@@ -568,6 +606,8 @@ pub mod asset {
             pub disable_type_inference: bool,
         }
         /// Determines when discovery is triggered.
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(rename_all = "snake_case")]
         #[derive(Clone, PartialEq, ::prost::Oneof)]
         pub enum Trigger {
             /// Optional. Cron schedule (<https://en.wikipedia.org/wiki/Cron>) for
@@ -583,6 +623,8 @@ pub mod asset {
         }
     }
     /// Identifies the cloud resource that is referenced by this asset.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct ResourceSpec {
         /// Immutable. Relative name of the cloud resource that contains the data
@@ -602,6 +644,8 @@ pub mod asset {
     /// Nested message and enum types in `ResourceSpec`.
     pub mod resource_spec {
         /// Type of resource.
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(rename_all = "snake_case")]
         #[derive(
             Clone,
             Copy,
@@ -646,6 +690,8 @@ pub mod asset {
         }
         /// Access Mode determines how data stored within the resource is read. This
         /// is only applicable to storage bucket assets.
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(rename_all = "snake_case")]
         #[derive(
             Clone,
             Copy,
@@ -690,6 +736,8 @@ pub mod asset {
         }
     }
     /// Status of the resource referenced by an asset.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct ResourceStatus {
         /// The current state of the managed resource.
@@ -700,7 +748,7 @@ pub mod asset {
         pub message: ::prost::alloc::string::String,
         /// Last update time of the status.
         #[prost(message, optional, tag = "3")]
-        pub update_time: ::core::option::Option<::prost_types::Timestamp>,
+        pub update_time: ::core::option::Option<::pbjson_types::Timestamp>,
         /// Output only. Service account associated with the BigQuery Connection.
         #[prost(string, tag = "4")]
         pub managed_access_identity: ::prost::alloc::string::String,
@@ -708,6 +756,8 @@ pub mod asset {
     /// Nested message and enum types in `ResourceStatus`.
     pub mod resource_status {
         /// The state of a resource.
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(rename_all = "snake_case")]
         #[derive(
             Clone,
             Copy,
@@ -752,6 +802,8 @@ pub mod asset {
         }
     }
     /// Status of discovery for an asset.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct DiscoveryStatus {
         /// The current status of the discovery feature.
@@ -762,20 +814,22 @@ pub mod asset {
         pub message: ::prost::alloc::string::String,
         /// Last update time of the status.
         #[prost(message, optional, tag = "3")]
-        pub update_time: ::core::option::Option<::prost_types::Timestamp>,
+        pub update_time: ::core::option::Option<::pbjson_types::Timestamp>,
         /// The start time of the last discovery run.
         #[prost(message, optional, tag = "4")]
-        pub last_run_time: ::core::option::Option<::prost_types::Timestamp>,
+        pub last_run_time: ::core::option::Option<::pbjson_types::Timestamp>,
         /// Data Stats of the asset reported by discovery.
         #[prost(message, optional, tag = "6")]
         pub stats: ::core::option::Option<discovery_status::Stats>,
         /// The duration of the last discovery run.
         #[prost(message, optional, tag = "7")]
-        pub last_run_duration: ::core::option::Option<::prost_types::Duration>,
+        pub last_run_duration: ::core::option::Option<::pbjson_types::Duration>,
     }
     /// Nested message and enum types in `DiscoveryStatus`.
     pub mod discovery_status {
         /// The aggregated data statistics for the asset reported by discovery.
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(rename_all = "snake_case")]
         #[derive(Clone, Copy, PartialEq, ::prost::Message)]
         pub struct Stats {
             /// The count of data items within the referenced resource.
@@ -792,6 +846,8 @@ pub mod asset {
             pub filesets: i64,
         }
         /// Current state of discovery.
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(rename_all = "snake_case")]
         #[derive(
             Clone,
             Copy,
@@ -847,6 +903,8 @@ pub mod asset {
 }
 /// Environment represents a user-visible compute infrastructure for analytics
 /// within a lake.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Environment {
     /// Output only. The relative resource name of the environment, of the form:
@@ -863,10 +921,10 @@ pub struct Environment {
     pub uid: ::prost::alloc::string::String,
     /// Output only. Environment creation time.
     #[prost(message, optional, tag = "4")]
-    pub create_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub create_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Output only. The time when the environment was last updated.
     #[prost(message, optional, tag = "5")]
-    pub update_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub update_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Optional. User defined labels for the environment.
     #[prost(map = "string, string", tag = "6")]
     pub labels: ::std::collections::HashMap<
@@ -896,6 +954,8 @@ pub struct Environment {
 /// Nested message and enum types in `Environment`.
 pub mod environment {
     /// Configuration for the underlying infrastructure used to run workloads.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct InfrastructureSpec {
         /// Hardware config
@@ -908,6 +968,8 @@ pub mod environment {
     /// Nested message and enum types in `InfrastructureSpec`.
     pub mod infrastructure_spec {
         /// Compute resources associated with the analyze interactive workloads.
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(rename_all = "snake_case")]
         #[derive(Clone, Copy, PartialEq, ::prost::Message)]
         pub struct ComputeResources {
             /// Optional. Size in GB of the disk. Default is 100 GB.
@@ -923,6 +985,8 @@ pub mod environment {
             pub max_node_count: i32,
         }
         /// Software Runtime Configuration to run Analyze.
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(rename_all = "snake_case")]
         #[derive(Clone, PartialEq, ::prost::Message)]
         pub struct OsImageRuntime {
             /// Required. Dataplex Image version.
@@ -951,6 +1015,8 @@ pub mod environment {
             >,
         }
         /// Hardware config
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(rename_all = "snake_case")]
         #[derive(Clone, Copy, PartialEq, ::prost::Oneof)]
         pub enum Resources {
             /// Optional. Compute resources needed for analyze interactive workloads.
@@ -958,6 +1024,8 @@ pub mod environment {
             Compute(ComputeResources),
         }
         /// Software config
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(rename_all = "snake_case")]
         #[derive(Clone, PartialEq, ::prost::Oneof)]
         pub enum Runtime {
             /// Required. Software Runtime Configuration for analyze interactive
@@ -967,12 +1035,14 @@ pub mod environment {
         }
     }
     /// Configuration for sessions created for this environment.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct SessionSpec {
         /// Optional. The idle time configuration of the session. The session will be
         /// auto-terminated at the end of this period.
         #[prost(message, optional, tag = "1")]
-        pub max_idle_duration: ::core::option::Option<::prost_types::Duration>,
+        pub max_idle_duration: ::core::option::Option<::pbjson_types::Duration>,
         /// Optional. If True, this causes sessions to be pre-created and available
         /// for faster startup to enable interactive exploration use-cases. This
         /// defaults to False to avoid additional billed charges. These can only be
@@ -982,6 +1052,8 @@ pub mod environment {
         pub enable_fast_startup: bool,
     }
     /// Status of sessions created for this environment.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct SessionStatus {
         /// Output only. Queries over sessions to mark whether the environment is
@@ -990,6 +1062,8 @@ pub mod environment {
         pub active: bool,
     }
     /// URI Endpoints to access sessions associated with the Environment.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Endpoints {
         /// Output only. URI to serve notebook APIs
@@ -1001,6 +1075,8 @@ pub mod environment {
     }
 }
 /// DataScan scheduling and trigger settings.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Trigger {
     /// DataScan scheduling and trigger settings.
@@ -1012,9 +1088,13 @@ pub struct Trigger {
 /// Nested message and enum types in `Trigger`.
 pub mod trigger {
     /// The scan runs once via `RunDataScan` API.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct OnDemand {}
     /// The scan is scheduled to run periodically.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Schedule {
         /// Required. [Cron](<https://en.wikipedia.org/wiki/Cron>) schedule for running
@@ -1035,6 +1115,8 @@ pub mod trigger {
     /// DataScan scheduling and trigger settings.
     ///
     /// If not specified, the default is `onDemand`.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Mode {
         /// The scan runs once via `RunDataScan` API.
@@ -1046,6 +1128,8 @@ pub mod trigger {
     }
 }
 /// The data source for DataScan.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataSource {
     /// The source is required and immutable. Once it is set, it cannot be change
@@ -1057,6 +1141,8 @@ pub struct DataSource {
 pub mod data_source {
     /// The source is required and immutable. Once it is set, it cannot be change
     /// to others.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Source {
         /// Immutable. The Dataplex entity that represents the data source (e.g.
@@ -1067,6 +1153,8 @@ pub mod data_source {
     }
 }
 /// The data scanned during processing (e.g. in incremental DataScan)
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ScannedData {
     /// The range of scanned data
@@ -1076,6 +1164,8 @@ pub struct ScannedData {
 /// Nested message and enum types in `ScannedData`.
 pub mod scanned_data {
     /// A data range denoted by a pair of start/end values of a field.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct IncrementalField {
         /// The field that contains values which monotonically increases over time
@@ -1090,6 +1180,8 @@ pub mod scanned_data {
         pub end: ::prost::alloc::string::String,
     }
     /// The range of scanned data
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum DataRange {
         /// The range denoted by values of an incremental field
@@ -1098,10 +1190,14 @@ pub mod scanned_data {
     }
 }
 /// DataProfileScan related setting.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct DataProfileSpec {}
 /// DataProfileResult defines the output of DataProfileScan. Each field of the
 /// table will have field type specific profile result.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataProfileResult {
     /// The count of rows scanned.
@@ -1117,6 +1213,8 @@ pub struct DataProfileResult {
 /// Nested message and enum types in `DataProfileResult`.
 pub mod data_profile_result {
     /// Contains name, type, mode and field type specific profile information.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Profile {
         /// List of fields with structural and profile information for each field.
@@ -1126,6 +1224,8 @@ pub mod data_profile_result {
     /// Nested message and enum types in `Profile`.
     pub mod profile {
         /// A field within a table.
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(rename_all = "snake_case")]
         #[derive(Clone, PartialEq, ::prost::Message)]
         pub struct Field {
             /// The name of the field.
@@ -1164,6 +1264,8 @@ pub mod data_profile_result {
         /// Nested message and enum types in `Field`.
         pub mod field {
             /// The profile information for each field type.
+            #[derive(serde::Serialize, serde::Deserialize)]
+            #[serde(rename_all = "snake_case")]
             #[derive(Clone, PartialEq, ::prost::Message)]
             pub struct ProfileInfo {
                 /// Ratio of rows with null value against total scanned rows.
@@ -1188,6 +1290,8 @@ pub mod data_profile_result {
             /// Nested message and enum types in `ProfileInfo`.
             pub mod profile_info {
                 /// The profile information for a string type field.
+                #[derive(serde::Serialize, serde::Deserialize)]
+                #[serde(rename_all = "snake_case")]
                 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
                 pub struct StringFieldInfo {
                     /// Minimum length of non-null values in the scanned data.
@@ -1201,6 +1305,8 @@ pub mod data_profile_result {
                     pub average_length: f64,
                 }
                 /// The profile information for an integer type field.
+                #[derive(serde::Serialize, serde::Deserialize)]
+                #[serde(rename_all = "snake_case")]
                 #[derive(Clone, PartialEq, ::prost::Message)]
                 pub struct IntegerFieldInfo {
                     /// Average of non-null values in the scanned data. NaN, if the field
@@ -1234,6 +1340,8 @@ pub mod data_profile_result {
                     pub max: i64,
                 }
                 /// The profile information for a double type field.
+                #[derive(serde::Serialize, serde::Deserialize)]
+                #[serde(rename_all = "snake_case")]
                 #[derive(Clone, PartialEq, ::prost::Message)]
                 pub struct DoubleFieldInfo {
                     /// Average of non-null values in the scanned data. NaN, if the field
@@ -1267,6 +1375,8 @@ pub mod data_profile_result {
                     pub max: f64,
                 }
                 /// Top N non-null values in the scanned data.
+                #[derive(serde::Serialize, serde::Deserialize)]
+                #[serde(rename_all = "snake_case")]
                 #[derive(Clone, PartialEq, ::prost::Message)]
                 pub struct TopNValue {
                     /// String value of a top N non-null value.
@@ -1278,6 +1388,8 @@ pub mod data_profile_result {
                 }
                 /// Structural and profile information for specific field type. Not
                 /// available, if mode is REPEATABLE.
+                #[derive(serde::Serialize, serde::Deserialize)]
+                #[serde(rename_all = "snake_case")]
                 #[derive(Clone, PartialEq, ::prost::Oneof)]
                 pub enum FieldInfo {
                     /// String type field information.
@@ -1295,6 +1407,8 @@ pub mod data_profile_result {
     }
 }
 /// DataQualityScan related setting.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataQualitySpec {
     /// The list of rules to evaluate against a data source. At least one rule is
@@ -1303,6 +1417,8 @@ pub struct DataQualitySpec {
     pub rules: ::prost::alloc::vec::Vec<DataQualityRule>,
 }
 /// The output of a DataQualityScan.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataQualityResult {
     /// Overall data quality result -- `true` if all rules passed.
@@ -1322,6 +1438,8 @@ pub struct DataQualityResult {
     pub scanned_data: ::core::option::Option<ScannedData>,
 }
 /// DataQualityRuleResult provides a more detailed, per-rule view of the results.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataQualityRuleResult {
     /// The rule specified in the DataQualitySpec, as is.
@@ -1359,6 +1477,8 @@ pub struct DataQualityRuleResult {
 }
 /// DataQualityDimensionResult provides a more detailed, per-dimension view of
 /// the results.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct DataQualityDimensionResult {
     /// Whether the dimension passed or failed.
@@ -1366,6 +1486,8 @@ pub struct DataQualityDimensionResult {
     pub passed: bool,
 }
 /// A rule captures data quality intent about a data source.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataQualityRule {
     /// Optional. The unnested column which this rule is evaluated against.
@@ -1398,6 +1520,8 @@ pub struct DataQualityRule {
 /// Nested message and enum types in `DataQualityRule`.
 pub mod data_quality_rule {
     /// Evaluates whether each column value lies between a specified range.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct RangeExpectation {
         /// Optional. The minimum column value allowed for a row to pass this
@@ -1424,9 +1548,13 @@ pub mod data_quality_rule {
         pub strict_max_enabled: bool,
     }
     /// Evaluates whether each column value is null.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct NonNullExpectation {}
     /// Evaluates whether each column value is contained by a specified set.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct SetExpectation {
         /// Expected values for the column value.
@@ -1434,6 +1562,8 @@ pub mod data_quality_rule {
         pub values: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
     }
     /// Evaluates whether each column value matches a specified regex.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct RegexExpectation {
         /// A regular expression the column value is expected to match.
@@ -1441,10 +1571,14 @@ pub mod data_quality_rule {
         pub regex: ::prost::alloc::string::String,
     }
     /// Evaluates whether the column has duplicates.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct UniquenessExpectation {}
     /// Evaluates whether the column aggregate statistic lies between a specified
     /// range.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct StatisticRangeExpectation {
         #[prost(enumeration = "statistic_range_expectation::ColumnStatistic", tag = "1")]
@@ -1476,6 +1610,8 @@ pub mod data_quality_rule {
     }
     /// Nested message and enum types in `StatisticRangeExpectation`.
     pub mod statistic_range_expectation {
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(rename_all = "snake_case")]
         #[derive(
             Clone,
             Copy,
@@ -1529,6 +1665,8 @@ pub mod data_quality_rule {
     /// produce a boolean value per row as the result.
     ///
     /// Example: col1 >= 0 AND col2 < 10
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct RowConditionExpectation {
         /// The SQL expression.
@@ -1541,12 +1679,16 @@ pub mod data_quality_rule {
     /// produce a scalar boolean result.
     ///
     /// Example: MIN(col1) >= 0
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct TableConditionExpectation {
         /// The SQL expression.
         #[prost(string, tag = "1")]
         pub sql_expression: ::prost::alloc::string::String,
     }
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum RuleType {
         /// ColumnMap rule which evaluates whether each column value lies between a
@@ -1583,6 +1725,8 @@ pub mod data_quality_rule {
 /// ResourceAccessSpec holds the access control configuration to be enforced
 /// on the resources, for example, Cloud Storage bucket, BigQuery dataset,
 /// BigQuery table.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ResourceAccessSpec {
     /// Optional. The format of strings follows the pattern followed by IAM in the
@@ -1602,6 +1746,8 @@ pub struct ResourceAccessSpec {
 /// associated with data, the data is only accessible to
 /// principals explicitly granted access through the DataAccessSpec. Principals
 /// with access to the containing resource are not implicitly granted access.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataAccessSpec {
     /// Optional. The format of strings follows the pattern followed by IAM in the
@@ -1614,6 +1760,8 @@ pub struct DataAccessSpec {
 /// DataTaxonomy represents a set of hierarchical DataAttributes resources,
 /// grouped with a common theme Eg: 'SensitiveDataTaxonomy' can have attributes
 /// to manage PII data. It is defined at project level.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataTaxonomy {
     /// Output only. The relative resource name of the DataTaxonomy, of the form:
@@ -1627,10 +1775,10 @@ pub struct DataTaxonomy {
     pub uid: ::prost::alloc::string::String,
     /// Output only. The time when the DataTaxonomy was created.
     #[prost(message, optional, tag = "3")]
-    pub create_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub create_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Output only. The time when the DataTaxonomy was last updated.
     #[prost(message, optional, tag = "4")]
-    pub update_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub update_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Optional. Description of the DataTaxonomy.
     #[prost(string, tag = "5")]
     pub description: ::prost::alloc::string::String,
@@ -1663,6 +1811,8 @@ pub struct DataTaxonomy {
 ///    - DataAccessSpec :
 ///                  - readers :bar@foo.com
 /// ```
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataAttribute {
     /// Output only. The relative resource name of the dataAttribute, of the form:
@@ -1676,10 +1826,10 @@ pub struct DataAttribute {
     pub uid: ::prost::alloc::string::String,
     /// Output only. The time when the DataAttribute was created.
     #[prost(message, optional, tag = "3")]
-    pub create_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub create_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Output only. The time when the DataAttribute was last updated.
     #[prost(message, optional, tag = "4")]
-    pub update_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub update_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Optional. Description of the DataAttribute.
     #[prost(string, tag = "5")]
     pub description: ::prost::alloc::string::String,
@@ -1717,6 +1867,8 @@ pub struct DataAttribute {
 }
 /// DataAttributeBinding represents binding of attributes to resources. Eg: Bind
 /// 'CustomerInfo' entity with 'PII' attribute.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataAttributeBinding {
     /// Output only. The relative resource name of the Data Attribute Binding, of
@@ -1731,10 +1883,10 @@ pub struct DataAttributeBinding {
     pub uid: ::prost::alloc::string::String,
     /// Output only. The time when the DataAttributeBinding was created.
     #[prost(message, optional, tag = "3")]
-    pub create_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub create_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Output only. The time when the DataAttributeBinding was last updated.
     #[prost(message, optional, tag = "4")]
-    pub update_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub update_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Optional. Description of the DataAttributeBinding.
     #[prost(string, tag = "5")]
     pub description: ::prost::alloc::string::String,
@@ -1773,6 +1925,8 @@ pub struct DataAttributeBinding {
 pub mod data_attribute_binding {
     /// Represents a subresource of a given resource, and associated bindings with
     /// it.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Path {
         /// Required. The name identifier of the path.
@@ -1786,6 +1940,8 @@ pub mod data_attribute_binding {
         pub attributes: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
     }
     /// The reference to the resource that is associated to attributes.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum ResourceReference {
         /// Optional. Immutable. The resource name of the resource that is associated
@@ -1807,6 +1963,8 @@ pub mod data_attribute_binding {
 /// * Data Profile: analyzes the data in table(s) and generates insights about
 ///    the structure, content and relationships (such as null percent,
 ///    cardinality, min/max/mean, etc).
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataScan {
     /// Output only. The relative resource name of the scan, of the form:
@@ -1840,10 +1998,10 @@ pub struct DataScan {
     pub state: i32,
     /// Output only. The time when the scan was created.
     #[prost(message, optional, tag = "7")]
-    pub create_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub create_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Output only. The time when the scan was last updated.
     #[prost(message, optional, tag = "8")]
-    pub update_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub update_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Required. The data source for DataScan.
     #[prost(message, optional, tag = "9")]
     pub data: ::core::option::Option<DataSource>,
@@ -1870,6 +2028,8 @@ pub struct DataScan {
 /// Nested message and enum types in `DataScan`.
 pub mod data_scan {
     /// DataScan execution settings.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct ExecutionSpec {
         /// Optional. Spec related to how often and when a scan should be triggered.
@@ -1893,6 +2053,8 @@ pub mod data_scan {
         /// When an option is selected for incremental scan, it cannot be unset or
         /// changed. If not specified, a data scan will run for all data in the
         /// table.
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(rename_all = "snake_case")]
         #[derive(Clone, PartialEq, ::prost::Oneof)]
         pub enum Incremental {
             /// Immutable. The unnested field (of type *Date* or *Timestamp*) that
@@ -1904,18 +2066,22 @@ pub mod data_scan {
         }
     }
     /// Status of the data scan execution.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct ExecutionStatus {
         /// The time when the latest DataScanJob started.
         #[prost(message, optional, tag = "4")]
-        pub latest_job_start_time: ::core::option::Option<::prost_types::Timestamp>,
+        pub latest_job_start_time: ::core::option::Option<::pbjson_types::Timestamp>,
         /// The time when the latest DataScanJob ended.
         #[prost(message, optional, tag = "5")]
-        pub latest_job_end_time: ::core::option::Option<::prost_types::Timestamp>,
+        pub latest_job_end_time: ::core::option::Option<::pbjson_types::Timestamp>,
     }
     /// Data Scan related setting.
     /// It is required and immutable which means once data_quality_spec is set, it
     /// cannot be changed to data_profile_spec.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Spec {
         /// DataQualityScan related setting.
@@ -1926,6 +2092,8 @@ pub mod data_scan {
         DataProfileSpec(super::DataProfileSpec),
     }
     /// The result of the data scan.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Result {
         /// Output only. The result of the data quality scan.
@@ -1937,6 +2105,8 @@ pub mod data_scan {
     }
 }
 /// A task represents a user-visible job.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Task {
     /// Output only. The relative resource name of the task, of the form:
@@ -1950,10 +2120,10 @@ pub struct Task {
     pub uid: ::prost::alloc::string::String,
     /// Output only. The time when the task was created.
     #[prost(message, optional, tag = "3")]
-    pub create_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub create_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Output only. The time when the task was last updated.
     #[prost(message, optional, tag = "4")]
-    pub update_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub update_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Optional. Description of the task.
     #[prost(string, tag = "5")]
     pub description: ::prost::alloc::string::String,
@@ -1985,6 +2155,8 @@ pub struct Task {
 /// Nested message and enum types in `Task`.
 pub mod task {
     /// Configuration for the underlying infrastructure used to run workloads.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct InfrastructureSpec {
         /// Hardware config.
@@ -2000,6 +2172,8 @@ pub mod task {
     /// Nested message and enum types in `InfrastructureSpec`.
     pub mod infrastructure_spec {
         /// Batch compute resources associated with the task.
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(rename_all = "snake_case")]
         #[derive(Clone, Copy, PartialEq, ::prost::Message)]
         pub struct BatchComputeResources {
             /// Optional. Total number of job executors.
@@ -2013,6 +2187,8 @@ pub mod task {
             pub max_executors_count: i32,
         }
         /// Container Image Runtime Configuration used with Batch execution.
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(rename_all = "snake_case")]
         #[derive(Clone, PartialEq, ::prost::Message)]
         pub struct ContainerImageRuntime {
             /// Optional. Container image to use.
@@ -2042,6 +2218,8 @@ pub mod task {
             >,
         }
         /// Cloud VPC Network used to run the infrastructure.
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(rename_all = "snake_case")]
         #[derive(Clone, PartialEq, ::prost::Message)]
         pub struct VpcNetwork {
             /// Optional. List of network tags to apply to the job.
@@ -2054,6 +2232,8 @@ pub mod task {
         /// Nested message and enum types in `VpcNetwork`.
         pub mod vpc_network {
             /// The Cloud VPC network identifier.
+            #[derive(serde::Serialize, serde::Deserialize)]
+            #[serde(rename_all = "snake_case")]
             #[derive(Clone, PartialEq, ::prost::Oneof)]
             pub enum NetworkName {
                 /// Optional. The Cloud VPC network in which the job is run. By default,
@@ -2066,6 +2246,8 @@ pub mod task {
             }
         }
         /// Hardware config.
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(rename_all = "snake_case")]
         #[derive(Clone, Copy, PartialEq, ::prost::Oneof)]
         pub enum Resources {
             /// Compute resources needed for a Task when using Dataproc Serverless.
@@ -2073,6 +2255,8 @@ pub mod task {
             Batch(BatchComputeResources),
         }
         /// Software config.
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(rename_all = "snake_case")]
         #[derive(Clone, PartialEq, ::prost::Oneof)]
         pub enum Runtime {
             /// Container Image Runtime Configuration.
@@ -2080,6 +2264,8 @@ pub mod task {
             ContainerImage(ContainerImageRuntime),
         }
         /// Networking config.
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(rename_all = "snake_case")]
         #[derive(Clone, PartialEq, ::prost::Oneof)]
         pub enum Network {
             /// Vpc network.
@@ -2088,6 +2274,8 @@ pub mod task {
         }
     }
     /// Task scheduling and trigger settings.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct TriggerSpec {
         /// Required. Immutable. Trigger type of the user-specified Task.
@@ -2097,7 +2285,7 @@ pub mod task {
         /// If not specified, the task will run shortly after being submitted if
         /// ON_DEMAND and based on the schedule if RECURRING.
         #[prost(message, optional, tag = "6")]
-        pub start_time: ::core::option::Option<::prost_types::Timestamp>,
+        pub start_time: ::core::option::Option<::pbjson_types::Timestamp>,
         /// Optional. Prevent the task from executing.
         /// This does not cancel already running tasks. It is intended to temporarily
         /// disable RECURRING tasks.
@@ -2114,6 +2302,8 @@ pub mod task {
     /// Nested message and enum types in `TriggerSpec`.
     pub mod trigger_spec {
         /// Determines how often and when the job will run.
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(rename_all = "snake_case")]
         #[derive(
             Clone,
             Copy,
@@ -2157,6 +2347,8 @@ pub mod task {
             }
         }
         /// Trigger only applies for RECURRING tasks.
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(rename_all = "snake_case")]
         #[derive(Clone, PartialEq, ::prost::Oneof)]
         pub enum Trigger {
             /// Optional. Cron schedule (<https://en.wikipedia.org/wiki/Cron>) for
@@ -2171,6 +2363,8 @@ pub mod task {
         }
     }
     /// Execution related settings, like retry and service_account.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct ExecutionSpec {
         /// Optional. The arguments to pass to the task.
@@ -2203,13 +2397,15 @@ pub mod task {
         pub project: ::prost::alloc::string::String,
         /// Optional. The maximum duration after which the job execution is expired.
         #[prost(message, optional, tag = "8")]
-        pub max_job_execution_lifetime: ::core::option::Option<::prost_types::Duration>,
+        pub max_job_execution_lifetime: ::core::option::Option<::pbjson_types::Duration>,
         /// Optional. The Cloud KMS key to use for encryption, of the form:
         /// `projects/{project_number}/locations/{location_id}/keyRings/{key-ring-name}/cryptoKeys/{key-name}`.
         #[prost(string, tag = "9")]
         pub kms_key: ::prost::alloc::string::String,
     }
     /// User-specified config for running a Spark task.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct SparkTaskConfig {
         /// Optional. Cloud Storage URIs of files to be placed in the working
@@ -2235,6 +2431,8 @@ pub mod task {
         /// Required. The specification of the main method to call to drive the
         /// job. Specify either the jar file that contains the main class or the
         /// main class name.
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(rename_all = "snake_case")]
         #[derive(Clone, PartialEq, ::prost::Oneof)]
         pub enum Driver {
             /// The Cloud Storage URI of the jar file that contains the main class.
@@ -2268,6 +2466,8 @@ pub mod task {
         }
     }
     /// Config for running scheduled notebooks.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct NotebookTaskConfig {
         /// Required. Path to input notebook. This can be the Cloud Storage URI of
@@ -2290,16 +2490,20 @@ pub mod task {
         pub archive_uris: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
     }
     /// Status of the task execution (e.g. Jobs).
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct ExecutionStatus {
         /// Output only. Last update time of the status.
         #[prost(message, optional, tag = "3")]
-        pub update_time: ::core::option::Option<::prost_types::Timestamp>,
+        pub update_time: ::core::option::Option<::pbjson_types::Timestamp>,
         /// Output only. latest job execution
         #[prost(message, optional, tag = "9")]
         pub latest_job: ::core::option::Option<super::Job>,
     }
     /// Task template specific user-specified config.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Config {
         /// Config related to running custom Spark tasks.
@@ -2311,6 +2515,8 @@ pub mod task {
     }
 }
 /// A job represents an instance of a task.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Job {
     /// Output only. The relative resource name of the job, of the form:
@@ -2322,10 +2528,10 @@ pub struct Job {
     pub uid: ::prost::alloc::string::String,
     /// Output only. The time when the job was started.
     #[prost(message, optional, tag = "3")]
-    pub start_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub start_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Output only. The time when the job ended.
     #[prost(message, optional, tag = "4")]
-    pub end_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub end_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Output only. Execution state for the job.
     #[prost(enumeration = "job::State", tag = "5")]
     pub state: i32,
@@ -2346,6 +2552,8 @@ pub struct Job {
 }
 /// Nested message and enum types in `Job`.
 pub mod job {
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -2384,6 +2592,8 @@ pub mod job {
             }
         }
     }
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -2444,6 +2654,8 @@ pub mod job {
     }
 }
 /// The data within all Task events.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TaskEventData {
     /// Optional. The Task event payload. Unset for deletion events.
@@ -2451,6 +2663,8 @@ pub struct TaskEventData {
     pub payload: ::core::option::Option<Task>,
 }
 /// The data within all Zone events.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ZoneEventData {
     /// Optional. The Zone event payload. Unset for deletion events.
@@ -2458,6 +2672,8 @@ pub struct ZoneEventData {
     pub payload: ::core::option::Option<Zone>,
 }
 /// The data within all Asset events.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AssetEventData {
     /// Optional. The Asset event payload. Unset for deletion events.
@@ -2465,6 +2681,8 @@ pub struct AssetEventData {
     pub payload: ::core::option::Option<Asset>,
 }
 /// The data within all Environment events.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EnvironmentEventData {
     /// Optional. The Environment event payload. Unset for deletion events.
@@ -2472,6 +2690,8 @@ pub struct EnvironmentEventData {
     pub payload: ::core::option::Option<Environment>,
 }
 /// The data within all DataTaxonomy events.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataTaxonomyEventData {
     /// Optional. The DataTaxonomy event payload. Unset for deletion events.
@@ -2479,6 +2699,8 @@ pub struct DataTaxonomyEventData {
     pub payload: ::core::option::Option<DataTaxonomy>,
 }
 /// The data within all DataAttributeBinding events.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataAttributeBindingEventData {
     /// Optional. The DataAttributeBinding event payload. Unset for deletion
@@ -2487,6 +2709,8 @@ pub struct DataAttributeBindingEventData {
     pub payload: ::core::option::Option<DataAttributeBinding>,
 }
 /// The data within all DataScan events.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataScanEventData {
     /// Optional. The DataScan event payload. Unset for deletion events.
@@ -2494,6 +2718,8 @@ pub struct DataScanEventData {
     pub payload: ::core::option::Option<DataScan>,
 }
 /// The data within all Lake events.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct LakeEventData {
     /// Optional. The Lake event payload. Unset for deletion events.
@@ -2501,6 +2727,8 @@ pub struct LakeEventData {
     pub payload: ::core::option::Option<Lake>,
 }
 /// The data within all DataAttribute events.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataAttributeEventData {
     /// Optional. The DataAttribute event payload. Unset for deletion events.
@@ -2508,6 +2736,8 @@ pub struct DataAttributeEventData {
     pub payload: ::core::option::Option<DataAttribute>,
 }
 /// State of a resource.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum State {
@@ -2549,6 +2779,8 @@ impl State {
     }
 }
 /// The type of DataScan.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum DataScanType {
@@ -2582,6 +2814,8 @@ impl DataScanType {
     }
 }
 /// The CloudEvent raised when a DataTaxonomy is created.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataTaxonomyCreatedEvent {
     /// The data associated with the event.
@@ -2589,6 +2823,8 @@ pub struct DataTaxonomyCreatedEvent {
     pub data: ::core::option::Option<DataTaxonomyEventData>,
 }
 /// The CloudEvent raised when a DataTaxonomy is updated.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataTaxonomyUpdatedEvent {
     /// The data associated with the event.
@@ -2596,6 +2832,8 @@ pub struct DataTaxonomyUpdatedEvent {
     pub data: ::core::option::Option<DataTaxonomyEventData>,
 }
 /// The CloudEvent raised when a DataTaxonomy is deleted.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataTaxonomyDeletedEvent {
     /// The data associated with the event.
@@ -2603,6 +2841,8 @@ pub struct DataTaxonomyDeletedEvent {
     pub data: ::core::option::Option<DataTaxonomyEventData>,
 }
 /// The CloudEvent raised when a DataAttributeBinding is created.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataAttributeBindingCreatedEvent {
     /// The data associated with the event.
@@ -2610,6 +2850,8 @@ pub struct DataAttributeBindingCreatedEvent {
     pub data: ::core::option::Option<DataAttributeBindingEventData>,
 }
 /// The CloudEvent raised when a DataAttributeBinding is updated.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataAttributeBindingUpdatedEvent {
     /// The data associated with the event.
@@ -2617,6 +2859,8 @@ pub struct DataAttributeBindingUpdatedEvent {
     pub data: ::core::option::Option<DataAttributeBindingEventData>,
 }
 /// The CloudEvent raised when a DataAttributeBinding is deleted.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataAttributeBindingDeletedEvent {
     /// The data associated with the event.
@@ -2624,6 +2868,8 @@ pub struct DataAttributeBindingDeletedEvent {
     pub data: ::core::option::Option<DataAttributeBindingEventData>,
 }
 /// The CloudEvent raised when a DataAttribute is created.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataAttributeCreatedEvent {
     /// The data associated with the event.
@@ -2631,6 +2877,8 @@ pub struct DataAttributeCreatedEvent {
     pub data: ::core::option::Option<DataAttributeEventData>,
 }
 /// The CloudEvent raised when a DataAttribute is updated.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataAttributeUpdatedEvent {
     /// The data associated with the event.
@@ -2638,6 +2886,8 @@ pub struct DataAttributeUpdatedEvent {
     pub data: ::core::option::Option<DataAttributeEventData>,
 }
 /// The CloudEvent raised when a DataAttribute is deleted.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataAttributeDeletedEvent {
     /// The data associated with the event.
@@ -2645,6 +2895,8 @@ pub struct DataAttributeDeletedEvent {
     pub data: ::core::option::Option<DataAttributeEventData>,
 }
 /// The CloudEvent raised when a DataScan is created.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataScanCreatedEvent {
     /// The data associated with the event.
@@ -2652,6 +2904,8 @@ pub struct DataScanCreatedEvent {
     pub data: ::core::option::Option<DataScanEventData>,
 }
 /// The CloudEvent raised when a DataScan is updated.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataScanUpdatedEvent {
     /// The data associated with the event.
@@ -2659,6 +2913,8 @@ pub struct DataScanUpdatedEvent {
     pub data: ::core::option::Option<DataScanEventData>,
 }
 /// The CloudEvent raised when a DataScan is deleted.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataScanDeletedEvent {
     /// The data associated with the event.
@@ -2666,6 +2922,8 @@ pub struct DataScanDeletedEvent {
     pub data: ::core::option::Option<DataScanEventData>,
 }
 /// The CloudEvent raised when a Lake is created.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct LakeCreatedEvent {
     /// The data associated with the event.
@@ -2673,6 +2931,8 @@ pub struct LakeCreatedEvent {
     pub data: ::core::option::Option<LakeEventData>,
 }
 /// The CloudEvent raised when a Lake is updated.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct LakeUpdatedEvent {
     /// The data associated with the event.
@@ -2680,6 +2940,8 @@ pub struct LakeUpdatedEvent {
     pub data: ::core::option::Option<LakeEventData>,
 }
 /// The CloudEvent raised when a Lake is deleted.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct LakeDeletedEvent {
     /// The data associated with the event.
@@ -2687,6 +2949,8 @@ pub struct LakeDeletedEvent {
     pub data: ::core::option::Option<LakeEventData>,
 }
 /// The CloudEvent raised when a Zone is created.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ZoneCreatedEvent {
     /// The data associated with the event.
@@ -2694,6 +2958,8 @@ pub struct ZoneCreatedEvent {
     pub data: ::core::option::Option<ZoneEventData>,
 }
 /// The CloudEvent raised when a Zone is updated.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ZoneUpdatedEvent {
     /// The data associated with the event.
@@ -2701,6 +2967,8 @@ pub struct ZoneUpdatedEvent {
     pub data: ::core::option::Option<ZoneEventData>,
 }
 /// The CloudEvent raised when a Zone is deleted.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ZoneDeletedEvent {
     /// The data associated with the event.
@@ -2708,6 +2976,8 @@ pub struct ZoneDeletedEvent {
     pub data: ::core::option::Option<ZoneEventData>,
 }
 /// The CloudEvent raised when an Asset is created.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AssetCreatedEvent {
     /// The data associated with the event.
@@ -2715,6 +2985,8 @@ pub struct AssetCreatedEvent {
     pub data: ::core::option::Option<AssetEventData>,
 }
 /// The CloudEvent raised when an Asset is updated.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AssetUpdatedEvent {
     /// The data associated with the event.
@@ -2722,6 +2994,8 @@ pub struct AssetUpdatedEvent {
     pub data: ::core::option::Option<AssetEventData>,
 }
 /// The CloudEvent raised when an Asset is deleted.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AssetDeletedEvent {
     /// The data associated with the event.
@@ -2729,6 +3003,8 @@ pub struct AssetDeletedEvent {
     pub data: ::core::option::Option<AssetEventData>,
 }
 /// The CloudEvent raised when a Task is created.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TaskCreatedEvent {
     /// The data associated with the event.
@@ -2736,6 +3012,8 @@ pub struct TaskCreatedEvent {
     pub data: ::core::option::Option<TaskEventData>,
 }
 /// The CloudEvent raised when a Task is updated.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TaskUpdatedEvent {
     /// The data associated with the event.
@@ -2743,6 +3021,8 @@ pub struct TaskUpdatedEvent {
     pub data: ::core::option::Option<TaskEventData>,
 }
 /// The CloudEvent raised when a Task is deleted.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TaskDeletedEvent {
     /// The data associated with the event.
@@ -2750,6 +3030,8 @@ pub struct TaskDeletedEvent {
     pub data: ::core::option::Option<TaskEventData>,
 }
 /// The CloudEvent raised when an Environment is created.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EnvironmentCreatedEvent {
     /// The data associated with the event.
@@ -2757,6 +3039,8 @@ pub struct EnvironmentCreatedEvent {
     pub data: ::core::option::Option<EnvironmentEventData>,
 }
 /// The CloudEvent raised when an Environment is updated.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EnvironmentUpdatedEvent {
     /// The data associated with the event.
@@ -2764,6 +3048,8 @@ pub struct EnvironmentUpdatedEvent {
     pub data: ::core::option::Option<EnvironmentEventData>,
 }
 /// The CloudEvent raised when an Environment is deleted.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EnvironmentDeletedEvent {
     /// The data associated with the event.

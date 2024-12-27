@@ -3,6 +3,8 @@
 ///
 /// A `DeliveryPipeline` defines a pipeline through which a Skaffold
 /// configuration can progress.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DeliveryPipeline {
     /// Optional. Name of the `DeliveryPipeline`. Format is
@@ -40,10 +42,10 @@ pub struct DeliveryPipeline {
     >,
     /// Output only. Time at which the pipeline was created.
     #[prost(message, optional, tag = "6")]
-    pub create_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub create_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Output only. Most recent time at which the pipeline was updated.
     #[prost(message, optional, tag = "7")]
-    pub update_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub update_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Output only. Information around the state of the Delivery Pipeline.
     #[prost(message, optional, tag = "11")]
     pub condition: ::core::option::Option<PipelineCondition>,
@@ -63,6 +65,8 @@ pub struct DeliveryPipeline {
 /// Nested message and enum types in `DeliveryPipeline`.
 pub mod delivery_pipeline {
     /// The ordering configuration of the `DeliveryPipeline`.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Pipeline {
         /// SerialPipeline defines a sequential set of stages for a
@@ -72,6 +76,8 @@ pub mod delivery_pipeline {
     }
 }
 /// SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SerialPipeline {
     /// Each stage specifies configuration for a `Target`. The ordering
@@ -80,6 +86,8 @@ pub struct SerialPipeline {
     pub stages: ::prost::alloc::vec::Vec<Stage>,
 }
 /// Stage specifies a location to which to deploy.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Stage {
     /// The target_id to which this stage points. This field refers exclusively to
@@ -102,6 +110,8 @@ pub struct Stage {
     pub deploy_parameters: ::prost::alloc::vec::Vec<DeployParameters>,
 }
 /// DeployParameters contains deploy parameters information.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DeployParameters {
     /// Required. Values are deploy parameters in key-value pairs.
@@ -120,6 +130,8 @@ pub struct DeployParameters {
     >,
 }
 /// Strategy contains deployment strategy information.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Strategy {
     /// Deployment strategy details.
@@ -129,6 +141,8 @@ pub struct Strategy {
 /// Nested message and enum types in `Strategy`.
 pub mod strategy {
     /// Deployment strategy details.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum DeploymentStrategy {
         /// Standard deployment strategy executes a single deploy and allows
@@ -142,6 +156,8 @@ pub mod strategy {
     }
 }
 /// Predeploy contains the predeploy job configuration information.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Predeploy {
     /// Optional. A sequence of Skaffold custom actions to invoke during execution
@@ -150,6 +166,8 @@ pub struct Predeploy {
     pub actions: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
 }
 /// Postdeploy contains the postdeploy job configuration information.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Postdeploy {
     /// Optional. A sequence of Skaffold custom actions to invoke during execution
@@ -158,6 +176,8 @@ pub struct Postdeploy {
     pub actions: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
 }
 /// Standard represents the standard deployment strategy.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Standard {
     /// Whether to verify a deployment.
@@ -173,6 +193,8 @@ pub struct Standard {
     pub postdeploy: ::core::option::Option<Postdeploy>,
 }
 /// Canary represents the canary deployment strategy.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Canary {
     /// Optional. Runtime specific configurations for the deployment strategy. The
@@ -187,6 +209,8 @@ pub struct Canary {
 /// Nested message and enum types in `Canary`.
 pub mod canary {
     /// The mode to use for the canary deployment strategy.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Mode {
         /// Configures the progressive based deployment for a Target.
@@ -200,6 +224,8 @@ pub mod canary {
     }
 }
 /// CanaryDeployment represents the canary deployment configuration
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CanaryDeployment {
     /// Required. The percentage based deployments that will occur as a part of a
@@ -221,6 +247,8 @@ pub struct CanaryDeployment {
 }
 /// CustomCanaryDeployment represents the custom canary deployment
 /// configuration.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CustomCanaryDeployment {
     /// Required. Configuration for each phase in the canary deployment in the
@@ -232,6 +260,8 @@ pub struct CustomCanaryDeployment {
 pub mod custom_canary_deployment {
     /// PhaseConfig represents the configuration for a phase in the custom
     /// canary deployment.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct PhaseConfig {
         /// Required. The ID to assign to the `Rollout` phase.
@@ -263,6 +293,8 @@ pub mod custom_canary_deployment {
     }
 }
 /// KubernetesConfig contains the Kubernetes runtime configuration.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct KubernetesConfig {
     /// The service definition configuration.
@@ -272,6 +304,8 @@ pub struct KubernetesConfig {
 /// Nested message and enum types in `KubernetesConfig`.
 pub mod kubernetes_config {
     /// Information about the Kubernetes Gateway API service mesh configuration.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct GatewayServiceMesh {
         /// Required. Name of the Gateway API HTTPRoute.
@@ -288,15 +322,17 @@ pub mod kubernetes_config {
         /// configurable time is 3 hours, in seconds format. If unspecified, there is
         /// no wait time.
         #[prost(message, optional, tag = "4")]
-        pub route_update_wait_time: ::core::option::Option<::prost_types::Duration>,
+        pub route_update_wait_time: ::core::option::Option<::pbjson_types::Duration>,
         /// Optional. The amount of time to migrate traffic back from the canary
         /// Service to the original Service during the stable phase deployment. If
         /// specified, must be between 15s and 3600s. If unspecified, there is no
         /// cutback time.
         #[prost(message, optional, tag = "5")]
-        pub stable_cutback_duration: ::core::option::Option<::prost_types::Duration>,
+        pub stable_cutback_duration: ::core::option::Option<::pbjson_types::Duration>,
     }
     /// Information about the Kubernetes Service networking configuration.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct ServiceNetworking {
         /// Required. Name of the Kubernetes Service.
@@ -314,6 +350,8 @@ pub mod kubernetes_config {
         pub disable_pod_overprovisioning: bool,
     }
     /// The service definition configuration.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum ServiceDefinition {
         /// Kubernetes Gateway API service mesh configuration.
@@ -325,6 +363,8 @@ pub mod kubernetes_config {
     }
 }
 /// CloudRunConfig contains the Cloud Run runtime configuration.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CloudRunConfig {
     /// Whether Cloud Deploy should update the traffic stanza in a Cloud Run
@@ -348,6 +388,8 @@ pub struct CloudRunConfig {
 }
 /// RuntimeConfig contains the runtime specific configurations for a deployment
 /// strategy.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RuntimeConfig {
     /// The runtime configuration details.
@@ -357,6 +399,8 @@ pub struct RuntimeConfig {
 /// Nested message and enum types in `RuntimeConfig`.
 pub mod runtime_config {
     /// The runtime configuration details.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum RuntimeConfig {
         /// Kubernetes runtime configuration.
@@ -369,6 +413,8 @@ pub mod runtime_config {
 }
 /// PipelineReadyCondition contains information around the status of the
 /// Pipeline.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct PipelineReadyCondition {
     /// True if the Pipeline is in a valid state. Otherwise at least one condition
@@ -379,10 +425,12 @@ pub struct PipelineReadyCondition {
     pub status: bool,
     /// Last time the condition was updated.
     #[prost(message, optional, tag = "4")]
-    pub update_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub update_time: ::core::option::Option<::pbjson_types::Timestamp>,
 }
 /// `TargetsPresentCondition` contains information on any Targets referenced in
 /// the Delivery Pipeline that do not actually exist.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TargetsPresentCondition {
     /// True if there aren't any missing Targets.
@@ -394,10 +442,12 @@ pub struct TargetsPresentCondition {
     pub missing_targets: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
     /// Last time the condition was updated.
     #[prost(message, optional, tag = "4")]
-    pub update_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub update_time: ::core::option::Option<::pbjson_types::Timestamp>,
 }
 /// TargetsTypeCondition contains information on whether the Targets defined in
 /// the Delivery Pipeline are of the same type.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TargetsTypeCondition {
     /// True if the targets are all a comparable type. For example this is true if
@@ -410,6 +460,8 @@ pub struct TargetsTypeCondition {
     pub error_details: ::prost::alloc::string::String,
 }
 /// PipelineCondition contains all conditions relevant to a Delivery Pipeline.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PipelineCondition {
     /// Details around the Pipeline's overall status.
@@ -427,6 +479,8 @@ pub struct PipelineCondition {
 ///
 /// A `Target` defines a location to which a Skaffold configuration
 /// can be deployed.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Target {
     /// Optional. Name of the `Target`. Format is
@@ -472,10 +526,10 @@ pub struct Target {
     pub require_approval: bool,
     /// Output only. Time at which the `Target` was created.
     #[prost(message, optional, tag = "8")]
-    pub create_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub create_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Output only. Most recent time at which the `Target` was updated.
     #[prost(message, optional, tag = "9")]
-    pub update_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub update_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Optional. This checksum is computed by the server based on the value of
     /// other fields, and may be sent on update and delete requests to ensure the
     /// client has an up-to-date value before proceeding.
@@ -505,6 +559,8 @@ pub struct Target {
 pub mod target {
     /// Destination to which the Skaffold configuration is applied during a
     /// rollout.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum DeploymentTarget {
         /// Optional. Information specifying a GKE Cluster.
@@ -525,6 +581,8 @@ pub mod target {
     }
 }
 /// Configuration of the environment to use when calling Skaffold.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ExecutionConfig {
     /// Required. Usages when this configuration should be applied.
@@ -555,7 +613,7 @@ pub struct ExecutionConfig {
     /// between 10m and 24h in seconds format. If unspecified, a default timeout of
     /// 1h is used.
     #[prost(message, optional, tag = "7")]
-    pub execution_timeout: ::core::option::Option<::prost_types::Duration>,
+    pub execution_timeout: ::core::option::Option<::pbjson_types::Duration>,
     /// Details of the environment.
     #[prost(oneof = "execution_config::ExecutionEnvironment", tags = "2, 3")]
     pub execution_environment: ::core::option::Option<
@@ -565,6 +623,8 @@ pub struct ExecutionConfig {
 /// Nested message and enum types in `ExecutionConfig`.
 pub mod execution_config {
     /// Possible usages of this configuration.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -620,6 +680,8 @@ pub mod execution_config {
         }
     }
     /// Details of the environment.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum ExecutionEnvironment {
         /// Optional. Use default Cloud Build pool.
@@ -631,6 +693,8 @@ pub mod execution_config {
     }
 }
 /// Execution using the default Cloud Build pool.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DefaultPool {
     /// Optional. Google service account to use for execution. If unspecified,
@@ -646,6 +710,8 @@ pub struct DefaultPool {
     pub artifact_storage: ::prost::alloc::string::String,
 }
 /// Execution using a private Cloud Build pool.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PrivatePool {
     /// Required. Resource name of the Cloud Build worker pool to use. The format
@@ -665,6 +731,8 @@ pub struct PrivatePool {
     pub artifact_storage: ::prost::alloc::string::String,
 }
 /// Information specifying a GKE Cluster.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GkeCluster {
     /// Information specifying a GKE Cluster. Format is
@@ -683,6 +751,8 @@ pub struct GkeCluster {
     pub internal_ip: bool,
 }
 /// Information specifying an Anthos Cluster.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AnthosCluster {
     /// Membership of the GKE Hub-registered cluster to which to apply the Skaffold
@@ -692,6 +762,8 @@ pub struct AnthosCluster {
     pub membership: ::prost::alloc::string::String,
 }
 /// Information specifying where to deploy a Cloud Run Service.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CloudRunLocation {
     /// Required. The location for the Cloud Run Service. Format must be
@@ -700,6 +772,8 @@ pub struct CloudRunLocation {
     pub location: ::prost::alloc::string::String,
 }
 /// Information specifying a multiTarget.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MultiTarget {
     /// Required. The target_ids of this multiTarget.
@@ -707,6 +781,8 @@ pub struct MultiTarget {
     pub target_ids: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
 }
 /// Information specifying a Custom Target.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CustomTarget {
     /// Required. The name of the CustomTargetType. Format must be
@@ -719,6 +795,8 @@ pub struct CustomTarget {
 /// A `CustomTargetType` defines a type of custom target that can be referenced
 /// in a `Target` in order to facilitate deploying to other systems besides the
 /// supported runtimes.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CustomTargetType {
     /// Optional. Name of the `CustomTargetType`. Format is
@@ -762,10 +840,10 @@ pub struct CustomTargetType {
     >,
     /// Output only. Time at which the `CustomTargetType` was created.
     #[prost(message, optional, tag = "7")]
-    pub create_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub create_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Output only. Most recent time at which the `CustomTargetType` was updated.
     #[prost(message, optional, tag = "8")]
-    pub update_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub update_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Optional. This checksum is computed by the server based on the value of
     /// other fields, and may be sent on update and delete requests to ensure the
     /// client has an up-to-date value before proceeding.
@@ -778,6 +856,8 @@ pub struct CustomTargetType {
 /// Nested message and enum types in `CustomTargetType`.
 pub mod custom_target_type {
     /// Defines the `CustomTargetType` renderer and deployer.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Definition {
         /// Configures render and deploy for the `CustomTargetType` using Skaffold
@@ -788,6 +868,8 @@ pub mod custom_target_type {
 }
 /// CustomTargetSkaffoldActions represents the `CustomTargetType` configuration
 /// using Skaffold custom actions.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CustomTargetSkaffoldActions {
     /// Optional. The Skaffold custom action responsible for render operations. If
@@ -804,6 +886,8 @@ pub struct CustomTargetSkaffoldActions {
     pub include_skaffold_modules: ::prost::alloc::vec::Vec<SkaffoldModules>,
 }
 /// Skaffold Config modules and their remote source.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SkaffoldModules {
     /// Optional. The Skaffold Config modules to use from the specified source.
@@ -816,6 +900,8 @@ pub struct SkaffoldModules {
 /// Nested message and enum types in `SkaffoldModules`.
 pub mod skaffold_modules {
     /// Git repository containing Skaffold Config modules.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct SkaffoldGitSource {
         /// Required. Git repository the package should be cloned from.
@@ -829,6 +915,8 @@ pub mod skaffold_modules {
         pub r#ref: ::prost::alloc::string::String,
     }
     /// Cloud Storage bucket containing Skaffold Config modules.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct SkaffoldGcsSource {
         /// Required. Cloud Storage source paths to copy recursively. For example,
@@ -841,6 +929,8 @@ pub mod skaffold_modules {
         pub path: ::prost::alloc::string::String,
     }
     /// The source that contains the Skaffold Config modules.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Source {
         /// Remote git repository containing the Skaffold Config modules.
@@ -852,6 +942,8 @@ pub mod skaffold_modules {
     }
 }
 /// Contains criteria for selecting Targets.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TargetAttribute {
     /// ID of the `Target`. The value of this field could be one of the
@@ -872,6 +964,8 @@ pub struct TargetAttribute {
 ///
 /// A `Release` defines a specific Skaffold configuration instance
 /// that can be deployed.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Release {
     /// Optional. Name of the `Release`. Format is
@@ -913,13 +1007,13 @@ pub struct Release {
     pub abandoned: bool,
     /// Output only. Time at which the `Release` was created.
     #[prost(message, optional, tag = "6")]
-    pub create_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub create_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Output only. Time at which the render began.
     #[prost(message, optional, tag = "7")]
-    pub render_start_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub render_start_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Output only. Time at which the render completed.
     #[prost(message, optional, tag = "8")]
-    pub render_end_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub render_end_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Cloud Storage URI of tar.gz archive containing Skaffold configuration.
     #[prost(string, tag = "17")]
     pub skaffold_config_uri: ::prost::alloc::string::String,
@@ -982,6 +1076,8 @@ pub struct Release {
 /// Nested message and enum types in `Release`.
 pub mod release {
     /// Details of rendering for a single target.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct TargetRender {
         /// Output only. The resource name of the Cloud Build `Build` object that is
@@ -1007,6 +1103,8 @@ pub mod release {
     /// Nested message and enum types in `TargetRender`.
     pub mod target_render {
         /// Valid states of the render operation.
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(rename_all = "snake_case")]
         #[derive(
             Clone,
             Copy,
@@ -1054,6 +1152,8 @@ pub mod release {
             }
         }
         /// Well-known rendering failures.
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(rename_all = "snake_case")]
         #[derive(
             Clone,
             Copy,
@@ -1137,6 +1237,8 @@ pub mod release {
     /// ReleaseReadyCondition contains information around the status of the
     /// Release. If a release is not ready, you cannot create a rollout with the
     /// release.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct ReleaseReadyCondition {
         /// True if the Release is in a valid state. Otherwise at least one condition
@@ -1148,6 +1250,8 @@ pub mod release {
     }
     /// SkaffoldSupportedCondition contains information about when support for the
     /// release's version of Skaffold ends.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct SkaffoldSupportedCondition {
         /// True if the version of Skaffold used by this release is supported.
@@ -1159,13 +1263,15 @@ pub mod release {
         /// The time at which this release's version of Skaffold will enter
         /// maintenance mode.
         #[prost(message, optional, tag = "3")]
-        pub maintenance_mode_time: ::core::option::Option<::prost_types::Timestamp>,
+        pub maintenance_mode_time: ::core::option::Option<::pbjson_types::Timestamp>,
         /// The time at which this release's version of Skaffold will no longer be
         /// supported.
         #[prost(message, optional, tag = "4")]
-        pub support_expiration_time: ::core::option::Option<::prost_types::Timestamp>,
+        pub support_expiration_time: ::core::option::Option<::pbjson_types::Timestamp>,
     }
     /// ReleaseCondition contains all conditions relevant to a Release.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct ReleaseCondition {
         /// Details around the Releases's overall status.
@@ -1179,6 +1285,8 @@ pub mod release {
         >,
     }
     /// Valid states of the render operation.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -1227,6 +1335,8 @@ pub mod release {
     }
 }
 /// Description of an a image to use during Skaffold rendering.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct BuildArtifact {
     /// Image name in Skaffold configuration.
@@ -1239,6 +1349,8 @@ pub struct BuildArtifact {
     pub tag: ::prost::alloc::string::String,
 }
 /// The artifacts produced by a target render operation.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TargetArtifact {
     /// Output only. File path of the resolved Skaffold configuration relative to
@@ -1260,6 +1372,8 @@ pub struct TargetArtifact {
 /// Nested message and enum types in `TargetArtifact`.
 pub mod target_artifact {
     /// Contains the paths to the artifacts, relative to the URI, for a phase.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct PhaseArtifact {
         /// Output only. File path of the resolved Skaffold configuration relative to
@@ -1274,6 +1388,8 @@ pub mod target_artifact {
         #[prost(string, tag = "4")]
         pub job_manifests_path: ::prost::alloc::string::String,
     }
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Uri {
         /// Output only. URI of a directory containing the artifacts. This contains
@@ -1285,6 +1401,8 @@ pub mod target_artifact {
 }
 /// CloudRunRenderMetadata contains Cloud Run information associated with a
 /// `Release` render.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CloudRunRenderMetadata {
     /// Output only. The name of the Cloud Run Service in the rendered manifest.
@@ -1293,6 +1411,8 @@ pub struct CloudRunRenderMetadata {
     pub service: ::prost::alloc::string::String,
 }
 /// RenderMetadata includes information associated with a `Release` render.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RenderMetadata {
     /// Output only. Metadata associated with rendering for Cloud Run.
@@ -1305,6 +1425,8 @@ pub struct RenderMetadata {
 /// A `Rollout` resource in the Cloud Deploy API.
 ///
 /// A `Rollout` contains information around a specific deployment to a `Target`.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Rollout {
     /// Optional. Name of the `Rollout`. Format is
@@ -1344,19 +1466,19 @@ pub struct Rollout {
     >,
     /// Output only. Time at which the `Rollout` was created.
     #[prost(message, optional, tag = "6")]
-    pub create_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub create_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Output only. Time at which the `Rollout` was approved.
     #[prost(message, optional, tag = "7")]
-    pub approve_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub approve_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Output only. Time at which the `Rollout` was enqueued.
     #[prost(message, optional, tag = "8")]
-    pub enqueue_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub enqueue_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Output only. Time at which the `Rollout` started deploying.
     #[prost(message, optional, tag = "9")]
-    pub deploy_start_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub deploy_start_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Output only. Time at which the `Rollout` finished deploying.
     #[prost(message, optional, tag = "10")]
-    pub deploy_end_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub deploy_end_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Required. The ID of Target to which this `Rollout` is deploying.
     #[prost(string, tag = "18")]
     pub target_id: ::prost::alloc::string::String,
@@ -1407,6 +1529,8 @@ pub struct Rollout {
 /// Nested message and enum types in `Rollout`.
 pub mod rollout {
     /// Valid approval states of a `Rollout`.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -1458,6 +1582,8 @@ pub mod rollout {
         }
     }
     /// Valid states of a `Rollout`.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -1534,6 +1660,8 @@ pub mod rollout {
         }
     }
     /// Well-known rollout failures.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -1608,6 +1736,8 @@ pub mod rollout {
     }
 }
 /// Metadata includes information associated with a `Rollout`.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Metadata {
     /// Output only. The name of the Cloud Run Service that is associated with a
@@ -1623,6 +1753,8 @@ pub struct Metadata {
     pub custom: ::core::option::Option<CustomMetadata>,
 }
 /// CloudRunMetadata contains information from a Cloud Run deployment.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CloudRunMetadata {
     /// Output only. The name of the Cloud Run Service that is associated with a
@@ -1645,6 +1777,8 @@ pub struct CloudRunMetadata {
 }
 /// AutomationRolloutMetadata contains Automation-related actions that
 /// were performed on a rollout.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AutomationRolloutMetadata {
     /// Output only. The ID of the AutomationRun initiated by a promote release
@@ -1666,6 +1800,8 @@ pub struct AutomationRolloutMetadata {
     pub current_repair_automation_run: ::prost::alloc::string::String,
 }
 /// CustomMetadata contains information from a user-defined operation.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CustomMetadata {
     /// Output only. Key-value pairs provided by the user-defined operation.
@@ -1677,6 +1813,8 @@ pub struct CustomMetadata {
 }
 /// Phase represents a collection of jobs that are logically grouped together
 /// for a `Rollout`.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Phase {
     /// Output only. The ID of the Phase.
@@ -1696,6 +1834,8 @@ pub struct Phase {
 /// Nested message and enum types in `Phase`.
 pub mod phase {
     /// Valid states of a Phase.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -1755,6 +1895,8 @@ pub mod phase {
         }
     }
     /// The job composition of this Phase.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Jobs {
         /// Output only. Deployment job composition.
@@ -1766,6 +1908,8 @@ pub mod phase {
     }
 }
 /// Deployment job composition.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DeploymentJobs {
     /// Output only. The deploy Job. This is the deploy job in the phase.
@@ -1782,6 +1926,8 @@ pub struct DeploymentJobs {
     pub postdeploy_job: ::core::option::Option<Job>,
 }
 /// ChildRollouts job composition
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ChildRolloutJobs {
     /// Output only. List of CreateChildRolloutJobs
@@ -1792,6 +1938,8 @@ pub struct ChildRolloutJobs {
     pub advance_rollout_jobs: ::prost::alloc::vec::Vec<Job>,
 }
 /// Job represents an operation for a `Rollout`.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Job {
     /// Output only. The ID of the Job.
@@ -1815,6 +1963,8 @@ pub struct Job {
 /// Nested message and enum types in `Job`.
 pub mod job {
     /// Valid states of a Job.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -1882,6 +2032,8 @@ pub mod job {
         }
     }
     /// The type of Job.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum JobType {
         /// Output only. A deploy Job.
@@ -1905,12 +2057,18 @@ pub mod job {
     }
 }
 /// A deploy Job.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct DeployJob {}
 /// A verify Job.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct VerifyJob {}
 /// A predeploy Job.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PredeployJob {
     /// Output only. The custom actions that the predeploy Job executes.
@@ -1918,6 +2076,8 @@ pub struct PredeployJob {
     pub actions: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
 }
 /// A postdeploy Job.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PostdeployJob {
     /// Output only. The custom actions that the postdeploy Job executes.
@@ -1925,9 +2085,13 @@ pub struct PostdeployJob {
     pub actions: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
 }
 /// A createChildRollout Job.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct CreateChildRolloutJob {}
 /// An advanceChildRollout Job.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct AdvanceChildRolloutJob {}
 /// An `Automation` resource in the Cloud Deploy API.
@@ -1937,6 +2101,8 @@ pub struct AdvanceChildRolloutJob {}
 /// Rollout repair and Rollout deployment strategy advancement. The intention
 /// of Automation is to reduce manual intervention in the continuous delivery
 /// process.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Automation {
     /// Output only. Name of the `Automation`. Format is
@@ -1951,10 +2117,10 @@ pub struct Automation {
     pub description: ::prost::alloc::string::String,
     /// Output only. Time at which the automation was created.
     #[prost(message, optional, tag = "4")]
-    pub create_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub create_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Output only. Time at which the automation was updated.
     #[prost(message, optional, tag = "5")]
-    pub update_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub update_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Optional. User annotations. These attributes can only be set and used by
     /// the user, and not by Cloud Deploy. Annotations must meet the following
     /// constraints:
@@ -2018,6 +2184,8 @@ pub struct Automation {
 }
 /// AutomationResourceSelector contains the information to select the resources
 /// to which an Automation is going to be applied.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AutomationResourceSelector {
     /// Contains attributes about a target.
@@ -2025,6 +2193,8 @@ pub struct AutomationResourceSelector {
     pub targets: ::prost::alloc::vec::Vec<TargetAttribute>,
 }
 /// `AutomationRule` defines the automation activities.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AutomationRule {
     /// The configuration of the Automation rule.
@@ -2034,6 +2204,8 @@ pub struct AutomationRule {
 /// Nested message and enum types in `AutomationRule`.
 pub mod automation_rule {
     /// The configuration of the Automation rule.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Rule {
         /// Optional. `PromoteReleaseRule` will automatically promote a release from
@@ -2052,6 +2224,8 @@ pub mod automation_rule {
 }
 /// `PromoteRelease` rule will automatically promote a release from the current
 /// target to a specified target.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PromoteReleaseRule {
     /// Required. ID of the rule. This id must be unique in the `Automation`
@@ -2061,7 +2235,7 @@ pub struct PromoteReleaseRule {
     /// Optional. How long the release need to be paused until being promoted to
     /// the next target.
     #[prost(message, optional, tag = "2")]
-    pub wait: ::core::option::Option<::prost_types::Duration>,
+    pub wait: ::core::option::Option<::pbjson_types::Duration>,
     /// Optional. The ID of the stage in the pipeline to which this `Release` is
     /// deploying. If unspecified, default it to the next stage in the promotion
     /// flow. The value of this field could be one of the following:
@@ -2082,6 +2256,8 @@ pub struct PromoteReleaseRule {
 }
 /// The `AdvanceRollout` automation rule will automatically advance a successful
 /// Rollout to the next phase.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AdvanceRolloutRule {
     /// Required. ID of the rule. This id must be unique in the `Automation`
@@ -2097,13 +2273,15 @@ pub struct AdvanceRolloutRule {
     pub source_phases: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
     /// Optional. How long to wait after a rollout is finished.
     #[prost(message, optional, tag = "3")]
-    pub wait: ::core::option::Option<::prost_types::Duration>,
+    pub wait: ::core::option::Option<::pbjson_types::Duration>,
     /// Output only. Information around the state of the Automation rule.
     #[prost(message, optional, tag = "5")]
     pub condition: ::core::option::Option<AutomationRuleCondition>,
 }
 /// The `RepairRolloutRule` automation rule will automatically repair a failed
 /// `Rollout`.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RepairRolloutRule {
     /// Required. ID of the rule. This id must be unique in the `Automation`
@@ -2135,6 +2313,8 @@ pub struct RepairRolloutRule {
     pub condition: ::core::option::Option<AutomationRuleCondition>,
 }
 /// Configuration of the repair action.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RepairMode {
     /// The repair action to perform.
@@ -2144,6 +2324,8 @@ pub struct RepairMode {
 /// Nested message and enum types in `RepairMode`.
 pub mod repair_mode {
     /// The repair action to perform.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Mode {
         /// Optional. Retries a failed job.
@@ -2155,6 +2337,8 @@ pub mod repair_mode {
     }
 }
 /// Retries the failed job.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct Retry {
     /// Required. Total number of retries. Retry is skipped if set to 0; The
@@ -2164,13 +2348,15 @@ pub struct Retry {
     /// Optional. How long to wait for the first retry. Default is 0, and the
     /// maximum value is 14d.
     #[prost(message, optional, tag = "2")]
-    pub wait: ::core::option::Option<::prost_types::Duration>,
+    pub wait: ::core::option::Option<::pbjson_types::Duration>,
     /// Optional. The pattern of how wait time will be increased. Default is
     /// linear. Backoff mode will be ignored if `wait` is 0.
     #[prost(enumeration = "BackoffMode", tag = "3")]
     pub backoff_mode: i32,
 }
 /// Rolls back a `Rollout`.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Rollback {
     /// Optional. The starting phase ID for the `Rollout`. If unspecified, the
@@ -2180,6 +2366,8 @@ pub struct Rollback {
 }
 /// `AutomationRuleCondition` contains conditions relevant to an
 /// `Automation` rule.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AutomationRuleCondition {
     /// Optional. Details around targets enumerated in the rule.
@@ -2187,6 +2375,8 @@ pub struct AutomationRuleCondition {
     pub targets_present_condition: ::core::option::Option<TargetsPresentCondition>,
 }
 /// The data within all DeliveryPipeline events.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DeliveryPipelineEventData {
     /// Optional. The DeliveryPipeline event payload. Unset for deletion events.
@@ -2194,6 +2384,8 @@ pub struct DeliveryPipelineEventData {
     pub payload: ::core::option::Option<DeliveryPipeline>,
 }
 /// The data within all Target events.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TargetEventData {
     /// Optional. The Target event payload. Unset for deletion events.
@@ -2201,6 +2393,8 @@ pub struct TargetEventData {
     pub payload: ::core::option::Option<Target>,
 }
 /// The data within all CustomTargetType events.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CustomTargetTypeEventData {
     /// Optional. The CustomTargetType event payload. Unset for deletion events.
@@ -2208,6 +2402,8 @@ pub struct CustomTargetTypeEventData {
     pub payload: ::core::option::Option<CustomTargetType>,
 }
 /// The data within all Release events.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ReleaseEventData {
     /// The Release event payload.
@@ -2215,6 +2411,8 @@ pub struct ReleaseEventData {
     pub payload: ::core::option::Option<Release>,
 }
 /// The data within all Rollout events.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RolloutEventData {
     /// The Rollout event payload.
@@ -2222,6 +2420,8 @@ pub struct RolloutEventData {
     pub payload: ::core::option::Option<Rollout>,
 }
 /// The data within all Automation events.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AutomationEventData {
     /// Optional. The Automation event payload. Unset for deletion events.
@@ -2229,6 +2429,8 @@ pub struct AutomationEventData {
     pub payload: ::core::option::Option<Automation>,
 }
 /// The support state of a specific Skaffold version.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum SkaffoldSupportState {
@@ -2266,6 +2468,8 @@ impl SkaffoldSupportState {
     }
 }
 /// The pattern of how wait time is increased.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum BackoffMode {
@@ -2299,6 +2503,8 @@ impl BackoffMode {
     }
 }
 /// The CloudEvent raised when a DeliveryPipeline is created.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DeliveryPipelineCreatedEvent {
     /// The data associated with the event.
@@ -2306,6 +2512,8 @@ pub struct DeliveryPipelineCreatedEvent {
     pub data: ::core::option::Option<DeliveryPipelineEventData>,
 }
 /// The CloudEvent raised when a DeliveryPipeline is updated.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DeliveryPipelineUpdatedEvent {
     /// The data associated with the event.
@@ -2313,6 +2521,8 @@ pub struct DeliveryPipelineUpdatedEvent {
     pub data: ::core::option::Option<DeliveryPipelineEventData>,
 }
 /// The CloudEvent raised when a DeliveryPipeline is deleted.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DeliveryPipelineDeletedEvent {
     /// The data associated with the event.
@@ -2320,6 +2530,8 @@ pub struct DeliveryPipelineDeletedEvent {
     pub data: ::core::option::Option<DeliveryPipelineEventData>,
 }
 /// The CloudEvent raised when a Target is created.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TargetCreatedEvent {
     /// The data associated with the event.
@@ -2327,6 +2539,8 @@ pub struct TargetCreatedEvent {
     pub data: ::core::option::Option<TargetEventData>,
 }
 /// The CloudEvent raised when a Target is updated.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TargetUpdatedEvent {
     /// The data associated with the event.
@@ -2334,6 +2548,8 @@ pub struct TargetUpdatedEvent {
     pub data: ::core::option::Option<TargetEventData>,
 }
 /// The CloudEvent raised when a Target is deleted.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TargetDeletedEvent {
     /// The data associated with the event.
@@ -2341,6 +2557,8 @@ pub struct TargetDeletedEvent {
     pub data: ::core::option::Option<TargetEventData>,
 }
 /// The CloudEvent raised when a CustomTargetType is created.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CustomTargetTypeCreatedEvent {
     /// The data associated with the event.
@@ -2348,6 +2566,8 @@ pub struct CustomTargetTypeCreatedEvent {
     pub data: ::core::option::Option<CustomTargetTypeEventData>,
 }
 /// The CloudEvent raised when a CustomTargetType is updated.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CustomTargetTypeUpdatedEvent {
     /// The data associated with the event.
@@ -2355,6 +2575,8 @@ pub struct CustomTargetTypeUpdatedEvent {
     pub data: ::core::option::Option<CustomTargetTypeEventData>,
 }
 /// The CloudEvent raised when a CustomTargetType is deleted.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CustomTargetTypeDeletedEvent {
     /// The data associated with the event.
@@ -2362,6 +2584,8 @@ pub struct CustomTargetTypeDeletedEvent {
     pub data: ::core::option::Option<CustomTargetTypeEventData>,
 }
 /// The CloudEvent raised when a Release is created.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ReleaseCreatedEvent {
     /// The data associated with the event.
@@ -2369,6 +2593,8 @@ pub struct ReleaseCreatedEvent {
     pub data: ::core::option::Option<ReleaseEventData>,
 }
 /// The CloudEvent raised when a Rollout is created.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RolloutCreatedEvent {
     /// The data associated with the event.
@@ -2376,6 +2602,8 @@ pub struct RolloutCreatedEvent {
     pub data: ::core::option::Option<RolloutEventData>,
 }
 /// The CloudEvent raised when a Automation is created.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AutomationCreatedEvent {
     /// The data associated with the event.
@@ -2383,6 +2611,8 @@ pub struct AutomationCreatedEvent {
     pub data: ::core::option::Option<AutomationEventData>,
 }
 /// The CloudEvent raised when a Automation is updated.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AutomationUpdatedEvent {
     /// The data associated with the event.
@@ -2390,6 +2620,8 @@ pub struct AutomationUpdatedEvent {
     pub data: ::core::option::Option<AutomationEventData>,
 }
 /// The CloudEvent raised when a Automation is deleted.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AutomationDeletedEvent {
     /// The data associated with the event.

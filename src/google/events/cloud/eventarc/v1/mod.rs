@@ -3,6 +3,8 @@
 /// A Channel is a resource on which event providers publish their events.
 /// The published events are delivered through the transport associated with the
 /// channel. Note that a channel is associated with exactly one event provider.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Channel {
     /// Required. The resource name of the channel. Must be unique within the
@@ -17,10 +19,10 @@ pub struct Channel {
     pub uid: ::prost::alloc::string::String,
     /// Output only. The creation time.
     #[prost(message, optional, tag = "5")]
-    pub create_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub create_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Output only. The last-modified time.
     #[prost(message, optional, tag = "6")]
-    pub update_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub update_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// The name of the event provider (e.g. Eventarc SaaS partner) associated
     /// with the channel. This provider will be granted permissions to publish
     /// events to the channel. Format:
@@ -47,6 +49,8 @@ pub struct Channel {
 /// Nested message and enum types in `Channel`.
 pub mod channel {
     /// State lists all the possible states of a Channel
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -106,6 +110,8 @@ pub mod channel {
             }
         }
     }
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Transport {
         /// Output only. The name of the Pub/Sub topic created and managed by
@@ -119,6 +125,8 @@ pub mod channel {
 /// A ChannelConnection is a resource which event providers create during the
 /// activation process to establish a connection between the provider and the
 /// subscriber channel.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ChannelConnection {
     /// Required. The name of the connection.
@@ -136,12 +144,14 @@ pub struct ChannelConnection {
     pub channel: ::prost::alloc::string::String,
     /// Output only. The creation time.
     #[prost(message, optional, tag = "6")]
-    pub create_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub create_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Output only. The last-modified time.
     #[prost(message, optional, tag = "7")]
-    pub update_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub update_time: ::core::option::Option<::pbjson_types::Timestamp>,
 }
 /// A representation of the trigger resource.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Trigger {
     /// Required. The resource name of the trigger. Must be unique within the
@@ -156,10 +166,10 @@ pub struct Trigger {
     pub uid: ::prost::alloc::string::String,
     /// Output only. The creation time.
     #[prost(message, optional, tag = "5")]
-    pub create_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub create_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Output only. The last-modified time.
     #[prost(message, optional, tag = "6")]
-    pub update_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub update_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Required. Unordered list. The list of filters that applies to event
     /// attributes. Only events that match all the provided filters are sent to the
     /// destination.
@@ -220,6 +230,8 @@ pub struct Trigger {
     pub etag: ::prost::alloc::string::String,
 }
 /// Filters events based on exact matches on the CloudEvents attributes.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EventFilter {
     /// Required. The name of a CloudEvents attribute. Currently, only a subset of
@@ -239,6 +251,8 @@ pub struct EventFilter {
     pub operator: ::prost::alloc::string::String,
 }
 /// A condition that is part of the trigger state computation.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct StateCondition {
     /// The canonical code of the condition.
@@ -249,6 +263,8 @@ pub struct StateCondition {
     pub message: ::prost::alloc::string::String,
 }
 /// Represents a target of an invocation over HTTP.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Destination {
     #[prost(oneof = "destination::Descriptor", tags = "1, 2, 3, 4")]
@@ -256,6 +272,8 @@ pub struct Destination {
 }
 /// Nested message and enum types in `Destination`.
 pub mod destination {
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Descriptor {
         /// Cloud Run fully-managed resource that receives the events. The resource
@@ -284,6 +302,8 @@ pub mod destination {
 }
 /// Represents the transport intermediaries created for the trigger to
 /// deliver events.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Transport {
     #[prost(oneof = "transport::Intermediary", tags = "1")]
@@ -291,6 +311,8 @@ pub struct Transport {
 }
 /// Nested message and enum types in `Transport`.
 pub mod transport {
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Intermediary {
         /// The Pub/Sub topic and subscription used by Eventarc as a transport
@@ -300,6 +322,8 @@ pub mod transport {
     }
 }
 /// Represents a Cloud Run destination.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CloudRun {
     /// Required. The name of the Cloud Run service being addressed. See
@@ -321,6 +345,8 @@ pub struct CloudRun {
     pub region: ::prost::alloc::string::String,
 }
 /// Represents a GKE destination.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Gke {
     /// Required. The name of the cluster the GKE service is running in. The
@@ -348,6 +374,8 @@ pub struct Gke {
     pub path: ::prost::alloc::string::String,
 }
 /// Represents a Pub/Sub transport.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Pubsub {
     /// Optional. The name of the Pub/Sub topic created and managed by Eventarc as
@@ -366,6 +394,8 @@ pub struct Pubsub {
     pub subscription: ::prost::alloc::string::String,
 }
 /// The data within all Trigger events.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TriggerEventData {
     /// The Trigger event payload.
@@ -373,6 +403,8 @@ pub struct TriggerEventData {
     pub payload: ::core::option::Option<Trigger>,
 }
 /// The data within all Channel events.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ChannelEventData {
     /// The Channel event payload.
@@ -380,6 +412,8 @@ pub struct ChannelEventData {
     pub payload: ::core::option::Option<Channel>,
 }
 /// The data within all ChannelConnection events.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ChannelConnectionEventData {
     /// The ChannelConnection event payload.
@@ -387,6 +421,8 @@ pub struct ChannelConnectionEventData {
     pub payload: ::core::option::Option<ChannelConnection>,
 }
 /// The CloudEvent raised when a Trigger is created.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TriggerCreatedEvent {
     /// The data associated with the event.
@@ -394,6 +430,8 @@ pub struct TriggerCreatedEvent {
     pub data: ::core::option::Option<TriggerEventData>,
 }
 /// The CloudEvent raised when a Trigger is updated.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TriggerUpdatedEvent {
     /// The data associated with the event.
@@ -401,6 +439,8 @@ pub struct TriggerUpdatedEvent {
     pub data: ::core::option::Option<TriggerEventData>,
 }
 /// The CloudEvent raised when a Trigger is deleted.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TriggerDeletedEvent {
     /// The data associated with the event.
@@ -408,6 +448,8 @@ pub struct TriggerDeletedEvent {
     pub data: ::core::option::Option<TriggerEventData>,
 }
 /// The CloudEvent raised when a Channel is created.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ChannelCreatedEvent {
     /// The data associated with the event.
@@ -415,6 +457,8 @@ pub struct ChannelCreatedEvent {
     pub data: ::core::option::Option<ChannelEventData>,
 }
 /// The CloudEvent raised when a Channel is updated.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ChannelUpdatedEvent {
     /// The data associated with the event.
@@ -422,6 +466,8 @@ pub struct ChannelUpdatedEvent {
     pub data: ::core::option::Option<ChannelEventData>,
 }
 /// The CloudEvent raised when a Channel is deleted.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ChannelDeletedEvent {
     /// The data associated with the event.
@@ -429,6 +475,8 @@ pub struct ChannelDeletedEvent {
     pub data: ::core::option::Option<ChannelEventData>,
 }
 /// The CloudEvent raised when a ChannelConnection is created.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ChannelConnectionCreatedEvent {
     /// The data associated with the event.
@@ -436,6 +484,8 @@ pub struct ChannelConnectionCreatedEvent {
     pub data: ::core::option::Option<ChannelConnectionEventData>,
 }
 /// The CloudEvent raised when a ChannelConnection is deleted.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ChannelConnectionDeletedEvent {
     /// The data associated with the event.

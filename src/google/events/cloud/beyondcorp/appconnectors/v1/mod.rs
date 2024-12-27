@@ -9,6 +9,8 @@
 ///          - appconnection
 ///            - tunnel
 ///        - logagent
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ResourceInfo {
     /// Required. Unique Id for the resource.
@@ -21,7 +23,7 @@ pub struct ResourceInfo {
     /// The timestamp to collect the info. It is suggested to be set by
     /// the topmost level resource only.
     #[prost(message, optional, tag = "4")]
-    pub time: ::core::option::Option<::prost_types::Timestamp>,
+    pub time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// List of Info for the sub level resources.
     #[prost(message, repeated, tag = "5")]
     pub sub: ::prost::alloc::vec::Vec<ResourceInfo>,
@@ -31,6 +33,8 @@ pub struct ResourceInfo {
 /// instances. It is used to establish connectivity between the remote enterprise
 /// environment and GCP. It initiates connections to the applications and can
 /// proxy the data from users over the connection.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AppConnector {
     /// Required. Unique resource name of the AppConnector.
@@ -39,10 +43,10 @@ pub struct AppConnector {
     pub name: ::prost::alloc::string::String,
     /// Output only. Timestamp when the resource was created.
     #[prost(message, optional, tag = "2")]
-    pub create_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub create_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Output only. Timestamp when the resource was last modified.
     #[prost(message, optional, tag = "3")]
-    pub update_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub update_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Optional. Resource labels to represent user provided metadata.
     #[prost(map = "string, string", tag = "4")]
     pub labels: ::std::collections::HashMap<
@@ -70,6 +74,8 @@ pub struct AppConnector {
 /// Nested message and enum types in `AppConnector`.
 pub mod app_connector {
     /// PrincipalInfo represents an Identity oneof.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct PrincipalInfo {
         #[prost(oneof = "principal_info::Type", tags = "1")]
@@ -78,12 +84,16 @@ pub mod app_connector {
     /// Nested message and enum types in `PrincipalInfo`.
     pub mod principal_info {
         /// ServiceAccount represents a GCP service account.
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(rename_all = "snake_case")]
         #[derive(Clone, PartialEq, ::prost::Message)]
         pub struct ServiceAccount {
             /// Email address of the service account.
             #[prost(string, tag = "1")]
             pub email: ::prost::alloc::string::String,
         }
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(rename_all = "snake_case")]
         #[derive(Clone, PartialEq, ::prost::Oneof)]
         pub enum Type {
             /// A GCP service account.
@@ -92,6 +102,8 @@ pub mod app_connector {
         }
     }
     /// Represents the different states of a AppConnector.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -149,6 +161,8 @@ pub mod app_connector {
     }
 }
 /// The data within all AppConnector events.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AppConnectorEventData {
     /// Optional. The AppConnector event payload. Unset for deletion events.
@@ -156,6 +170,8 @@ pub struct AppConnectorEventData {
     pub payload: ::core::option::Option<AppConnector>,
 }
 /// HealthStatus represents the health status.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum HealthStatus {
@@ -197,6 +213,8 @@ impl HealthStatus {
     }
 }
 /// The CloudEvent raised when an AppConnector is created.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AppConnectorCreatedEvent {
     /// The data associated with the event.
@@ -204,6 +222,8 @@ pub struct AppConnectorCreatedEvent {
     pub data: ::core::option::Option<AppConnectorEventData>,
 }
 /// The CloudEvent raised when an AppConnector is updated.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AppConnectorUpdatedEvent {
     /// The data associated with the event.
@@ -211,6 +231,8 @@ pub struct AppConnectorUpdatedEvent {
     pub data: ::core::option::Option<AppConnectorEventData>,
 }
 /// The CloudEvent raised when an AppConnector is deleted.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AppConnectorDeletedEvent {
     /// The data associated with the event.

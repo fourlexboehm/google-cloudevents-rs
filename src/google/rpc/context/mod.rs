@@ -16,6 +16,8 @@
 /// NOTE: Different system may generate different subset of attributes. Please
 /// verify the system specification before relying on an attribute generated
 /// a system.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AttributeContext {
     /// The origin of a network activity. In a multi hop network activity,
@@ -49,7 +51,7 @@ pub struct AttributeContext {
     pub api: ::core::option::Option<attribute_context::Api>,
     /// Supports extensions for advanced use cases, such as logs and metrics.
     #[prost(message, repeated, tag = "8")]
-    pub extensions: ::prost::alloc::vec::Vec<::prost_types::Any>,
+    pub extensions: ::prost::alloc::vec::Vec<::pbjson_types::Any>,
 }
 /// Nested message and enum types in `AttributeContext`.
 pub mod attribute_context {
@@ -57,6 +59,8 @@ pub mod attribute_context {
     /// The node can be either a service or an application that sends, forwards,
     /// or receives the request. Service peers should fill in
     /// `principal` and `labels` as appropriate.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Peer {
         /// The IP address of the peer.
@@ -85,6 +89,8 @@ pub mod attribute_context {
     /// This message defines attributes associated with API operations, such as
     /// a network API request. The terminology is based on the conventions used
     /// by Google APIs, Istio, and OpenAPI.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Api {
         /// The API service name. It is a logical identifier for a networked API,
@@ -109,6 +115,8 @@ pub mod attribute_context {
     /// This message defines request authentication attributes. Terminology is
     /// based on the JSON Web Token (JWT) standard, but the terms also
     /// correlate to concepts in other standards.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Auth {
         /// The authenticated principal. Reflects the issuer (`iss`) and subject
@@ -156,7 +164,7 @@ pub mod attribute_context {
         /// SAML assertions are similarly specified, but with an identity provider
         /// dependent structure.
         #[prost(message, optional, tag = "4")]
-        pub claims: ::core::option::Option<::prost_types::Struct>,
+        pub claims: ::core::option::Option<::pbjson_types::Struct>,
         /// A list of access level resource names that allow resources to be
         /// accessed by authenticated requester. It is part of Secure GCP processing
         /// for the incoming request. An access level string has the format:
@@ -170,6 +178,8 @@ pub mod attribute_context {
     /// This message defines attributes for an HTTP request. If the actual
     /// request is not an HTTP request, the runtime system should try to map
     /// the actual request to an equivalent HTTP request.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Request {
         /// The unique ID for a request, which can be propagated to downstream
@@ -204,7 +214,7 @@ pub mod attribute_context {
         /// The timestamp when the `destination` service receives the last byte of
         /// the request.
         #[prost(message, optional, tag = "9")]
-        pub time: ::core::option::Option<::prost_types::Timestamp>,
+        pub time: ::core::option::Option<::pbjson_types::Timestamp>,
         /// The HTTP request size in bytes. If unknown, it must be -1.
         #[prost(int64, tag = "10")]
         pub size: i64,
@@ -225,6 +235,8 @@ pub mod attribute_context {
     }
     /// This message defines attributes for a typical network response. It
     /// generally models semantics of an HTTP response.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Response {
         /// The HTTP response status code, such as `200` and `404`.
@@ -244,17 +256,19 @@ pub mod attribute_context {
         /// The timestamp when the `destination` service sends the last byte of
         /// the response.
         #[prost(message, optional, tag = "4")]
-        pub time: ::core::option::Option<::prost_types::Timestamp>,
+        pub time: ::core::option::Option<::pbjson_types::Timestamp>,
         /// The amount of time it takes the backend service to fully respond to a
         /// request. Measured from when the destination service starts to send the
         /// request to the backend until when the destination service receives the
         /// complete response from the backend.
         #[prost(message, optional, tag = "5")]
-        pub backend_latency: ::core::option::Option<::prost_types::Duration>,
+        pub backend_latency: ::core::option::Option<::pbjson_types::Duration>,
     }
     /// This message defines core attributes for a resource. A resource is an
     /// addressable (named) entity provided by the destination service. For
     /// example, a file stored on a network storage service.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Resource {
         /// The name of the service that this resource belongs to, such as
@@ -314,16 +328,16 @@ pub mod attribute_context {
         /// Output only. The timestamp when the resource was created. This may
         /// be either the time creation was initiated or when it was completed.
         #[prost(message, optional, tag = "8")]
-        pub create_time: ::core::option::Option<::prost_types::Timestamp>,
+        pub create_time: ::core::option::Option<::pbjson_types::Timestamp>,
         /// Output only. The timestamp when the resource was last updated. Any
         /// change to the resource made by users must refresh this value.
         /// Changes to a resource made by the service should refresh this value.
         #[prost(message, optional, tag = "9")]
-        pub update_time: ::core::option::Option<::prost_types::Timestamp>,
+        pub update_time: ::core::option::Option<::pbjson_types::Timestamp>,
         /// Output only. The timestamp when the resource was deleted.
         /// If the resource is not deleted, this must be empty.
         #[prost(message, optional, tag = "10")]
-        pub delete_time: ::core::option::Option<::prost_types::Timestamp>,
+        pub delete_time: ::core::option::Option<::pbjson_types::Timestamp>,
         /// Output only. An opaque value that uniquely identifies a version or
         /// generation of a resource. It can be used to confirm that the client
         /// and server agree on the ordering of a resource being written.

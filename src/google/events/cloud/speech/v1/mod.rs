@@ -2,6 +2,8 @@
 /// A set of words or phrases that represents a common concept likely to appear
 /// in your audio, for example a list of passenger ship names. CustomClass items
 /// can be substituted into placeholders that you set in PhraseSet phrases.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CustomClass {
     /// The resource name of the custom class.
@@ -41,11 +43,11 @@ pub struct CustomClass {
     /// Output only. The time at which this resource was requested for deletion.
     /// This field is not used.
     #[prost(message, optional, tag = "11")]
-    pub delete_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub delete_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Output only. The time at which this resource will be purged.
     /// This field is not used.
     #[prost(message, optional, tag = "12")]
-    pub expire_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub expire_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Output only. Allows users to store small amounts of arbitrary data.
     /// Both the key and the value must be 63 characters or less each.
     /// At most 100 annotations.
@@ -69,6 +71,8 @@ pub struct CustomClass {
 /// Nested message and enum types in `CustomClass`.
 pub mod custom_class {
     /// An item of the class.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct ClassItem {
         /// The class item's value.
@@ -76,6 +80,8 @@ pub mod custom_class {
         pub value: ::prost::alloc::string::String,
     }
     /// Set of states that define the lifecycle of a CustomClass.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -122,6 +128,8 @@ pub mod custom_class {
 }
 /// Provides "hints" to the speech recognizer to favor specific words and phrases
 /// in the results.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PhraseSet {
     /// The resource name of the phrase set.
@@ -168,11 +176,11 @@ pub struct PhraseSet {
     /// Output only. The time at which this resource was requested for deletion.
     /// This field is not used.
     #[prost(message, optional, tag = "12")]
-    pub delete_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub delete_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Output only. The time at which this resource will be purged.
     /// This field is not used.
     #[prost(message, optional, tag = "13")]
-    pub expire_time: ::core::option::Option<::prost_types::Timestamp>,
+    pub expire_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// Output only. Allows users to store small amounts of arbitrary data.
     /// Both the key and the value must be 63 characters or less each.
     /// At most 100 annotations.
@@ -220,6 +228,8 @@ pub mod phrase_set {
     /// endpoint, use the `global` location. To specify a region, use a
     /// [regional endpoint](<https://cloud.google.com/speech-to-text/docs/endpoints>)
     /// with matching `us` or `eu` location value.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Phrase {
         /// The phrase itself.
@@ -238,6 +248,8 @@ pub mod phrase_set {
         pub boost: f32,
     }
     /// Set of states that define the lifecycle of a CustomClass.
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
         Copy,
@@ -283,6 +295,8 @@ pub mod phrase_set {
     }
 }
 /// The data within all PhraseSet events.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PhraseSetEventData {
     /// Optional. The PhraseSet event payload. Unset for deletion events.
@@ -290,6 +304,8 @@ pub struct PhraseSetEventData {
     pub payload: ::core::option::Option<PhraseSet>,
 }
 /// The data within all CustomClass events.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CustomClassEventData {
     /// Optional. The CustomClass event payload. Unset for deletion events.
@@ -297,6 +313,8 @@ pub struct CustomClassEventData {
     pub payload: ::core::option::Option<CustomClass>,
 }
 /// The CloudEvent raised when a PhraseSet is created.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PhraseSetCreatedEvent {
     /// The data associated with the event.
@@ -304,6 +322,8 @@ pub struct PhraseSetCreatedEvent {
     pub data: ::core::option::Option<PhraseSetEventData>,
 }
 /// The CloudEvent raised when a PhraseSet is updated.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PhraseSetUpdatedEvent {
     /// The data associated with the event.
@@ -311,6 +331,8 @@ pub struct PhraseSetUpdatedEvent {
     pub data: ::core::option::Option<PhraseSetEventData>,
 }
 /// The CloudEvent raised when a PhraseSet is deleted.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PhraseSetDeletedEvent {
     /// The data associated with the event.
@@ -318,6 +340,8 @@ pub struct PhraseSetDeletedEvent {
     pub data: ::core::option::Option<PhraseSetEventData>,
 }
 /// The CloudEvent raised when a CustomClass is created.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CustomClassCreatedEvent {
     /// The data associated with the event.
@@ -325,6 +349,8 @@ pub struct CustomClassCreatedEvent {
     pub data: ::core::option::Option<CustomClassEventData>,
 }
 /// The CloudEvent raised when a CustomClass is updated.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CustomClassUpdatedEvent {
     /// The data associated with the event.
@@ -332,6 +358,8 @@ pub struct CustomClassUpdatedEvent {
     pub data: ::core::option::Option<CustomClassEventData>,
 }
 /// The CloudEvent raised when a CustomClass is deleted.
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CustomClassDeletedEvent {
     /// The data associated with the event.
