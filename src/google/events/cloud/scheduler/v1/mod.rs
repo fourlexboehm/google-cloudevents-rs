@@ -5,7 +5,9 @@
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SchedulerJobData {
     /// The custom data the user specified when creating the scheduler source.
-    #[prost(bytes = "vec", tag = "1")]
+    #[serde(with = "serde_bytes")]
+#[prost(bytes = "vec", tag =
+ "1")]
     pub custom_data: ::prost::alloc::vec::Vec<u8>,
 }
 /// Http target. The job will be pushed to the job handler by means of
@@ -73,7 +75,9 @@ pub struct HttpTarget {
     /// HTTP request body. A request body is allowed only if the HTTP
     /// method is POST, PUT, or PATCH. It is an error to set body on a job with an
     /// incompatible [HttpMethod][google.cloud.scheduler.v1.HttpMethod].
-    #[prost(bytes = "vec", tag = "4")]
+    #[serde(with = "serde_bytes")]
+#[prost(bytes = "vec", tag =
+ "4")]
     pub body: ::prost::alloc::vec::Vec<u8>,
     /// The mode for generating an `Authorization` header for HTTP requests.
     ///
@@ -190,7 +194,9 @@ pub struct AppEngineHttpTarget {
     /// POST or PUT. It will result in invalid argument error to set a body on a
     /// job with an incompatible
     /// [HttpMethod][google.cloud.scheduler.v1.HttpMethod].
-    #[prost(bytes = "vec", tag = "5")]
+    #[serde(with = "serde_bytes")]
+#[prost(bytes = "vec", tag =
+ "5")]
     pub body: ::prost::alloc::vec::Vec<u8>,
 }
 /// Pub/Sub target. The job will be delivered by publishing a message to
@@ -212,7 +218,9 @@ pub struct PubsubTarget {
     ///
     /// Pubsub message must contain either non-empty data, or at least one
     /// attribute.
-    #[prost(bytes = "vec", tag = "3")]
+    #[serde(with = "serde_bytes")]
+#[prost(bytes = "vec", tag =
+ "3")]
     pub data: ::prost::alloc::vec::Vec<u8>,
     /// Attributes for PubsubMessage.
     ///

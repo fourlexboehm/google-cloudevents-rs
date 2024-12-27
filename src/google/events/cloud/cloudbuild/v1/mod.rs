@@ -559,7 +559,9 @@ pub struct Hash {
     #[prost(enumeration = "hash::HashType", tag = "1")]
     pub r#type: i32,
     /// The hash value.
-    #[prost(bytes = "vec", tag = "2")]
+    #[serde(with = "serde_bytes")]
+#[prost(bytes = "vec", tag =
+ "2")]
     pub value: ::prost::alloc::vec::Vec<u8>,
 }
 /// Nested message and enum types in `Hash`.

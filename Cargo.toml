@@ -2,7 +2,7 @@
 name = "google-cloudevents"
 description = "Prost codegen structs for Google CloudEvent types"
 license = "MIT"
-version = "0.1.6"
+version = "0.1.7"
 edition = "2021"
 repository = "https://github.com/fourlexboehm/google-cloudevents-rs"
 
@@ -10,4 +10,5 @@ repository = "https://github.com/fourlexboehm/google-cloudevents-rs"
 pbjson-types = "0.7.0"
 prost = "0.13.4"
 serde = { version = "1.0.216", features = ["derive"] }
+serde_bytes = "0.11.15"
 

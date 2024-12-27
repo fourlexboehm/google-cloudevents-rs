@@ -368,7 +368,9 @@ pub struct DeviceConfig {
     #[prost(message, optional, tag = "3")]
     pub device_ack_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// The device configuration data.
-    #[prost(bytes = "vec", tag = "4")]
+    #[serde(with = "serde_bytes")]
+#[prost(bytes = "vec", tag =
+ "4")]
     pub binary_data: ::prost::alloc::vec::Vec<u8>,
 }
 /// The device state, as reported by the device.
@@ -381,7 +383,9 @@ pub struct DeviceState {
     #[prost(message, optional, tag = "1")]
     pub update_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// The device state data.
-    #[prost(bytes = "vec", tag = "2")]
+    #[serde(with = "serde_bytes")]
+#[prost(bytes = "vec", tag =
+ "2")]
     pub binary_data: ::prost::alloc::vec::Vec<u8>,
 }
 /// The data within all Cloud IoT Device events.

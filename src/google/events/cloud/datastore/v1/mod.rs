@@ -60,7 +60,9 @@ pub struct EntityResult {
     pub update_time: ::core::option::Option<::pbjson_types::Timestamp>,
     /// A cursor that points to the position after the result entity.
     /// Set only when the `EntityResult` is part of a `QueryResultBatch` message.
-    #[prost(bytes = "vec", tag = "3")]
+    #[serde(with = "serde_bytes")]
+#[prost(bytes = "vec", tag =
+ "3")]
     pub cursor: ::prost::alloc::vec::Vec<u8>,
 }
 /// Nested message and enum types in `EntityResult`.

@@ -173,7 +173,9 @@ pub mod api_config {
         #[prost(string, tag = "1")]
         pub path: ::prost::alloc::string::String,
         /// The bytes that constitute the file.
-        #[prost(bytes = "vec", tag = "2")]
+        #[serde(with = "serde_bytes")]
+#[prost(bytes = "vec", tag =
+ "2")]
         pub contents: ::prost::alloc::vec::Vec<u8>,
     }
     /// An OpenAPI Specification Document describing an API.

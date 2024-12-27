@@ -31,7 +31,9 @@ pub struct MessagePublishedData {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PubsubMessage {
     /// The binary data in the message.
-    #[prost(bytes = "vec", tag = "1")]
+    #[serde(with = "serde_bytes")]
+#[prost(bytes = "vec", tag =
+ "1")]
     pub data: ::prost::alloc::vec::Vec<u8>,
     /// Attributes for this message.
     #[prost(map = "string, string", tag = "2")]

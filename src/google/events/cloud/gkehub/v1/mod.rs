@@ -929,7 +929,9 @@ pub struct Authority {
     ///
     /// When this field is set, OIDC discovery will NOT be performed on `issuer`,
     /// and instead OIDC tokens will be validated using this field.
-    #[prost(bytes = "vec", tag = "4")]
+    #[serde(with = "serde_bytes")]
+#[prost(bytes = "vec", tag =
+ "4")]
     pub oidc_jwks: ::prost::alloc::vec::Vec<u8>,
 }
 /// The data within all Scope events.
