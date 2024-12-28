@@ -1,8 +1,8 @@
 [package]
 name = "google-cloudevents"
-description = "Prost codegen structs for Google CloudEvent types"
+description = "Prost/Serde structs for Google CloudEvent types with axum integration"
 license = "MIT"
-version = "0.1.7"
+version = "0.1.8"
 edition = "2021"
 repository = "https://github.com/fourlexboehm/google-cloudevents-rs"
 
@@ -12,3 +12,18 @@ prost = "0.13.4"
 serde = { version = "1.0.216", features = ["derive"] }
 serde_bytes = "0.11.15"
 
+axum = { version = "^0.7", optional = true }
+async-trait = { version = "^0.1", optional = true }
+cloudevents-sdk = { git = "https://github.com/cloudevents/sdk-rust.git", optional = true }
+serde_json = { version = "^1.0.134", optional = true }
+log = { version = "^0.4.22", optional = true }
+
+
+[features]
+axum = [
+    "dep:axum",
+    "async-trait",
+    "cloudevents-sdk",
+    "serde_json",
+    "log"
+]

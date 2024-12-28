@@ -1,3 +1,5 @@
+
+
 pub mod google;
 pub static ALL_EVENT_PATHS: &[&str] = &[
     // alloydb/v1
@@ -415,3 +417,111 @@ pub static ALL_EVENT_PATHS: &[&str] = &[
     // firebase/testlab/v1
     "google_cloudevents::google::events::firebase::testlab::v1::TestMatrixCompletedEvent",
 ];
+
+#[cfg(feature = "axum")]
+use {
+    serde::{Deserialize, Serialize},
+    log::error,
+    cloudevents::{Data, Event},
+    async_trait::async_trait,
+    axum::body::Body,
+    axum::extract::{FromRequest, Request},
+    axum::http::StatusCode,
+    axum::response::{IntoResponse, Response},
+    prost::Message,
+    serde::de::DeserializeOwned,
+};
+
+#[cfg(feature = "axum")]
+#[derive(Debug, Serialize, Deserialize)]
+pub struct GoogleCloudEvent<T> {
+    #[serde(flatten)]
+    pub event: Event,
+    pub data: T,
+}
+
+#[cfg(feature = "axum")]
+impl<T> GoogleCloudEvent<T>
+where
+    T: Message + Default + DeserializeOwned + Send + 'static,
+{
+    pub fn from_cloud_event(event: Event) -> Result<Self, GoogleCloudEventError> {
+        let typed_data = event
+            .data()
+            .map(|d| d.to_owned())
+            .and_then(|data| match data {
+                Data::Binary(bytes) => T::decode(bytes.as_slice())
+                    .map_err(|e| error!("Failed to decode binary data: {}", e))
+                    .ok(),
+                Data::Json(value) => serde_json::from_value(value)
+                    .map_err(|e| error!("Failed to decode JSON data: {}", e))
+                    .ok(),
+                Data::String(str) => {
+                    error!("Unexpected string data: {}", str);
+                    None
+                }
+            })
+            .ok_or_else(|| {
+                GoogleCloudEventError::DecodingError("Failed to decode event data".to_string())
+            })?;
+
+        Ok(Self {
+            event,
+            data: typed_data,
+        })
+    }
+}
+
+#[cfg(feature = "axum")]
+#[async_trait]
+impl<S, T> FromRequest<S> for GoogleCloudEvent<T>
+where
+    Event: FromRequest<S>,
+    S: Send + Sync,
+    T: Message + Default + DeserializeOwned + Send + 'static,
+{
+    type Rejection = GoogleCloudEventError;
+
+    async fn from_request(req: Request<Body>, state: &S) -> Result<Self, Self::Rejection> {
+        let event = Event::from_request(req, state)
+            .await
+            .map_err(|_| GoogleCloudEventError::InvalidData("Invalid CloudEvent".to_string()))?;
+
+        GoogleCloudEvent::from_cloud_event(event)
+    }
+}
+
+#[derive(Debug)]
+#[cfg(feature = "axum")]
+pub enum GoogleCloudEventError {
+    InvalidData(String),
+    DecodingError(String),
+}
+
+#[cfg(feature = "axum")]
+impl IntoResponse for GoogleCloudEventError {
+    fn into_response(self) -> Response {
+        let (status, message) = match self {
+            GoogleCloudEventError::InvalidData(msg) => (StatusCode::BAD_REQUEST, msg),
+            GoogleCloudEventError::DecodingError(msg) => (StatusCode::UNPROCESSABLE_ENTITY, msg),
+        };
+        (status, message).into_response()
+    }
+}
+
+// // Usage example:
+// async fn handle_pubsub(
+//     GoogleCloudEvent { event, typed_data }: GoogleCloudEvent<MessagePublishedData>,
+// ) -> impl IntoResponse {
+//     // Access CloudEvent metadata
+//     println!("Event ID: {}", event.id());
+//     println!("Event Type: {}", event.type_());
+//
+//     // Access typed data directly
+//     println!("Subscription: {}", typed_data.subscription);
+//     if let Some(message) = typed_data.message {
+//         println!("Message: {:?}", message);
+//     }
+//
+//     (StatusCode::OK, "Event processed".to_string())
+// }
