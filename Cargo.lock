@@ -197,7 +197,7 @@ dependencies = [
 [[package]]
 name = "cloudevents-sdk"
 version = "0.8.0"
-source = "git+https://github.com/cloudevents/sdk-rust.git#897cd85c40903b6cfecde9a05bb9abd7d9c1ec5c"
+source = "git+https://github.com/cloudevents/sdk-rust.git?rev=897cd85#897cd85c40903b6cfecde9a05bb9abd7d9c1ec5c"
 dependencies = [
  "base64 0.22.1",
  "bitflags",

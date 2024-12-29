@@ -439,13 +439,22 @@ pub struct GoogleCloudEvent<T> {
     pub event: Event,
     pub data: T,
 }
-
 #[cfg(feature = "axum")]
-impl<T> GoogleCloudEvent<T>
+#[async_trait]
+impl<S, T> FromRequest<S> for GoogleCloudEvent<T>
 where
+    Event: FromRequest<S>,
+    S: Send + Sync,
     T: Message + Default + DeserializeOwned + Send + 'static,
 {
-    pub fn from_cloud_event(event: Event) -> Result<Self, GoogleCloudEventError> {
+    type Rejection = GoogleCloudEventError;
+
+    async fn from_request(req: Request<Body>, state: &S) -> Result<Self, Self::Rejection> {
+        let event = Event::from_request(req, state)
+            .await
+            .map_err(|_| GoogleCloudEventError::InvalidData("Invalid CloudEvent".to_string()))?;
+
+
         let typed_data = event
             .data()
             .map(|d| d.to_owned())
@@ -469,25 +478,6 @@ where
             event,
             data: typed_data,
         })
-    }
-}
-
-#[cfg(feature = "axum")]
-#[async_trait]
-impl<S, T> FromRequest<S> for GoogleCloudEvent<T>
-where
-    Event: FromRequest<S>,
-    S: Send + Sync,
-    T: Message + Default + DeserializeOwned + Send + 'static,
-{
-    type Rejection = GoogleCloudEventError;
-
-    async fn from_request(req: Request<Body>, state: &S) -> Result<Self, Self::Rejection> {
-        let event = Event::from_request(req, state)
-            .await
-            .map_err(|_| GoogleCloudEventError::InvalidData("Invalid CloudEvent".to_string()))?;
-
-        GoogleCloudEvent::from_cloud_event(event)
     }
 }
 
