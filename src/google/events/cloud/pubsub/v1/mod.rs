@@ -37,6 +37,7 @@ pub struct PubsubMessage {
     pub data: ::prost::alloc::vec::Vec<u8>,
     /// Attributes for this message.
     #[prost(map = "string, string", tag = "2")]
+    #[serde(default)]
     pub attributes: ::std::collections::HashMap<
         ::prost::alloc::string::String,
         ::prost::alloc::string::String,

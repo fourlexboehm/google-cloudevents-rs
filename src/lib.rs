@@ -1,5 +1,3 @@
-
-
 pub mod google;
 pub static ALL_EVENT_PATHS: &[&str] = &[
     // alloydb/v1
@@ -454,30 +452,45 @@ where
             .await
             .map_err(|_| GoogleCloudEventError::InvalidData("Invalid CloudEvent".to_string()))?;
 
-
         let typed_data = event
             .data()
             .map(|d| d.to_owned())
-            .and_then(|data| match data {
-                Data::Binary(bytes) => T::decode(bytes.as_slice())
-                    .map_err(|e| error!("Failed to decode binary data: {}", e))
-                    .ok(),
-                Data::Json(value) => serde_json::from_value(value)
-                    .map_err(|e| error!("Failed to decode JSON data: {}", e))
-                    .ok(),
-                Data::String(str) => {
-                    error!("Unexpected string data: {}", str);
-                    None
-                }
-            })
             .ok_or_else(|| {
-                GoogleCloudEventError::DecodingError("Failed to decode event data".to_string())
+                GoogleCloudEventError::DecodingError("Missing event data".to_string())
+            })
+            .and_then(|data| match data {
+                Data::Binary(bytes) => {
+                    // Try to decode as a protobuf T
+                    match T::decode(bytes.as_slice()) {
+                        Ok(decoded) => Ok(decoded),
+                        Err(_) => {
+                            // Fallback to JSON decoding
+                            serde_json::from_slice(bytes.as_slice())
+                                .map_err(|e| {
+                                    GoogleCloudEventError::DecodingError(format!(
+                                        "Failed to decode as protobuf or JSON: {}",
+                                        e
+                                    ))
+                                })
+                        }
+                    }
+                }
+                Data::Json(value) => {
+                    // Decode from JSON
+                    serde_json::from_value(value).map_err(|e| {
+                        GoogleCloudEventError::DecodingError(format!("Failed to decode JSON: {}", e))
+                    })
+                }
+                Data::String(s) => {
+                    // Unexpected data type
+                    Err(GoogleCloudEventError::DecodingError(format!(
+                        "Unexpected string data: {}",
+                        s
+                    )))
+                }
             })?;
 
-        Ok(Self {
-            event,
-            data: typed_data,
-        })
+        Ok(Self { event, data: typed_data })
     }
 }
 

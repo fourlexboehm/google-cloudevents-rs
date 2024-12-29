@@ -227,6 +227,7 @@ pub struct PubsubTarget {
     /// Pubsub message must contain either non-empty data, or at least one
     /// attribute.
     #[prost(map = "string, string", tag = "4")]
+    #[serde(default)]
     pub attributes: ::std::collections::HashMap<
         ::prost::alloc::string::String,
         ::prost::alloc::string::String,
