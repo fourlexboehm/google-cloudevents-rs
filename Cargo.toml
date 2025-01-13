@@ -2,7 +2,7 @@
 name = "google-cloudevents"
 description = "Prost/Serde structs for Google CloudEvent types with axum integration"
 license = "MIT"
-version = "0.1.9"
+version = "0.1.10"
 edition = "2021"
 repository = "https://github.com/fourlexboehm/google-cloudevents-rs"
 
