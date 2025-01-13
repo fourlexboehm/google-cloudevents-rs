@@ -2,6 +2,7 @@
 /// An Instance represents the instance resources of the Registry.
 /// Currently, only one instance is allowed for each project.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Instance {
@@ -29,6 +30,7 @@ pub struct Instance {
 pub mod instance {
     /// Available configurations to provision an Instance.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Config {
@@ -44,6 +46,7 @@ pub mod instance {
     }
     /// State of the Instance.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -107,6 +110,7 @@ pub mod instance {
 /// A top-level description of an API.
 /// Produced by producers and are commitments to provide services.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Api {
@@ -171,6 +175,7 @@ pub struct Api {
 /// Describes a particular version of an API.
 /// ApiVersions are what consumers actually use.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ApiVersion {
@@ -232,6 +237,7 @@ pub struct ApiVersion {
 /// Synchronization of these representations would be provided by tooling and
 /// background services.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ApiSpec {
@@ -318,6 +324,7 @@ pub struct ApiSpec {
 /// Revision identifiers should be updated whenever the served API spec or
 /// endpoint address changes.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ApiDeployment {
@@ -397,6 +404,7 @@ pub struct ApiDeployment {
 }
 /// The data within all ApiVersion events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ApiVersionEventData {
@@ -406,6 +414,7 @@ pub struct ApiVersionEventData {
 }
 /// The data within all Instance events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InstanceEventData {
@@ -415,6 +424,7 @@ pub struct InstanceEventData {
 }
 /// The data within all ApiSpec events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ApiSpecEventData {
@@ -424,6 +434,7 @@ pub struct ApiSpecEventData {
 }
 /// The data within all ApiDeployment events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ApiDeploymentEventData {
@@ -433,6 +444,7 @@ pub struct ApiDeploymentEventData {
 }
 /// The data within all Api events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ApiEventData {
@@ -442,6 +454,7 @@ pub struct ApiEventData {
 }
 /// The CloudEvent raised when an Instance is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InstanceCreatedEvent {
@@ -451,6 +464,7 @@ pub struct InstanceCreatedEvent {
 }
 /// The CloudEvent raised when an Instance is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InstanceDeletedEvent {
@@ -460,6 +474,7 @@ pub struct InstanceDeletedEvent {
 }
 /// The CloudEvent raised when an Api is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ApiCreatedEvent {
@@ -469,6 +484,7 @@ pub struct ApiCreatedEvent {
 }
 /// The CloudEvent raised when an Api is updated.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ApiUpdatedEvent {
@@ -478,6 +494,7 @@ pub struct ApiUpdatedEvent {
 }
 /// The CloudEvent raised when an Api is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ApiDeletedEvent {
@@ -487,6 +504,7 @@ pub struct ApiDeletedEvent {
 }
 /// The CloudEvent raised when an ApiVersion is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ApiVersionCreatedEvent {
@@ -496,6 +514,7 @@ pub struct ApiVersionCreatedEvent {
 }
 /// The CloudEvent raised when an ApiVersion is updated.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ApiVersionUpdatedEvent {
@@ -505,6 +524,7 @@ pub struct ApiVersionUpdatedEvent {
 }
 /// The CloudEvent raised when an ApiVersion is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ApiVersionDeletedEvent {
@@ -514,6 +534,7 @@ pub struct ApiVersionDeletedEvent {
 }
 /// The CloudEvent raised when an ApiSpec is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ApiSpecCreatedEvent {
@@ -523,6 +544,7 @@ pub struct ApiSpecCreatedEvent {
 }
 /// The CloudEvent raised when an ApiSpec is updated.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ApiSpecUpdatedEvent {
@@ -532,6 +554,7 @@ pub struct ApiSpecUpdatedEvent {
 }
 /// The CloudEvent raised when an ApiSpec is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ApiSpecDeletedEvent {
@@ -541,6 +564,7 @@ pub struct ApiSpecDeletedEvent {
 }
 /// The CloudEvent raised when an ApiDeployment is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ApiDeploymentCreatedEvent {
@@ -550,6 +574,7 @@ pub struct ApiDeploymentCreatedEvent {
 }
 /// The CloudEvent raised when an ApiDeployment is updated.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ApiDeploymentUpdatedEvent {
@@ -559,6 +584,7 @@ pub struct ApiDeploymentUpdatedEvent {
 }
 /// The CloudEvent raised when an ApiDeployment is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ApiDeploymentDeletedEvent {

@@ -2,6 +2,7 @@
 /// The ServiceConnectionMap resource.
 /// Next id: 14
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ServiceConnectionMap {
@@ -59,6 +60,7 @@ pub struct ServiceConnectionMap {
 pub mod service_connection_map {
     /// The PSC configurations on producer side.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct ProducerPscConfig {
@@ -70,6 +72,7 @@ pub mod service_connection_map {
     }
     /// Allow the producer to specify which consumers can connect to it.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct ConsumerPscConfig {
@@ -96,6 +99,7 @@ pub mod service_connection_map {
     pub mod consumer_psc_config {
         /// PSC Consumer Config State.
         #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(default)]
         #[serde(rename_all = "snake_case")]
         #[derive(
             Clone,
@@ -145,6 +149,7 @@ pub mod service_connection_map {
     }
     /// PSC connection details on consumer side.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct ConsumerPscConnection {
@@ -195,6 +200,7 @@ pub mod service_connection_map {
     pub mod consumer_psc_connection {
         /// The state of the PSC connection.
         #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(default)]
         #[serde(rename_all = "snake_case")]
         #[derive(
             Clone,
@@ -252,6 +258,7 @@ pub mod service_connection_map {
 /// The ServiceConnectionPolicy resource.
 /// Next id: 11
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ServiceConnectionPolicy {
@@ -308,6 +315,7 @@ pub mod service_connection_policy {
     /// Configuration used for Private Service Connect connections. Used when
     /// Infrastructure is PSC.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct PscConfig {
@@ -322,6 +330,7 @@ pub mod service_connection_policy {
     }
     /// Information about a specific Private Service Connect connection.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct PscConnection {
@@ -356,6 +365,7 @@ pub mod service_connection_policy {
     }
     /// The state of the PSC connection.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -412,6 +422,7 @@ pub mod service_connection_policy {
 /// The ServiceClass resource.
 /// Next id: 8
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ServiceClass {
@@ -450,6 +461,7 @@ pub struct ServiceClass {
 /// The ServiceConnectionToken resource.
 /// Next id: 9
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ServiceConnectionToken {
@@ -487,6 +499,7 @@ pub struct ServiceConnectionToken {
 /// network. Spokes that do not use site-to-site data transfer can be associated
 /// with any VPC network in your project.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Hub {
@@ -530,6 +543,7 @@ pub struct Hub {
 /// RoutingVPC contains information about the VPC networks associated
 /// with the spokes of a Network Connectivity Center hub.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RoutingVpc {
@@ -554,6 +568,7 @@ pub struct RoutingVpc {
 /// * linked_interconnect_attachments
 /// * linked_router_appliance_instances
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Spoke {
@@ -609,6 +624,7 @@ pub struct Spoke {
 /// Cloud. Alternatively, in a passive/active configuration, all tunnels
 /// should be capable of advertising the same prefixes.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct LinkedVpnTunnels {
@@ -629,6 +645,7 @@ pub struct LinkedVpnTunnels {
 /// Cloud. Alternatively, in active/passive configurations, all attachments
 /// should be capable of advertising the same prefixes.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct LinkedInterconnectAttachments {
@@ -649,6 +666,7 @@ pub struct LinkedInterconnectAttachments {
 /// Google Cloud, we recommend that you associate those instances with the same
 /// spoke.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct LinkedRouterApplianceInstances {
@@ -670,6 +688,7 @@ pub struct LinkedRouterApplianceInstances {
 /// URI of the VM and the internal IP address of one of the VM's network
 /// interfaces.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RouterApplianceInstance {
@@ -682,6 +701,7 @@ pub struct RouterApplianceInstance {
 }
 /// The data within all ServiceClass events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ServiceClassEventData {
@@ -691,6 +711,7 @@ pub struct ServiceClassEventData {
 }
 /// The data within all ServiceConnectionToken events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ServiceConnectionTokenEventData {
@@ -701,6 +722,7 @@ pub struct ServiceConnectionTokenEventData {
 }
 /// The data within all ServiceConnectionMap events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ServiceConnectionMapEventData {
@@ -711,6 +733,7 @@ pub struct ServiceConnectionMapEventData {
 }
 /// The data within all Hub events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct HubEventData {
@@ -720,6 +743,7 @@ pub struct HubEventData {
 }
 /// The data within all Spoke events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SpokeEventData {
@@ -729,6 +753,7 @@ pub struct SpokeEventData {
 }
 /// The data within all ServiceConnectionPolicy events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ServiceConnectionPolicyEventData {
@@ -739,6 +764,7 @@ pub struct ServiceConnectionPolicyEventData {
 }
 /// The infrastructure used for connections between consumers/producers.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
@@ -771,6 +797,7 @@ impl Infrastructure {
 /// The error type indicates whether a connection error is consumer facing,
 /// producer facing or system internal.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
@@ -811,6 +838,7 @@ impl ConnectionErrorType {
 /// The State enum represents the lifecycle stage of a Network Connectivity
 /// Center resource.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
@@ -854,6 +882,7 @@ impl State {
 }
 /// The CloudEvent raised when a ServiceConnectionMap is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ServiceConnectionMapCreatedEvent {
@@ -863,6 +892,7 @@ pub struct ServiceConnectionMapCreatedEvent {
 }
 /// The CloudEvent raised when a ServiceConnectionMap is updated.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ServiceConnectionMapUpdatedEvent {
@@ -872,6 +902,7 @@ pub struct ServiceConnectionMapUpdatedEvent {
 }
 /// The CloudEvent raised when a ServiceConnectionMap is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ServiceConnectionMapDeletedEvent {
@@ -881,6 +912,7 @@ pub struct ServiceConnectionMapDeletedEvent {
 }
 /// The CloudEvent raised when a ServiceConnectionPolicy is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ServiceConnectionPolicyCreatedEvent {
@@ -890,6 +922,7 @@ pub struct ServiceConnectionPolicyCreatedEvent {
 }
 /// The CloudEvent raised when a ServiceConnectionPolicy is updated.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ServiceConnectionPolicyUpdatedEvent {
@@ -899,6 +932,7 @@ pub struct ServiceConnectionPolicyUpdatedEvent {
 }
 /// The CloudEvent raised when a ServiceConnectionPolicy is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ServiceConnectionPolicyDeletedEvent {
@@ -908,6 +942,7 @@ pub struct ServiceConnectionPolicyDeletedEvent {
 }
 /// The CloudEvent raised when a ServiceClass is updated.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ServiceClassUpdatedEvent {
@@ -917,6 +952,7 @@ pub struct ServiceClassUpdatedEvent {
 }
 /// The CloudEvent raised when a ServiceClass is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ServiceClassDeletedEvent {
@@ -926,6 +962,7 @@ pub struct ServiceClassDeletedEvent {
 }
 /// The CloudEvent raised when a ServiceConnectionToken is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ServiceConnectionTokenCreatedEvent {
@@ -935,6 +972,7 @@ pub struct ServiceConnectionTokenCreatedEvent {
 }
 /// The CloudEvent raised when a ServiceConnectionToken is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ServiceConnectionTokenDeletedEvent {
@@ -944,6 +982,7 @@ pub struct ServiceConnectionTokenDeletedEvent {
 }
 /// The CloudEvent raised when a Hub is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct HubCreatedEvent {
@@ -953,6 +992,7 @@ pub struct HubCreatedEvent {
 }
 /// The CloudEvent raised when a Hub is updated.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct HubUpdatedEvent {
@@ -962,6 +1002,7 @@ pub struct HubUpdatedEvent {
 }
 /// The CloudEvent raised when a Hub is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct HubDeletedEvent {
@@ -971,6 +1012,7 @@ pub struct HubDeletedEvent {
 }
 /// The CloudEvent raised when a Spoke is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SpokeCreatedEvent {
@@ -980,6 +1022,7 @@ pub struct SpokeCreatedEvent {
 }
 /// The CloudEvent raised when a Spoke is updated.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SpokeUpdatedEvent {
@@ -989,6 +1032,7 @@ pub struct SpokeUpdatedEvent {
 }
 /// The CloudEvent raised when a Spoke is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SpokeDeletedEvent {

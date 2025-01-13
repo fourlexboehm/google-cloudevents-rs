@@ -2,6 +2,7 @@
 /// Describes a Cloud Function that contains user computation executed in
 /// response to an event. It encapsulates function and trigger configurations.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Function {
@@ -47,6 +48,7 @@ pub struct Function {
 pub mod function {
     /// Describes the current state of the function.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -106,6 +108,7 @@ pub mod function {
 }
 /// Informational messages about the state of the Cloud Function or Operation.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct StateMessage {
@@ -123,6 +126,7 @@ pub struct StateMessage {
 pub mod state_message {
     /// Severity of the state message.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -173,6 +177,7 @@ pub mod state_message {
 }
 /// Location of the source in an archive file in Google Cloud Storage.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct StorageSource {
@@ -194,6 +199,7 @@ pub struct StorageSource {
 }
 /// Location of the source in a Google Cloud Source Repository.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RepoSource {
@@ -225,6 +231,7 @@ pub mod repo_source {
     /// A revision within the Cloud Source Repository must be specified in
     /// one of these ways.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Revision {
@@ -247,6 +254,7 @@ pub mod repo_source {
 }
 /// The location of the function source code.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Source {
@@ -260,6 +268,7 @@ pub mod source {
     /// Location of the source.
     /// At least one source needs to be provided for the deployment to succeed.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Source {
@@ -275,6 +284,7 @@ pub mod source {
 /// Provenance of the source. Ways to find the original source, or verify that
 /// some source was used for this build.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SourceProvenance {
@@ -290,6 +300,7 @@ pub struct SourceProvenance {
 /// Describes the Build step of the function that builds a container from the
 /// given source.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct BuildConfig {
@@ -370,6 +381,7 @@ pub struct BuildConfig {
 pub mod build_config {
     /// Docker Registry to use for storing function Docker images.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -423,6 +435,7 @@ pub mod build_config {
 /// Currently Supported : Cloud Run (fully managed).
 /// Next tag: 23
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ServiceConfig {
@@ -535,6 +548,7 @@ pub mod service_config {
     /// This controls what traffic is diverted through the VPC Access Connector
     /// resource. By default PRIVATE_RANGES_ONLY will be used.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -585,6 +599,7 @@ pub mod service_config {
     ///
     /// If unspecified, ALLOW_ALL will be used.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -639,6 +654,7 @@ pub mod service_config {
     /// Security level is only ocnfigurable for 1st Gen functions, If unspecified,
     /// SECURE_OPTIONAL will be used. 2nd Gen functions are SECURE_ALWAYS ONLY.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -691,6 +707,7 @@ pub mod service_config {
 /// necessary to fetch the secret value from secret manager and expose it as an
 /// environment variable.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SecretEnvVar {
@@ -716,6 +733,7 @@ pub struct SecretEnvVar {
 /// the secret value from secret manager and make it available as files mounted
 /// at the requested paths within the application container.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SecretVolume {
@@ -744,6 +762,7 @@ pub struct SecretVolume {
 pub mod secret_volume {
     /// Configuration for a single version.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct SecretVersion {
@@ -763,6 +782,7 @@ pub mod secret_volume {
 /// Describes EventTrigger, used to request events to be sent from another
 /// service.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EventTrigger {
@@ -815,6 +835,7 @@ pub mod event_trigger {
     /// Describes the retry policy in case of function's execution failure.
     /// Retried execution is charged as any other execution.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -862,6 +883,7 @@ pub mod event_trigger {
 }
 /// Filters events based on exact matches on the CloudEvents attributes.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EventFilter {
@@ -880,6 +902,7 @@ pub struct EventFilter {
 }
 /// The data within all Function events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct FunctionEventData {
@@ -889,6 +912,7 @@ pub struct FunctionEventData {
 }
 /// The environment the function is hosted on.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
@@ -924,6 +948,7 @@ impl Environment {
 }
 /// The CloudEvent raised when a Function is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct FunctionCreatedEvent {
@@ -933,6 +958,7 @@ pub struct FunctionCreatedEvent {
 }
 /// The CloudEvent raised when a Function is updated.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct FunctionUpdatedEvent {
@@ -942,6 +968,7 @@ pub struct FunctionUpdatedEvent {
 }
 /// The CloudEvent raised when a Function is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct FunctionDeletedEvent {

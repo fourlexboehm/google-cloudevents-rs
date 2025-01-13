@@ -2,6 +2,7 @@
 /// Definition of a software environment that is used to start a notebook
 /// instance.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Environment {
@@ -32,6 +33,7 @@ pub struct Environment {
 pub mod environment {
     /// Type of the environment; can be one of VM image, or container image.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum ImageType {
@@ -46,6 +48,7 @@ pub mod environment {
 /// Definition of a custom Compute Engine virtual machine image for starting a
 /// notebook instance with the environment installed directly on the VM.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct VmImage {
@@ -61,6 +64,7 @@ pub struct VmImage {
 pub mod vm_image {
     /// The reference to an external Compute Engine VM image.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Image {
@@ -76,6 +80,7 @@ pub mod vm_image {
 /// Definition of a container image for starting a notebook instance with the
 /// environment installed in a container.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ContainerImage {
@@ -90,6 +95,7 @@ pub struct ContainerImage {
 }
 /// The definition of a Runtime for a managed notebook instance.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Runtime {
@@ -140,6 +146,7 @@ pub struct Runtime {
 pub mod runtime {
     /// The definition of the states of this runtime.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -210,6 +217,7 @@ pub mod runtime {
     }
     /// The runtime substate.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -269,6 +277,7 @@ pub mod runtime {
     }
     /// Type of the runtime; currently only supports Compute Engine VM.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum RuntimeType {
@@ -290,6 +299,7 @@ pub mod runtime {
 /// * `nvidia-tesla-t4`
 /// * `nvidia-tesla-a100`
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct RuntimeAcceleratorConfig {
@@ -304,6 +314,7 @@ pub struct RuntimeAcceleratorConfig {
 pub mod runtime_accelerator_config {
     /// Type of this accelerator.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -387,6 +398,7 @@ pub mod runtime_accelerator_config {
 /// Represents a custom encryption key configuration that can be applied to
 /// a resource. This will encrypt all disks in Virtual Machine.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EncryptionConfig {
@@ -399,6 +411,7 @@ pub struct EncryptionConfig {
 }
 /// A Local attached disk resource.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct LocalDisk {
@@ -480,6 +493,7 @@ pub mod local_disk {
     /// to see a list of available options.
     /// Guest OS features for boot disk.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct RuntimeGuestOsFeature {
@@ -505,6 +519,7 @@ pub mod local_disk {
 /// This property is mutually exclusive with the source property; you can only
 /// define one or the other, but not both.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct LocalDiskInitializeParams {
@@ -533,6 +548,7 @@ pub struct LocalDiskInitializeParams {
 pub mod local_disk_initialize_params {
     /// Possible disk types.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -587,6 +603,7 @@ pub mod local_disk_initialize_params {
 }
 /// Specifies the login configuration for Runtime
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RuntimeAccessConfig {
@@ -606,6 +623,7 @@ pub mod runtime_access_config {
     /// Possible ways to access runtime. Authentication mode.
     /// Currently supports: Single User only.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -661,6 +679,7 @@ pub mod runtime_access_config {
 /// * `idle_shutdown_timeout: 180`
 /// * `enable_health_monitoring: true`
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RuntimeSoftwareConfig {
@@ -723,6 +742,7 @@ pub struct RuntimeSoftwareConfig {
 pub mod runtime_software_config {
     /// Behavior for the post startup script.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -769,6 +789,7 @@ pub mod runtime_software_config {
 }
 /// Contains runtime daemon metrics, such as OS and kernels and sessions stats.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RuntimeMetrics {
@@ -784,6 +805,7 @@ pub struct RuntimeMetrics {
 /// features](<https://cloud.google.com/compute/docs/instances/modifying-shielded-vm>).
 /// Not all combinations are valid.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct RuntimeShieldedInstanceConfig {
@@ -808,6 +830,7 @@ pub struct RuntimeShieldedInstanceConfig {
 }
 /// Runtime using Virtual Machine for computing.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct VirtualMachine {
@@ -823,6 +846,7 @@ pub struct VirtualMachine {
 }
 /// The config settings for virtual machine.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct VirtualMachineConfig {
@@ -955,12 +979,14 @@ pub mod virtual_machine_config {
     /// Definition of the boot image used by the Runtime.
     /// Used to facilitate runtime upgradeability.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct BootImage {}
     /// The type of vNIC driver.
     /// Default should be UNSPECIFIED_NIC_TYPE.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -1007,6 +1033,7 @@ pub mod virtual_machine_config {
 }
 /// The description a notebook execution workload.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ExecutionTemplate {
@@ -1139,6 +1166,7 @@ pub mod execution_template {
     /// Compute Engine](<https://cloud.google.com/compute/docs/gpus>) to find a valid
     /// combination. TPUs are not supported.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct SchedulerAcceleratorConfig {
@@ -1151,6 +1179,7 @@ pub mod execution_template {
     }
     /// Parameters used in Dataproc JobType executions.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct DataprocParameters {
@@ -1161,6 +1190,7 @@ pub mod execution_template {
     }
     /// Parameters used in Vertex AI JobType executions.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct VertexAiParameters {
@@ -1189,6 +1219,7 @@ pub mod execution_template {
     /// Required. Specifies the machine types, the number of replicas for workers
     /// and parameter servers.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -1257,6 +1288,7 @@ pub mod execution_template {
     }
     /// Hardware accelerator types for AI Platform Training jobs.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -1326,6 +1358,7 @@ pub mod execution_template {
     }
     /// The backend used for this execution.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -1374,6 +1407,7 @@ pub mod execution_template {
     /// Parameters for an execution type.
     /// NOTE: There are currently no extra parameters for VertexAI jobs.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum JobParameters {
@@ -1387,6 +1421,7 @@ pub mod execution_template {
 }
 /// The definition of a single executed notebook.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Execution {
@@ -1424,6 +1459,7 @@ pub struct Execution {
 pub mod execution {
     /// Enum description of the state of the underlying AIP job.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -1502,6 +1538,7 @@ pub mod execution {
 }
 /// Reservation Affinity for consuming Zonal reservation.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ReservationAffinity {
@@ -1519,6 +1556,7 @@ pub struct ReservationAffinity {
 pub mod reservation_affinity {
     /// Indicates whether to consume capacity from an reservation or not.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -1570,6 +1608,7 @@ pub mod reservation_affinity {
 }
 /// The definition of a notebook instance.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Instance {
@@ -1713,6 +1752,7 @@ pub mod instance {
     /// Engine](<https://cloud.google.com/compute/docs/gpus/#gpus-list>) to find a
     /// valid combination. TPUs are not supported.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct AcceleratorConfig {
@@ -1725,6 +1765,7 @@ pub mod instance {
     }
     /// An instance-attached disk resource.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Disk {
@@ -1804,6 +1845,7 @@ pub mod instance {
     pub mod disk {
         /// Guest OS features for boot disk.
         #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(default)]
         #[serde(rename_all = "snake_case")]
         #[derive(Clone, PartialEq, ::prost::Message)]
         pub struct GuestOsFeature {
@@ -1826,6 +1868,7 @@ pub mod instance {
     /// features](<https://cloud.google.com/compute/docs/instances/modifying-shielded-vm>).
     /// Not all combinations are valid.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct ShieldedInstanceConfig {
@@ -1850,6 +1893,7 @@ pub mod instance {
     }
     /// The entry of VM image upgrade history.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct UpgradeHistoryEntry {
@@ -1888,6 +1932,7 @@ pub mod instance {
     pub mod upgrade_history_entry {
         /// The definition of the states of this upgrade history entry.
         #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(default)]
         #[serde(rename_all = "snake_case")]
         #[derive(
             Clone,
@@ -1937,6 +1982,7 @@ pub mod instance {
         }
         /// The definition of operations of this upgrade history entry.
         #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(default)]
         #[serde(rename_all = "snake_case")]
         #[derive(
             Clone,
@@ -1984,6 +2030,7 @@ pub mod instance {
     /// Definition of the types of hardware accelerators that can be used on this
     /// instance.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -2065,6 +2112,7 @@ pub mod instance {
     }
     /// The definition of the states of this instance.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -2147,6 +2195,7 @@ pub mod instance {
     }
     /// Possible disk types for notebook instances.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -2200,6 +2249,7 @@ pub mod instance {
     }
     /// Definition of the disk encryption options.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -2246,6 +2296,7 @@ pub mod instance {
     /// The type of vNIC driver.
     /// Default should be UNSPECIFIED_NIC_TYPE.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -2291,6 +2342,7 @@ pub mod instance {
     }
     /// Type of the environment; can be one of VM image, or container image.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Environment {
@@ -2304,6 +2356,7 @@ pub mod instance {
 }
 /// The definition of a schedule.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Schedule {
@@ -2355,6 +2408,7 @@ pub struct Schedule {
 pub mod schedule {
     /// State of the job.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -2422,6 +2476,7 @@ pub mod schedule {
 }
 /// The data within all Runtime events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RuntimeEventData {
@@ -2431,6 +2486,7 @@ pub struct RuntimeEventData {
 }
 /// The data within all Execution events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ExecutionEventData {
@@ -2440,6 +2496,7 @@ pub struct ExecutionEventData {
 }
 /// The data within all Instance events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InstanceEventData {
@@ -2449,6 +2506,7 @@ pub struct InstanceEventData {
 }
 /// The data within all Schedule events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ScheduleEventData {
@@ -2458,6 +2516,7 @@ pub struct ScheduleEventData {
 }
 /// The data within all Environment events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EnvironmentEventData {
@@ -2467,6 +2526,7 @@ pub struct EnvironmentEventData {
 }
 /// The CloudEvent raised when a Runtime is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RuntimeCreatedEvent {
@@ -2476,6 +2536,7 @@ pub struct RuntimeCreatedEvent {
 }
 /// The CloudEvent raised when a Runtime is updated.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RuntimeUpdatedEvent {
@@ -2485,6 +2546,7 @@ pub struct RuntimeUpdatedEvent {
 }
 /// The CloudEvent raised when a Runtime is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RuntimeDeletedEvent {
@@ -2494,6 +2556,7 @@ pub struct RuntimeDeletedEvent {
 }
 /// The CloudEvent raised when an Instance is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InstanceCreatedEvent {
@@ -2503,6 +2566,7 @@ pub struct InstanceCreatedEvent {
 }
 /// The CloudEvent raised when an Instance is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InstanceDeletedEvent {
@@ -2512,6 +2576,7 @@ pub struct InstanceDeletedEvent {
 }
 /// The CloudEvent raised when an Environment is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EnvironmentCreatedEvent {
@@ -2521,6 +2586,7 @@ pub struct EnvironmentCreatedEvent {
 }
 /// The CloudEvent raised when an Environment is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EnvironmentDeletedEvent {
@@ -2530,6 +2596,7 @@ pub struct EnvironmentDeletedEvent {
 }
 /// The CloudEvent raised when a Schedule is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ScheduleDeletedEvent {
@@ -2539,6 +2606,7 @@ pub struct ScheduleDeletedEvent {
 }
 /// The CloudEvent raised when a Schedule is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ScheduleCreatedEvent {
@@ -2548,6 +2616,7 @@ pub struct ScheduleCreatedEvent {
 }
 /// The CloudEvent raised when an Execution is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ExecutionDeletedEvent {
@@ -2557,6 +2626,7 @@ pub struct ExecutionDeletedEvent {
 }
 /// The CloudEvent raised when an Execution is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ExecutionCreatedEvent {

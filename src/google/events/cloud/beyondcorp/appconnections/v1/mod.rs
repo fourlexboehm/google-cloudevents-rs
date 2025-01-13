@@ -4,6 +4,7 @@
 /// components needed for creating a BeyondCorp protected AppConnection. Multiple
 /// connectors can be authorised for a single AppConnection.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AppConnection {
@@ -55,6 +56,7 @@ pub struct AppConnection {
 pub mod app_connection {
     /// ApplicationEndpoint represents a remote application endpoint.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct ApplicationEndpoint {
@@ -68,6 +70,7 @@ pub mod app_connection {
     /// Gateway represents a user facing component that serves as an entrance to
     /// enable connectivity.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Gateway {
@@ -93,6 +96,7 @@ pub mod app_connection {
     pub mod gateway {
         /// Enum listing possible gateway hosting options.
         #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(default)]
         #[serde(rename_all = "snake_case")]
         #[derive(
             Clone,
@@ -136,6 +140,7 @@ pub mod app_connection {
     /// Enum containing list of all possible network connectivity options
     /// supported by BeyondCorp AppConnection.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -178,6 +183,7 @@ pub mod app_connection {
     }
     /// Represents the different states of a AppConnection.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -237,6 +243,7 @@ pub mod app_connection {
 }
 /// The data within all AppConnection events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AppConnectionEventData {
@@ -246,6 +253,7 @@ pub struct AppConnectionEventData {
 }
 /// The CloudEvent raised when an AppConnection is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AppConnectionCreatedEvent {
@@ -255,6 +263,7 @@ pub struct AppConnectionCreatedEvent {
 }
 /// The CloudEvent raised when an AppConnection is updated.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AppConnectionUpdatedEvent {
@@ -264,6 +273,7 @@ pub struct AppConnectionUpdatedEvent {
 }
 /// The CloudEvent raised when an AppConnection is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AppConnectionDeletedEvent {

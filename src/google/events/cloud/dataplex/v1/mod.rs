@@ -8,6 +8,7 @@
 /// provides data scientists and data engineers an integrated experience to
 /// easily search, discover, analyze and transform data and associated metadata.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Lake {
@@ -60,6 +61,7 @@ pub struct Lake {
 pub mod lake {
     /// Settings to manage association of Dataproc Metastore with a lake.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Metastore {
@@ -72,6 +74,7 @@ pub mod lake {
     }
     /// Status of Lake and Dataproc Metastore service instance association.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct MetastoreStatus {
@@ -92,6 +95,7 @@ pub mod lake {
     pub mod metastore_status {
         /// Current state of association.
         #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(default)]
         #[serde(rename_all = "snake_case")]
         #[derive(
             Clone,
@@ -147,6 +151,7 @@ pub mod lake {
 }
 /// Aggregated status of the underlying assets of a lake or zone.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct AssetStatus {
@@ -166,6 +171,7 @@ pub struct AssetStatus {
 /// readiness from raw to curated. It provides managing behavior that is shared
 /// or inherited by all contained assets.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Zone {
@@ -217,6 +223,7 @@ pub struct Zone {
 pub mod zone {
     /// Settings for resources attached as assets within a zone.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct ResourceSpec {
@@ -229,6 +236,7 @@ pub mod zone {
     pub mod resource_spec {
         /// Location type of the resources attached to a zone.
         #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(default)]
         #[serde(rename_all = "snake_case")]
         #[derive(
             Clone,
@@ -275,6 +283,7 @@ pub mod zone {
     }
     /// Settings to manage the metadata discovery and publishing in a zone.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct DiscoverySpec {
@@ -308,6 +317,7 @@ pub mod zone {
     pub mod discovery_spec {
         /// Describe CSV and similar semi-structured data formats.
         #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(default)]
         #[serde(rename_all = "snake_case")]
         #[derive(Clone, PartialEq, ::prost::Message)]
         pub struct CsvOptions {
@@ -329,6 +339,7 @@ pub mod zone {
         }
         /// Describe JSON data format.
         #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(default)]
         #[serde(rename_all = "snake_case")]
         #[derive(Clone, PartialEq, ::prost::Message)]
         pub struct JsonOptions {
@@ -343,6 +354,7 @@ pub mod zone {
         }
         /// Determines when discovery is triggered.
         #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(default)]
         #[serde(rename_all = "snake_case")]
         #[derive(Clone, PartialEq, ::prost::Oneof)]
         pub enum Trigger {
@@ -360,6 +372,7 @@ pub mod zone {
     }
     /// Type of zone.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -411,6 +424,7 @@ pub mod zone {
 /// An asset represents a cloud resource that is being managed within a lake as a
 /// member of a zone.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Asset {
@@ -469,6 +483,7 @@ pub mod asset {
     /// Security policy status of the asset. Data security policy, i.e., readers,
     /// writers & owners, should be specified in the lake/zone/asset IAM policy.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct SecurityStatus {
@@ -487,6 +502,7 @@ pub mod asset {
     pub mod security_status {
         /// The state of the security policy.
         #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(default)]
         #[serde(rename_all = "snake_case")]
         #[derive(
             Clone,
@@ -539,6 +555,7 @@ pub mod asset {
     }
     /// Settings to manage the metadata discovery and publishing for an asset.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct DiscoverySpec {
@@ -572,6 +589,7 @@ pub mod asset {
     pub mod discovery_spec {
         /// Describe CSV and similar semi-structured data formats.
         #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(default)]
         #[serde(rename_all = "snake_case")]
         #[derive(Clone, PartialEq, ::prost::Message)]
         pub struct CsvOptions {
@@ -593,6 +611,7 @@ pub mod asset {
         }
         /// Describe JSON data format.
         #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(default)]
         #[serde(rename_all = "snake_case")]
         #[derive(Clone, PartialEq, ::prost::Message)]
         pub struct JsonOptions {
@@ -607,6 +626,7 @@ pub mod asset {
         }
         /// Determines when discovery is triggered.
         #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(default)]
         #[serde(rename_all = "snake_case")]
         #[derive(Clone, PartialEq, ::prost::Oneof)]
         pub enum Trigger {
@@ -624,6 +644,7 @@ pub mod asset {
     }
     /// Identifies the cloud resource that is referenced by this asset.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct ResourceSpec {
@@ -645,6 +666,7 @@ pub mod asset {
     pub mod resource_spec {
         /// Type of resource.
         #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(default)]
         #[serde(rename_all = "snake_case")]
         #[derive(
             Clone,
@@ -691,6 +713,7 @@ pub mod asset {
         /// Access Mode determines how data stored within the resource is read. This
         /// is only applicable to storage bucket assets.
         #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(default)]
         #[serde(rename_all = "snake_case")]
         #[derive(
             Clone,
@@ -737,6 +760,7 @@ pub mod asset {
     }
     /// Status of the resource referenced by an asset.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct ResourceStatus {
@@ -757,6 +781,7 @@ pub mod asset {
     pub mod resource_status {
         /// The state of a resource.
         #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(default)]
         #[serde(rename_all = "snake_case")]
         #[derive(
             Clone,
@@ -803,6 +828,7 @@ pub mod asset {
     }
     /// Status of discovery for an asset.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct DiscoveryStatus {
@@ -829,6 +855,7 @@ pub mod asset {
     pub mod discovery_status {
         /// The aggregated data statistics for the asset reported by discovery.
         #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(default)]
         #[serde(rename_all = "snake_case")]
         #[derive(Clone, Copy, PartialEq, ::prost::Message)]
         pub struct Stats {
@@ -847,6 +874,7 @@ pub mod asset {
         }
         /// Current state of discovery.
         #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(default)]
         #[serde(rename_all = "snake_case")]
         #[derive(
             Clone,
@@ -904,6 +932,7 @@ pub mod asset {
 /// Environment represents a user-visible compute infrastructure for analytics
 /// within a lake.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Environment {
@@ -955,6 +984,7 @@ pub struct Environment {
 pub mod environment {
     /// Configuration for the underlying infrastructure used to run workloads.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct InfrastructureSpec {
@@ -969,6 +999,7 @@ pub mod environment {
     pub mod infrastructure_spec {
         /// Compute resources associated with the analyze interactive workloads.
         #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(default)]
         #[serde(rename_all = "snake_case")]
         #[derive(Clone, Copy, PartialEq, ::prost::Message)]
         pub struct ComputeResources {
@@ -986,6 +1017,7 @@ pub mod environment {
         }
         /// Software Runtime Configuration to run Analyze.
         #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(default)]
         #[serde(rename_all = "snake_case")]
         #[derive(Clone, PartialEq, ::prost::Message)]
         pub struct OsImageRuntime {
@@ -1016,6 +1048,7 @@ pub mod environment {
         }
         /// Hardware config
         #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(default)]
         #[serde(rename_all = "snake_case")]
         #[derive(Clone, Copy, PartialEq, ::prost::Oneof)]
         pub enum Resources {
@@ -1025,6 +1058,7 @@ pub mod environment {
         }
         /// Software config
         #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(default)]
         #[serde(rename_all = "snake_case")]
         #[derive(Clone, PartialEq, ::prost::Oneof)]
         pub enum Runtime {
@@ -1036,6 +1070,7 @@ pub mod environment {
     }
     /// Configuration for sessions created for this environment.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct SessionSpec {
@@ -1053,6 +1088,7 @@ pub mod environment {
     }
     /// Status of sessions created for this environment.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct SessionStatus {
@@ -1063,6 +1099,7 @@ pub mod environment {
     }
     /// URI Endpoints to access sessions associated with the Environment.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Endpoints {
@@ -1076,6 +1113,7 @@ pub mod environment {
 }
 /// DataScan scheduling and trigger settings.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Trigger {
@@ -1089,11 +1127,13 @@ pub struct Trigger {
 pub mod trigger {
     /// The scan runs once via `RunDataScan` API.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct OnDemand {}
     /// The scan is scheduled to run periodically.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Schedule {
@@ -1116,6 +1156,7 @@ pub mod trigger {
     ///
     /// If not specified, the default is `onDemand`.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Mode {
@@ -1129,6 +1170,7 @@ pub mod trigger {
 }
 /// The data source for DataScan.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataSource {
@@ -1142,6 +1184,7 @@ pub mod data_source {
     /// The source is required and immutable. Once it is set, it cannot be change
     /// to others.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Source {
@@ -1154,6 +1197,7 @@ pub mod data_source {
 }
 /// The data scanned during processing (e.g. in incremental DataScan)
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ScannedData {
@@ -1165,6 +1209,7 @@ pub struct ScannedData {
 pub mod scanned_data {
     /// A data range denoted by a pair of start/end values of a field.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct IncrementalField {
@@ -1181,6 +1226,7 @@ pub mod scanned_data {
     }
     /// The range of scanned data
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum DataRange {
@@ -1191,12 +1237,14 @@ pub mod scanned_data {
 }
 /// DataProfileScan related setting.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct DataProfileSpec {}
 /// DataProfileResult defines the output of DataProfileScan. Each field of the
 /// table will have field type specific profile result.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataProfileResult {
@@ -1214,6 +1262,7 @@ pub struct DataProfileResult {
 pub mod data_profile_result {
     /// Contains name, type, mode and field type specific profile information.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Profile {
@@ -1225,6 +1274,7 @@ pub mod data_profile_result {
     pub mod profile {
         /// A field within a table.
         #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(default)]
         #[serde(rename_all = "snake_case")]
         #[derive(Clone, PartialEq, ::prost::Message)]
         pub struct Field {
@@ -1265,6 +1315,7 @@ pub mod data_profile_result {
         pub mod field {
             /// The profile information for each field type.
             #[derive(serde::Serialize, serde::Deserialize)]
+            #[serde(default)]
             #[serde(rename_all = "snake_case")]
             #[derive(Clone, PartialEq, ::prost::Message)]
             pub struct ProfileInfo {
@@ -1291,6 +1342,7 @@ pub mod data_profile_result {
             pub mod profile_info {
                 /// The profile information for a string type field.
                 #[derive(serde::Serialize, serde::Deserialize)]
+                #[serde(default)]
                 #[serde(rename_all = "snake_case")]
                 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
                 pub struct StringFieldInfo {
@@ -1306,6 +1358,7 @@ pub mod data_profile_result {
                 }
                 /// The profile information for an integer type field.
                 #[derive(serde::Serialize, serde::Deserialize)]
+                #[serde(default)]
                 #[serde(rename_all = "snake_case")]
                 #[derive(Clone, PartialEq, ::prost::Message)]
                 pub struct IntegerFieldInfo {
@@ -1341,6 +1394,7 @@ pub mod data_profile_result {
                 }
                 /// The profile information for a double type field.
                 #[derive(serde::Serialize, serde::Deserialize)]
+                #[serde(default)]
                 #[serde(rename_all = "snake_case")]
                 #[derive(Clone, PartialEq, ::prost::Message)]
                 pub struct DoubleFieldInfo {
@@ -1376,6 +1430,7 @@ pub mod data_profile_result {
                 }
                 /// Top N non-null values in the scanned data.
                 #[derive(serde::Serialize, serde::Deserialize)]
+                #[serde(default)]
                 #[serde(rename_all = "snake_case")]
                 #[derive(Clone, PartialEq, ::prost::Message)]
                 pub struct TopNValue {
@@ -1389,6 +1444,7 @@ pub mod data_profile_result {
                 /// Structural and profile information for specific field type. Not
                 /// available, if mode is REPEATABLE.
                 #[derive(serde::Serialize, serde::Deserialize)]
+                #[serde(default)]
                 #[serde(rename_all = "snake_case")]
                 #[derive(Clone, PartialEq, ::prost::Oneof)]
                 pub enum FieldInfo {
@@ -1408,6 +1464,7 @@ pub mod data_profile_result {
 }
 /// DataQualityScan related setting.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataQualitySpec {
@@ -1418,6 +1475,7 @@ pub struct DataQualitySpec {
 }
 /// The output of a DataQualityScan.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataQualityResult {
@@ -1439,6 +1497,7 @@ pub struct DataQualityResult {
 }
 /// DataQualityRuleResult provides a more detailed, per-rule view of the results.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataQualityRuleResult {
@@ -1478,6 +1537,7 @@ pub struct DataQualityRuleResult {
 /// DataQualityDimensionResult provides a more detailed, per-dimension view of
 /// the results.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct DataQualityDimensionResult {
@@ -1487,6 +1547,7 @@ pub struct DataQualityDimensionResult {
 }
 /// A rule captures data quality intent about a data source.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataQualityRule {
@@ -1521,6 +1582,7 @@ pub struct DataQualityRule {
 pub mod data_quality_rule {
     /// Evaluates whether each column value lies between a specified range.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct RangeExpectation {
@@ -1549,11 +1611,13 @@ pub mod data_quality_rule {
     }
     /// Evaluates whether each column value is null.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct NonNullExpectation {}
     /// Evaluates whether each column value is contained by a specified set.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct SetExpectation {
@@ -1563,6 +1627,7 @@ pub mod data_quality_rule {
     }
     /// Evaluates whether each column value matches a specified regex.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct RegexExpectation {
@@ -1572,12 +1637,14 @@ pub mod data_quality_rule {
     }
     /// Evaluates whether the column has duplicates.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct UniquenessExpectation {}
     /// Evaluates whether the column aggregate statistic lies between a specified
     /// range.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct StatisticRangeExpectation {
@@ -1611,6 +1678,7 @@ pub mod data_quality_rule {
     /// Nested message and enum types in `StatisticRangeExpectation`.
     pub mod statistic_range_expectation {
         #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(default)]
         #[serde(rename_all = "snake_case")]
         #[derive(
             Clone,
@@ -1666,6 +1734,7 @@ pub mod data_quality_rule {
     ///
     /// Example: col1 >= 0 AND col2 < 10
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct RowConditionExpectation {
@@ -1680,6 +1749,7 @@ pub mod data_quality_rule {
     ///
     /// Example: MIN(col1) >= 0
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct TableConditionExpectation {
@@ -1688,6 +1758,7 @@ pub mod data_quality_rule {
         pub sql_expression: ::prost::alloc::string::String,
     }
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum RuleType {
@@ -1726,6 +1797,7 @@ pub mod data_quality_rule {
 /// on the resources, for example, Cloud Storage bucket, BigQuery dataset,
 /// BigQuery table.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ResourceAccessSpec {
@@ -1747,6 +1819,7 @@ pub struct ResourceAccessSpec {
 /// principals explicitly granted access through the DataAccessSpec. Principals
 /// with access to the containing resource are not implicitly granted access.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataAccessSpec {
@@ -1761,6 +1834,7 @@ pub struct DataAccessSpec {
 /// grouped with a common theme Eg: 'SensitiveDataTaxonomy' can have attributes
 /// to manage PII data. It is defined at project level.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataTaxonomy {
@@ -1812,6 +1886,7 @@ pub struct DataTaxonomy {
 ///                  - readers :bar@foo.com
 /// ```
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataAttribute {
@@ -1868,6 +1943,7 @@ pub struct DataAttribute {
 /// DataAttributeBinding represents binding of attributes to resources. Eg: Bind
 /// 'CustomerInfo' entity with 'PII' attribute.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataAttributeBinding {
@@ -1926,6 +2002,7 @@ pub mod data_attribute_binding {
     /// Represents a subresource of a given resource, and associated bindings with
     /// it.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Path {
@@ -1941,6 +2018,7 @@ pub mod data_attribute_binding {
     }
     /// The reference to the resource that is associated to attributes.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum ResourceReference {
@@ -1964,6 +2042,7 @@ pub mod data_attribute_binding {
 ///    the structure, content and relationships (such as null percent,
 ///    cardinality, min/max/mean, etc).
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataScan {
@@ -2029,6 +2108,7 @@ pub struct DataScan {
 pub mod data_scan {
     /// DataScan execution settings.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct ExecutionSpec {
@@ -2054,6 +2134,7 @@ pub mod data_scan {
         /// changed. If not specified, a data scan will run for all data in the
         /// table.
         #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(default)]
         #[serde(rename_all = "snake_case")]
         #[derive(Clone, PartialEq, ::prost::Oneof)]
         pub enum Incremental {
@@ -2067,6 +2148,7 @@ pub mod data_scan {
     }
     /// Status of the data scan execution.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct ExecutionStatus {
@@ -2081,6 +2163,7 @@ pub mod data_scan {
     /// It is required and immutable which means once data_quality_spec is set, it
     /// cannot be changed to data_profile_spec.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Spec {
@@ -2093,6 +2176,7 @@ pub mod data_scan {
     }
     /// The result of the data scan.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Result {
@@ -2106,6 +2190,7 @@ pub mod data_scan {
 }
 /// A task represents a user-visible job.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Task {
@@ -2156,6 +2241,7 @@ pub struct Task {
 pub mod task {
     /// Configuration for the underlying infrastructure used to run workloads.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct InfrastructureSpec {
@@ -2173,6 +2259,7 @@ pub mod task {
     pub mod infrastructure_spec {
         /// Batch compute resources associated with the task.
         #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(default)]
         #[serde(rename_all = "snake_case")]
         #[derive(Clone, Copy, PartialEq, ::prost::Message)]
         pub struct BatchComputeResources {
@@ -2188,6 +2275,7 @@ pub mod task {
         }
         /// Container Image Runtime Configuration used with Batch execution.
         #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(default)]
         #[serde(rename_all = "snake_case")]
         #[derive(Clone, PartialEq, ::prost::Message)]
         pub struct ContainerImageRuntime {
@@ -2219,6 +2307,7 @@ pub mod task {
         }
         /// Cloud VPC Network used to run the infrastructure.
         #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(default)]
         #[serde(rename_all = "snake_case")]
         #[derive(Clone, PartialEq, ::prost::Message)]
         pub struct VpcNetwork {
@@ -2233,6 +2322,7 @@ pub mod task {
         pub mod vpc_network {
             /// The Cloud VPC network identifier.
             #[derive(serde::Serialize, serde::Deserialize)]
+            #[serde(default)]
             #[serde(rename_all = "snake_case")]
             #[derive(Clone, PartialEq, ::prost::Oneof)]
             pub enum NetworkName {
@@ -2247,6 +2337,7 @@ pub mod task {
         }
         /// Hardware config.
         #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(default)]
         #[serde(rename_all = "snake_case")]
         #[derive(Clone, Copy, PartialEq, ::prost::Oneof)]
         pub enum Resources {
@@ -2256,6 +2347,7 @@ pub mod task {
         }
         /// Software config.
         #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(default)]
         #[serde(rename_all = "snake_case")]
         #[derive(Clone, PartialEq, ::prost::Oneof)]
         pub enum Runtime {
@@ -2265,6 +2357,7 @@ pub mod task {
         }
         /// Networking config.
         #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(default)]
         #[serde(rename_all = "snake_case")]
         #[derive(Clone, PartialEq, ::prost::Oneof)]
         pub enum Network {
@@ -2275,6 +2368,7 @@ pub mod task {
     }
     /// Task scheduling and trigger settings.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct TriggerSpec {
@@ -2303,6 +2397,7 @@ pub mod task {
     pub mod trigger_spec {
         /// Determines how often and when the job will run.
         #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(default)]
         #[serde(rename_all = "snake_case")]
         #[derive(
             Clone,
@@ -2348,6 +2443,7 @@ pub mod task {
         }
         /// Trigger only applies for RECURRING tasks.
         #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(default)]
         #[serde(rename_all = "snake_case")]
         #[derive(Clone, PartialEq, ::prost::Oneof)]
         pub enum Trigger {
@@ -2364,6 +2460,7 @@ pub mod task {
     }
     /// Execution related settings, like retry and service_account.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct ExecutionSpec {
@@ -2405,6 +2502,7 @@ pub mod task {
     }
     /// User-specified config for running a Spark task.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct SparkTaskConfig {
@@ -2432,6 +2530,7 @@ pub mod task {
         /// job. Specify either the jar file that contains the main class or the
         /// main class name.
         #[derive(serde::Serialize, serde::Deserialize)]
+        #[serde(default)]
         #[serde(rename_all = "snake_case")]
         #[derive(Clone, PartialEq, ::prost::Oneof)]
         pub enum Driver {
@@ -2467,6 +2566,7 @@ pub mod task {
     }
     /// Config for running scheduled notebooks.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct NotebookTaskConfig {
@@ -2491,6 +2591,7 @@ pub mod task {
     }
     /// Status of the task execution (e.g. Jobs).
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct ExecutionStatus {
@@ -2503,6 +2604,7 @@ pub mod task {
     }
     /// Task template specific user-specified config.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Config {
@@ -2516,6 +2618,7 @@ pub mod task {
 }
 /// A job represents an instance of a task.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Job {
@@ -2553,6 +2656,7 @@ pub struct Job {
 /// Nested message and enum types in `Job`.
 pub mod job {
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -2593,6 +2697,7 @@ pub mod job {
         }
     }
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -2655,6 +2760,7 @@ pub mod job {
 }
 /// The data within all Task events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TaskEventData {
@@ -2664,6 +2770,7 @@ pub struct TaskEventData {
 }
 /// The data within all Zone events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ZoneEventData {
@@ -2673,6 +2780,7 @@ pub struct ZoneEventData {
 }
 /// The data within all Asset events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AssetEventData {
@@ -2682,6 +2790,7 @@ pub struct AssetEventData {
 }
 /// The data within all Environment events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EnvironmentEventData {
@@ -2691,6 +2800,7 @@ pub struct EnvironmentEventData {
 }
 /// The data within all DataTaxonomy events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataTaxonomyEventData {
@@ -2700,6 +2810,7 @@ pub struct DataTaxonomyEventData {
 }
 /// The data within all DataAttributeBinding events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataAttributeBindingEventData {
@@ -2710,6 +2821,7 @@ pub struct DataAttributeBindingEventData {
 }
 /// The data within all DataScan events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataScanEventData {
@@ -2719,6 +2831,7 @@ pub struct DataScanEventData {
 }
 /// The data within all Lake events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct LakeEventData {
@@ -2728,6 +2841,7 @@ pub struct LakeEventData {
 }
 /// The data within all DataAttribute events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataAttributeEventData {
@@ -2737,6 +2851,7 @@ pub struct DataAttributeEventData {
 }
 /// State of a resource.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
@@ -2780,6 +2895,7 @@ impl State {
 }
 /// The type of DataScan.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
@@ -2815,6 +2931,7 @@ impl DataScanType {
 }
 /// The CloudEvent raised when a DataTaxonomy is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataTaxonomyCreatedEvent {
@@ -2824,6 +2941,7 @@ pub struct DataTaxonomyCreatedEvent {
 }
 /// The CloudEvent raised when a DataTaxonomy is updated.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataTaxonomyUpdatedEvent {
@@ -2833,6 +2951,7 @@ pub struct DataTaxonomyUpdatedEvent {
 }
 /// The CloudEvent raised when a DataTaxonomy is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataTaxonomyDeletedEvent {
@@ -2842,6 +2961,7 @@ pub struct DataTaxonomyDeletedEvent {
 }
 /// The CloudEvent raised when a DataAttributeBinding is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataAttributeBindingCreatedEvent {
@@ -2851,6 +2971,7 @@ pub struct DataAttributeBindingCreatedEvent {
 }
 /// The CloudEvent raised when a DataAttributeBinding is updated.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataAttributeBindingUpdatedEvent {
@@ -2860,6 +2981,7 @@ pub struct DataAttributeBindingUpdatedEvent {
 }
 /// The CloudEvent raised when a DataAttributeBinding is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataAttributeBindingDeletedEvent {
@@ -2869,6 +2991,7 @@ pub struct DataAttributeBindingDeletedEvent {
 }
 /// The CloudEvent raised when a DataAttribute is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataAttributeCreatedEvent {
@@ -2878,6 +3001,7 @@ pub struct DataAttributeCreatedEvent {
 }
 /// The CloudEvent raised when a DataAttribute is updated.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataAttributeUpdatedEvent {
@@ -2887,6 +3011,7 @@ pub struct DataAttributeUpdatedEvent {
 }
 /// The CloudEvent raised when a DataAttribute is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataAttributeDeletedEvent {
@@ -2896,6 +3021,7 @@ pub struct DataAttributeDeletedEvent {
 }
 /// The CloudEvent raised when a DataScan is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataScanCreatedEvent {
@@ -2905,6 +3031,7 @@ pub struct DataScanCreatedEvent {
 }
 /// The CloudEvent raised when a DataScan is updated.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataScanUpdatedEvent {
@@ -2914,6 +3041,7 @@ pub struct DataScanUpdatedEvent {
 }
 /// The CloudEvent raised when a DataScan is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataScanDeletedEvent {
@@ -2923,6 +3051,7 @@ pub struct DataScanDeletedEvent {
 }
 /// The CloudEvent raised when a Lake is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct LakeCreatedEvent {
@@ -2932,6 +3061,7 @@ pub struct LakeCreatedEvent {
 }
 /// The CloudEvent raised when a Lake is updated.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct LakeUpdatedEvent {
@@ -2941,6 +3071,7 @@ pub struct LakeUpdatedEvent {
 }
 /// The CloudEvent raised when a Lake is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct LakeDeletedEvent {
@@ -2950,6 +3081,7 @@ pub struct LakeDeletedEvent {
 }
 /// The CloudEvent raised when a Zone is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ZoneCreatedEvent {
@@ -2959,6 +3091,7 @@ pub struct ZoneCreatedEvent {
 }
 /// The CloudEvent raised when a Zone is updated.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ZoneUpdatedEvent {
@@ -2968,6 +3101,7 @@ pub struct ZoneUpdatedEvent {
 }
 /// The CloudEvent raised when a Zone is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ZoneDeletedEvent {
@@ -2977,6 +3111,7 @@ pub struct ZoneDeletedEvent {
 }
 /// The CloudEvent raised when an Asset is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AssetCreatedEvent {
@@ -2986,6 +3121,7 @@ pub struct AssetCreatedEvent {
 }
 /// The CloudEvent raised when an Asset is updated.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AssetUpdatedEvent {
@@ -2995,6 +3131,7 @@ pub struct AssetUpdatedEvent {
 }
 /// The CloudEvent raised when an Asset is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AssetDeletedEvent {
@@ -3004,6 +3141,7 @@ pub struct AssetDeletedEvent {
 }
 /// The CloudEvent raised when a Task is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TaskCreatedEvent {
@@ -3013,6 +3151,7 @@ pub struct TaskCreatedEvent {
 }
 /// The CloudEvent raised when a Task is updated.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TaskUpdatedEvent {
@@ -3022,6 +3161,7 @@ pub struct TaskUpdatedEvent {
 }
 /// The CloudEvent raised when a Task is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TaskDeletedEvent {
@@ -3031,6 +3171,7 @@ pub struct TaskDeletedEvent {
 }
 /// The CloudEvent raised when an Environment is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EnvironmentCreatedEvent {
@@ -3040,6 +3181,7 @@ pub struct EnvironmentCreatedEvent {
 }
 /// The CloudEvent raised when an Environment is updated.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EnvironmentUpdatedEvent {
@@ -3049,6 +3191,7 @@ pub struct EnvironmentUpdatedEvent {
 }
 /// The CloudEvent raised when an Environment is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EnvironmentDeletedEvent {

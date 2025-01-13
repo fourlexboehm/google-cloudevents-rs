@@ -4,6 +4,7 @@
 /// for creating a BeyondCorp protected AppGateway. Multiple connectors can be
 /// authorised for a single AppGateway.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AppGateway {
@@ -53,6 +54,7 @@ pub struct AppGateway {
 pub mod app_gateway {
     /// Allocated connection of the AppGateway.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct AllocatedConnection {
@@ -66,6 +68,7 @@ pub mod app_gateway {
     /// Enum containing list of all possible network connectivity options
     /// supported by BeyondCorp AppGateway.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -107,6 +110,7 @@ pub mod app_gateway {
     }
     /// Represents the different states of an AppGateway.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -166,6 +170,7 @@ pub mod app_gateway {
     /// Enum containing list of all possible host types supported by BeyondCorp
     /// Connection.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -208,6 +213,7 @@ pub mod app_gateway {
 }
 /// The data within all AppGateway events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AppGatewayEventData {
@@ -217,6 +223,7 @@ pub struct AppGatewayEventData {
 }
 /// The CloudEvent raised when an AppGateway is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AppGatewayCreatedEvent {
@@ -226,6 +233,7 @@ pub struct AppGatewayCreatedEvent {
 }
 /// The CloudEvent raised when an AppGateway is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AppGatewayDeletedEvent {

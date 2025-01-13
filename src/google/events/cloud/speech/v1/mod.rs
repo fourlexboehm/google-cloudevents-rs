@@ -3,6 +3,7 @@
 /// in your audio, for example a list of passenger ship names. CustomClass items
 /// can be substituted into placeholders that you set in PhraseSet phrases.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CustomClass {
@@ -72,6 +73,7 @@ pub struct CustomClass {
 pub mod custom_class {
     /// An item of the class.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct ClassItem {
@@ -81,6 +83,7 @@ pub mod custom_class {
     }
     /// Set of states that define the lifecycle of a CustomClass.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -129,6 +132,7 @@ pub mod custom_class {
 /// Provides "hints" to the speech recognizer to favor specific words and phrases
 /// in the results.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PhraseSet {
@@ -229,6 +233,7 @@ pub mod phrase_set {
     /// [regional endpoint](<https://cloud.google.com/speech-to-text/docs/endpoints>)
     /// with matching `us` or `eu` location value.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Phrase {
@@ -249,6 +254,7 @@ pub mod phrase_set {
     }
     /// Set of states that define the lifecycle of a CustomClass.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -296,6 +302,7 @@ pub mod phrase_set {
 }
 /// The data within all PhraseSet events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PhraseSetEventData {
@@ -305,6 +312,7 @@ pub struct PhraseSetEventData {
 }
 /// The data within all CustomClass events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CustomClassEventData {
@@ -314,6 +322,7 @@ pub struct CustomClassEventData {
 }
 /// The CloudEvent raised when a PhraseSet is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PhraseSetCreatedEvent {
@@ -323,6 +332,7 @@ pub struct PhraseSetCreatedEvent {
 }
 /// The CloudEvent raised when a PhraseSet is updated.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PhraseSetUpdatedEvent {
@@ -332,6 +342,7 @@ pub struct PhraseSetUpdatedEvent {
 }
 /// The CloudEvent raised when a PhraseSet is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PhraseSetDeletedEvent {
@@ -341,6 +352,7 @@ pub struct PhraseSetDeletedEvent {
 }
 /// The CloudEvent raised when a CustomClass is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CustomClassCreatedEvent {
@@ -350,6 +362,7 @@ pub struct CustomClassCreatedEvent {
 }
 /// The CloudEvent raised when a CustomClass is updated.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CustomClassUpdatedEvent {
@@ -359,6 +372,7 @@ pub struct CustomClassUpdatedEvent {
 }
 /// The CloudEvent raised when a CustomClass is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CustomClassDeletedEvent {

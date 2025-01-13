@@ -2,6 +2,7 @@
 /// ReplicationCycle contains information about the current replication cycle
 /// status.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ReplicationCycle {
@@ -42,6 +43,7 @@ pub struct ReplicationCycle {
 pub mod replication_cycle {
     /// Possible states of a replication cycle.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -97,6 +99,7 @@ pub mod replication_cycle {
 }
 /// CycleStep holds information about a step progress.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct CycleStep {
@@ -112,6 +115,7 @@ pub struct CycleStep {
 /// Nested message and enum types in `CycleStep`.
 pub mod cycle_step {
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, Copy, PartialEq, ::prost::Oneof)]
     pub enum Step {
@@ -128,11 +132,13 @@ pub mod cycle_step {
 }
 /// InitializingReplicationStep contains specific step details.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct InitializingReplicationStep {}
 /// ReplicatingStep contains specific step details.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct ReplicatingStep {
@@ -153,11 +159,13 @@ pub struct ReplicatingStep {
 }
 /// PostProcessingStep contains specific step details.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct PostProcessingStep {}
 /// ReplicationSync contain information about the last replica sync to the cloud.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct ReplicationSync {
@@ -169,6 +177,7 @@ pub struct ReplicationSync {
 /// MigratingVm describes the VM that will be migrated from a Source environment
 /// and its replication state.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MigratingVm {
@@ -259,6 +268,7 @@ pub struct MigratingVm {
 pub mod migrating_vm {
     /// The possible values of the state/health of source VM.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -347,6 +357,7 @@ pub mod migrating_vm {
     /// The default configuration of the target VM that will be created in Google
     /// Cloud as a result of the migration.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum TargetVmDefaults {
@@ -356,6 +367,7 @@ pub mod migrating_vm {
     }
     /// Details about the source VM.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum SourceVmDetails {
@@ -366,6 +378,7 @@ pub mod migrating_vm {
 }
 /// CutoverForecast holds information about future CutoverJobs of a MigratingVm.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct CutoverForecast {
@@ -384,6 +397,7 @@ pub struct CutoverForecast {
 /// never touch the instance it created. It will only delete it in case of the
 /// CloneJob being cancelled or upon failure to clone.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CloneJob {
@@ -418,6 +432,7 @@ pub struct CloneJob {
 pub mod clone_job {
     /// Possible states of the clone job.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -484,6 +499,7 @@ pub mod clone_job {
     }
     /// Details of the VM to create as the target of this clone job.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum TargetVmDetails {
@@ -494,6 +510,7 @@ pub mod clone_job {
 }
 /// CloneStep holds information about the clone step progress.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct CloneStep {
@@ -509,6 +526,7 @@ pub struct CloneStep {
 /// Nested message and enum types in `CloneStep`.
 pub mod clone_step {
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, Copy, PartialEq, ::prost::Oneof)]
     pub enum Step {
@@ -525,16 +543,19 @@ pub mod clone_step {
 }
 /// AdaptingOSStep contains specific step details.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct AdaptingOsStep {}
 /// PreparingVMDisksStep contains specific step details.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct PreparingVmDisksStep {}
 /// InstantiatingMigratedVMStep contains specific step details.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct InstantiatingMigratedVmStep {}
@@ -542,6 +563,7 @@ pub struct InstantiatingMigratedVmStep {}
 /// the operation of shutting down the VM, creating a snapshot and
 /// clonning the VM using the replicated snapshot.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CutoverJob {
@@ -583,6 +605,7 @@ pub struct CutoverJob {
 pub mod cutover_job {
     /// Possible states of the cutover job.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -649,6 +672,7 @@ pub mod cutover_job {
     }
     /// Details of the VM to create as the target of this cutover job.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum TargetVmDetails {
@@ -659,6 +683,7 @@ pub mod cutover_job {
 }
 /// CutoverStep holds information about the cutover step progress.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CutoverStep {
@@ -674,6 +699,7 @@ pub struct CutoverStep {
 /// Nested message and enum types in `CutoverStep`.
 pub mod cutover_step {
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Step {
@@ -696,12 +722,14 @@ pub mod cutover_step {
 }
 /// ShuttingDownSourceVMStep contains specific step details.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct ShuttingDownSourceVmStep {}
 /// Source message describes a specific vm migration Source resource. It contains
 /// the source environment information.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Source {
@@ -729,6 +757,7 @@ pub struct Source {
 /// Nested message and enum types in `Source`.
 pub mod source {
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum SourceDetails {
@@ -743,6 +772,7 @@ pub mod source {
 /// VmwareSourceDetails message describes a specific source details for the
 /// vmware source type.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct VmwareSourceDetails {
@@ -762,6 +792,7 @@ pub struct VmwareSourceDetails {
 /// AwsSourceDetails message describes a specific source details for the
 /// AWS source type.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AwsSourceDetails {
@@ -804,6 +835,7 @@ pub struct AwsSourceDetails {
 pub mod aws_source_details {
     /// Message describing AWS Credentials using access key id and secret.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct AccessKeyCredentials {
@@ -813,6 +845,7 @@ pub mod aws_source_details {
     }
     /// Tag is an AWS tag representation.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Tag {
@@ -825,6 +858,7 @@ pub mod aws_source_details {
     }
     /// The possible values of the state.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -876,6 +910,7 @@ pub mod aws_source_details {
         }
     }
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum CredentialsType {
@@ -889,6 +924,7 @@ pub mod aws_source_details {
 /// by the user) to connect the Datacenter to Google Cloud and support vm
 /// migration data transfer.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DatacenterConnector {
@@ -951,6 +987,7 @@ pub struct DatacenterConnector {
 pub mod datacenter_connector {
     /// The possible values of the state.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -1008,6 +1045,7 @@ pub mod datacenter_connector {
 }
 /// UpgradeStatus contains information about upgradeAppliance operation.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UpgradeStatus {
@@ -1031,6 +1069,7 @@ pub struct UpgradeStatus {
 pub mod upgrade_status {
     /// The possible values of the state.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -1081,6 +1120,7 @@ pub mod upgrade_status {
 }
 /// Holds informatiom about the available versions for upgrade.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AvailableUpdates {
@@ -1097,6 +1137,7 @@ pub struct AvailableUpdates {
 }
 /// Describes an appliance version.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ApplianceVersion {
@@ -1115,6 +1156,7 @@ pub struct ApplianceVersion {
 }
 /// VmwareVmDetails describes a VM in vCenter.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct VmwareVmDetails {
@@ -1162,6 +1204,7 @@ pub struct VmwareVmDetails {
 pub mod vmware_vm_details {
     /// Possible values for the power state of the VM.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -1211,6 +1254,7 @@ pub mod vmware_vm_details {
     }
     /// Possible values for vm boot option.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -1258,6 +1302,7 @@ pub mod vmware_vm_details {
 /// Utilization report details the utilization (CPU, memory, etc.) of selected
 /// source VMs.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UtilizationReport {
@@ -1304,6 +1349,7 @@ pub struct UtilizationReport {
 pub mod utilization_report {
     /// Utilization report state.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -1353,6 +1399,7 @@ pub mod utilization_report {
     }
     /// Report time frame options.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -1403,6 +1450,7 @@ pub mod utilization_report {
 }
 /// Utilization information of a single VM.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct VmUtilizationInfo {
@@ -1418,6 +1466,7 @@ pub struct VmUtilizationInfo {
 /// Nested message and enum types in `VmUtilizationInfo`.
 pub mod vm_utilization_info {
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum VmDetails {
@@ -1428,6 +1477,7 @@ pub mod vm_utilization_info {
 }
 /// Utilization metrics values for a single VM.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct VmUtilizationMetrics {
@@ -1461,6 +1511,7 @@ pub struct VmUtilizationMetrics {
 /// ComputeEngineTargetDefaults is a collection of details for creating a VM in a
 /// target Compute Engine project.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ComputeEngineTargetDefaults {
@@ -1530,6 +1581,7 @@ pub struct ComputeEngineTargetDefaults {
 /// ComputeEngineTargetDetails is a collection of details for creating a VM in a
 /// target Compute Engine project.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ComputeEngineTargetDetails {
@@ -1597,6 +1649,7 @@ pub struct ComputeEngineTargetDetails {
 }
 /// NetworkInterface represents a NIC of a VM.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct NetworkInterface {
@@ -1617,6 +1670,7 @@ pub struct NetworkInterface {
 }
 /// AppliedLicense holds the license data returned by adaptation module report.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AppliedLicense {
@@ -1631,6 +1685,7 @@ pub struct AppliedLicense {
 pub mod applied_license {
     /// License types used in OS adaptation.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -1683,6 +1738,7 @@ pub mod applied_license {
 /// could be scheduled. Based on
 /// <https://cloud.google.com/compute/docs/reference/rest/v1/instances/setScheduling>
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SchedulingNodeAffinity {
@@ -1702,6 +1758,7 @@ pub mod scheduling_node_affinity {
     /// Possible types of node selection operators. Valid operators are IN for
     /// affinity and NOT_IN for anti-affinity.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -1749,6 +1806,7 @@ pub mod scheduling_node_affinity {
 /// Scheduling information for VM on maintenance/restart behaviour and
 /// node allocation in sole tenant nodes.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ComputeScheduling {
@@ -1777,6 +1835,7 @@ pub struct ComputeScheduling {
 /// Nested message and enum types in `ComputeScheduling`.
 pub mod compute_scheduling {
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -1823,6 +1882,7 @@ pub mod compute_scheduling {
     /// Defines whether the Instance should be automatically restarted whenever
     /// it is terminated by Compute Engine (not terminated by user).
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -1871,6 +1931,7 @@ pub mod compute_scheduling {
 }
 /// A policy for scheduling replications.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct SchedulePolicy {
@@ -1886,6 +1947,7 @@ pub struct SchedulePolicy {
 /// TargetProject message represents a target Compute Engine project for a
 /// migration or a clone.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TargetProject {
@@ -1909,6 +1971,7 @@ pub struct TargetProject {
 /// Describes message for 'Group' resource. The Group is a collections of several
 /// MigratingVms.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Group {
@@ -1932,6 +1995,7 @@ pub struct Group {
 /// google.rpc.Status message. MigrationWarning is used to present the user with
 /// warning information in migration operations.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MigrationWarning {
@@ -1961,6 +2025,7 @@ pub struct MigrationWarning {
 pub mod migration_warning {
     /// Represents possible warning codes.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -2003,6 +2068,7 @@ pub mod migration_warning {
 }
 /// Represent the source AWS VM details.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AwsSourceVmDetails {
@@ -2020,6 +2086,7 @@ pub struct AwsSourceVmDetails {
 pub mod aws_source_vm_details {
     /// The details of an AWS instance disk.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct AwsDiskDetails {
@@ -2035,6 +2102,7 @@ pub mod aws_source_vm_details {
     }
     /// Possible values for AWS VM firmware.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -2081,6 +2149,7 @@ pub mod aws_source_vm_details {
 }
 /// The data within all UtilizationReport events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UtilizationReportEventData {
@@ -2090,6 +2159,7 @@ pub struct UtilizationReportEventData {
 }
 /// The data within all Group events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GroupEventData {
@@ -2099,6 +2169,7 @@ pub struct GroupEventData {
 }
 /// The data within all CloneJob events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CloneJobEventData {
@@ -2108,6 +2179,7 @@ pub struct CloneJobEventData {
 }
 /// The data within all DatacenterConnector events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DatacenterConnectorEventData {
@@ -2117,6 +2189,7 @@ pub struct DatacenterConnectorEventData {
 }
 /// The data within all TargetProject events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TargetProjectEventData {
@@ -2126,6 +2199,7 @@ pub struct TargetProjectEventData {
 }
 /// The data within all CutoverJob events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CutoverJobEventData {
@@ -2135,6 +2209,7 @@ pub struct CutoverJobEventData {
 }
 /// The data within all Source events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SourceEventData {
@@ -2144,6 +2219,7 @@ pub struct SourceEventData {
 }
 /// The data within all MigratingVm events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MigratingVmEventData {
@@ -2153,6 +2229,7 @@ pub struct MigratingVmEventData {
 }
 /// Types of disks supported for Compute Engine VM.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
@@ -2193,6 +2270,7 @@ impl ComputeEngineDiskType {
 }
 /// Types of licenses used in OS adaptation.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
@@ -2228,6 +2306,7 @@ impl ComputeEngineLicenseType {
 }
 /// Possible values for vm boot option.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
@@ -2263,6 +2342,7 @@ impl ComputeEngineBootOption {
 }
 /// The CloudEvent raised when a Source is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SourceCreatedEvent {
@@ -2272,6 +2352,7 @@ pub struct SourceCreatedEvent {
 }
 /// The CloudEvent raised when a Source is updated.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SourceUpdatedEvent {
@@ -2281,6 +2362,7 @@ pub struct SourceUpdatedEvent {
 }
 /// The CloudEvent raised when a Source is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SourceDeletedEvent {
@@ -2290,6 +2372,7 @@ pub struct SourceDeletedEvent {
 }
 /// The CloudEvent raised when an UtilizationReport is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UtilizationReportCreatedEvent {
@@ -2299,6 +2382,7 @@ pub struct UtilizationReportCreatedEvent {
 }
 /// The CloudEvent raised when an UtilizationReport is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UtilizationReportDeletedEvent {
@@ -2308,6 +2392,7 @@ pub struct UtilizationReportDeletedEvent {
 }
 /// The CloudEvent raised when a DatacenterConnector is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DatacenterConnectorCreatedEvent {
@@ -2317,6 +2402,7 @@ pub struct DatacenterConnectorCreatedEvent {
 }
 /// The CloudEvent raised when a DatacenterConnector is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DatacenterConnectorDeletedEvent {
@@ -2326,6 +2412,7 @@ pub struct DatacenterConnectorDeletedEvent {
 }
 /// The CloudEvent raised when a MigratingVm is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MigratingVmCreatedEvent {
@@ -2335,6 +2422,7 @@ pub struct MigratingVmCreatedEvent {
 }
 /// The CloudEvent raised when a MigratingVm is updated.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MigratingVmUpdatedEvent {
@@ -2344,6 +2432,7 @@ pub struct MigratingVmUpdatedEvent {
 }
 /// The CloudEvent raised when a MigratingVm is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MigratingVmDeletedEvent {
@@ -2353,6 +2442,7 @@ pub struct MigratingVmDeletedEvent {
 }
 /// The CloudEvent raised when a CloneJob is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CloneJobCreatedEvent {
@@ -2362,6 +2452,7 @@ pub struct CloneJobCreatedEvent {
 }
 /// The CloudEvent raised when a CutoverJob is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CutoverJobCreatedEvent {
@@ -2371,6 +2462,7 @@ pub struct CutoverJobCreatedEvent {
 }
 /// The CloudEvent raised when a Group is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GroupCreatedEvent {
@@ -2380,6 +2472,7 @@ pub struct GroupCreatedEvent {
 }
 /// The CloudEvent raised when a Group is updated.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GroupUpdatedEvent {
@@ -2389,6 +2482,7 @@ pub struct GroupUpdatedEvent {
 }
 /// The CloudEvent raised when a Group is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GroupDeletedEvent {
@@ -2398,6 +2492,7 @@ pub struct GroupDeletedEvent {
 }
 /// The CloudEvent raised when a TargetProject is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TargetProjectCreatedEvent {
@@ -2407,6 +2502,7 @@ pub struct TargetProjectCreatedEvent {
 }
 /// The CloudEvent raised when a TargetProject is updated.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TargetProjectUpdatedEvent {
@@ -2416,6 +2512,7 @@ pub struct TargetProjectUpdatedEvent {
 }
 /// The CloudEvent raised when a TargetProject is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TargetProjectDeletedEvent {

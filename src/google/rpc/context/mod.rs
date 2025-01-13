@@ -17,6 +17,7 @@
 /// verify the system specification before relying on an attribute generated
 /// a system.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AttributeContext {
@@ -60,6 +61,7 @@ pub mod attribute_context {
     /// or receives the request. Service peers should fill in
     /// `principal` and `labels` as appropriate.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Peer {
@@ -90,6 +92,7 @@ pub mod attribute_context {
     /// a network API request. The terminology is based on the conventions used
     /// by Google APIs, Istio, and OpenAPI.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Api {
@@ -116,6 +119,7 @@ pub mod attribute_context {
     /// based on the JSON Web Token (JWT) standard, but the terms also
     /// correlate to concepts in other standards.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Auth {
@@ -179,6 +183,7 @@ pub mod attribute_context {
     /// request is not an HTTP request, the runtime system should try to map
     /// the actual request to an equivalent HTTP request.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Request {
@@ -236,6 +241,7 @@ pub mod attribute_context {
     /// This message defines attributes for a typical network response. It
     /// generally models semantics of an HTTP response.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Response {
@@ -268,6 +274,7 @@ pub mod attribute_context {
     /// addressable (named) entity provided by the destination service. For
     /// example, a file stored on a network storage service.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Resource {

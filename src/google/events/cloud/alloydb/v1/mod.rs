@@ -2,6 +2,7 @@
 /// The username/password for a database user. Used for specifying initial
 /// users at cluster creation time.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UserPassword {
@@ -15,6 +16,7 @@ pub struct UserPassword {
 /// Subset of the source instance configuration that is available when reading
 /// the cluster resource.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MigrationSource {
@@ -34,6 +36,7 @@ pub struct MigrationSource {
 pub mod migration_source {
     /// Denote the type of migration source that created this cluster.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -77,6 +80,7 @@ pub mod migration_source {
 /// EncryptionConfig describes the encryption config of a cluster or a backup
 /// that is encrypted with a CMEK (customer-managed encryption key).
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EncryptionConfig {
@@ -88,6 +92,7 @@ pub struct EncryptionConfig {
 }
 /// EncryptionInfo describes the encryption information of a cluster or a backup.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EncryptionInfo {
@@ -103,6 +108,7 @@ pub struct EncryptionInfo {
 pub mod encryption_info {
     /// Possible encryption types.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -151,6 +157,7 @@ pub mod encryption_info {
 }
 /// SSL configuration for an AlloyDB Cluster.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct SslConfig {
@@ -166,6 +173,7 @@ pub struct SslConfig {
 pub mod ssl_config {
     /// SSL mode options.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -219,6 +227,7 @@ pub mod ssl_config {
     }
     /// Certificate Authority (CA) source for SSL/TLS certificates.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -265,6 +274,7 @@ pub mod ssl_config {
 /// All fields in the automated backup policy are optional. Defaults for each
 /// field are provided if they are not set.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AutomatedBackupPolicy {
@@ -329,6 +339,7 @@ pub mod automated_backup_policy {
     /// 22:00, configure the `start_times` field to have one element "22:00" and
     /// the `days_of_week` field to have all seven days of the week.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct WeeklySchedule {
@@ -355,6 +366,7 @@ pub mod automated_backup_policy {
     /// A time based retention policy specifies that all backups within a certain
     /// time period should be retained.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct TimeBasedRetention {
@@ -365,6 +377,7 @@ pub mod automated_backup_policy {
     /// A quantity based policy specifies that a certain number of the most recent
     /// successful backups should be retained.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct QuantityBasedRetention {
@@ -382,6 +395,7 @@ pub mod automated_backup_policy {
     /// If not set, the schedule defaults to a weekly schedule with one backup
     /// per day and a start time chosen arbitrarily.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Schedule {
@@ -397,6 +411,7 @@ pub mod automated_backup_policy {
     ///
     /// If no retention policy is set, a default of 14 days is used.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, Copy, PartialEq, ::prost::Oneof)]
     pub enum Retention {
@@ -410,6 +425,7 @@ pub mod automated_backup_policy {
 }
 /// Message describing a BackupSource.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct BackupSource {
@@ -427,6 +443,7 @@ pub struct BackupSource {
 /// primary instance and one or more read pool instances.
 /// All cluster resources share a storage layer, which scales as needed.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Cluster {
@@ -537,6 +554,7 @@ pub mod cluster {
     /// Configuration information for the secondary cluster. This should be set
     /// if and only if the cluster is of type SECONDARY.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct SecondaryConfig {
@@ -549,6 +567,7 @@ pub mod cluster {
     /// replicating from this cluster. This should be set if and only if the
     /// cluster is of type PRIMARY.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct PrimaryConfig {
@@ -561,6 +580,7 @@ pub mod cluster {
     }
     /// Cluster State
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -642,6 +662,7 @@ pub mod cluster {
     }
     /// Type of Cluster
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -689,6 +710,7 @@ pub mod cluster {
     /// In case of an imported cluster, this field contains information about the
     /// source this cluster was imported from.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Source {
@@ -703,6 +725,7 @@ pub mod cluster {
 /// An Instance is a computing unit that an end customer can connect to.
 /// It's the main unit of computing resources in AlloyDB.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Instance {
@@ -827,6 +850,7 @@ pub struct Instance {
 pub mod instance {
     /// MachineConfig describes the configuration of a machine.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct MachineConfig {
@@ -838,6 +862,7 @@ pub mod instance {
     /// Nodes in an AlloyDB instance are ephemereal, they can change during
     /// update, failover, autohealing and resize operations.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Node {
@@ -859,6 +884,7 @@ pub mod instance {
     }
     /// QueryInsights Instance specific configuration.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct QueryInsightsInstanceConfig {
@@ -882,6 +908,7 @@ pub mod instance {
     }
     /// Configuration for a read pool instance.
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct ReadPoolConfig {
@@ -891,6 +918,7 @@ pub mod instance {
     }
     /// Instance State
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -966,6 +994,7 @@ pub mod instance {
     }
     /// Type of an Instance
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -1024,6 +1053,7 @@ pub mod instance {
     /// - REGIONAL: The instance can serve data from more than one zone in a
     /// region (it is highly available).
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -1070,6 +1100,7 @@ pub mod instance {
 }
 /// Message describing Backup object
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Backup {
@@ -1162,6 +1193,7 @@ pub struct Backup {
 pub mod backup {
     /// Backup State
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -1215,6 +1247,7 @@ pub mod backup {
     }
     /// Backup Type
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -1268,6 +1301,7 @@ pub mod backup {
 }
 /// The data within all Instance events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InstanceEventData {
@@ -1277,6 +1311,7 @@ pub struct InstanceEventData {
 }
 /// The data within all Backup events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct BackupEventData {
@@ -1286,6 +1321,7 @@ pub struct BackupEventData {
 }
 /// The data within all Cluster events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ClusterEventData {
@@ -1295,6 +1331,7 @@ pub struct ClusterEventData {
 }
 /// The supported database engine versions.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
@@ -1330,6 +1367,7 @@ impl DatabaseVersion {
 }
 /// The CloudEvent raised when a Cluster is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ClusterCreatedEvent {
@@ -1339,6 +1377,7 @@ pub struct ClusterCreatedEvent {
 }
 /// The CloudEvent raised when a Cluster is updated.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ClusterUpdatedEvent {
@@ -1348,6 +1387,7 @@ pub struct ClusterUpdatedEvent {
 }
 /// The CloudEvent raised when a Cluster is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ClusterDeletedEvent {
@@ -1357,6 +1397,7 @@ pub struct ClusterDeletedEvent {
 }
 /// The CloudEvent raised when an Instance is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InstanceCreatedEvent {
@@ -1366,6 +1407,7 @@ pub struct InstanceCreatedEvent {
 }
 /// The CloudEvent raised when an Instance is updated.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InstanceUpdatedEvent {
@@ -1375,6 +1417,7 @@ pub struct InstanceUpdatedEvent {
 }
 /// The CloudEvent raised when an Instance is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InstanceDeletedEvent {
@@ -1384,6 +1427,7 @@ pub struct InstanceDeletedEvent {
 }
 /// The CloudEvent raised when a Backup is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct BackupCreatedEvent {
@@ -1393,6 +1437,7 @@ pub struct BackupCreatedEvent {
 }
 /// The CloudEvent raised when a Backup is updated.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct BackupUpdatedEvent {
@@ -1402,6 +1447,7 @@ pub struct BackupUpdatedEvent {
 }
 /// The CloudEvent raised when a Backup is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct BackupDeletedEvent {

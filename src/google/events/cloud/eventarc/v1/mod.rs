@@ -4,6 +4,7 @@
 /// The published events are delivered through the transport associated with the
 /// channel. Note that a channel is associated with exactly one event provider.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Channel {
@@ -50,6 +51,7 @@ pub struct Channel {
 pub mod channel {
     /// State lists all the possible states of a Channel
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(
         Clone,
@@ -111,6 +113,7 @@ pub mod channel {
         }
     }
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Transport {
@@ -126,6 +129,7 @@ pub mod channel {
 /// activation process to establish a connection between the provider and the
 /// subscriber channel.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ChannelConnection {
@@ -151,6 +155,7 @@ pub struct ChannelConnection {
 }
 /// A representation of the trigger resource.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Trigger {
@@ -231,6 +236,7 @@ pub struct Trigger {
 }
 /// Filters events based on exact matches on the CloudEvents attributes.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EventFilter {
@@ -252,6 +258,7 @@ pub struct EventFilter {
 }
 /// A condition that is part of the trigger state computation.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct StateCondition {
@@ -264,6 +271,7 @@ pub struct StateCondition {
 }
 /// Represents a target of an invocation over HTTP.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Destination {
@@ -273,6 +281,7 @@ pub struct Destination {
 /// Nested message and enum types in `Destination`.
 pub mod destination {
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Descriptor {
@@ -303,6 +312,7 @@ pub mod destination {
 /// Represents the transport intermediaries created for the trigger to
 /// deliver events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Transport {
@@ -312,6 +322,7 @@ pub struct Transport {
 /// Nested message and enum types in `Transport`.
 pub mod transport {
     #[derive(serde::Serialize, serde::Deserialize)]
+    #[serde(default)]
     #[serde(rename_all = "snake_case")]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Intermediary {
@@ -323,6 +334,7 @@ pub mod transport {
 }
 /// Represents a Cloud Run destination.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CloudRun {
@@ -346,6 +358,7 @@ pub struct CloudRun {
 }
 /// Represents a GKE destination.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Gke {
@@ -375,6 +388,7 @@ pub struct Gke {
 }
 /// Represents a Pub/Sub transport.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Pubsub {
@@ -395,6 +409,7 @@ pub struct Pubsub {
 }
 /// The data within all Trigger events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TriggerEventData {
@@ -404,6 +419,7 @@ pub struct TriggerEventData {
 }
 /// The data within all Channel events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ChannelEventData {
@@ -413,6 +429,7 @@ pub struct ChannelEventData {
 }
 /// The data within all ChannelConnection events.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ChannelConnectionEventData {
@@ -422,6 +439,7 @@ pub struct ChannelConnectionEventData {
 }
 /// The CloudEvent raised when a Trigger is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TriggerCreatedEvent {
@@ -431,6 +449,7 @@ pub struct TriggerCreatedEvent {
 }
 /// The CloudEvent raised when a Trigger is updated.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TriggerUpdatedEvent {
@@ -440,6 +459,7 @@ pub struct TriggerUpdatedEvent {
 }
 /// The CloudEvent raised when a Trigger is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TriggerDeletedEvent {
@@ -449,6 +469,7 @@ pub struct TriggerDeletedEvent {
 }
 /// The CloudEvent raised when a Channel is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ChannelCreatedEvent {
@@ -458,6 +479,7 @@ pub struct ChannelCreatedEvent {
 }
 /// The CloudEvent raised when a Channel is updated.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ChannelUpdatedEvent {
@@ -467,6 +489,7 @@ pub struct ChannelUpdatedEvent {
 }
 /// The CloudEvent raised when a Channel is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ChannelDeletedEvent {
@@ -476,6 +499,7 @@ pub struct ChannelDeletedEvent {
 }
 /// The CloudEvent raised when a ChannelConnection is created.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ChannelConnectionCreatedEvent {
@@ -485,6 +509,7 @@ pub struct ChannelConnectionCreatedEvent {
 }
 /// The CloudEvent raised when a ChannelConnection is deleted.
 #[derive(serde::Serialize, serde::Deserialize)]
+#[serde(default)]
 #[serde(rename_all = "snake_case")]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ChannelConnectionDeletedEvent {
